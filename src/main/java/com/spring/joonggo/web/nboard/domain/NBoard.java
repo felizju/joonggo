@@ -1,15 +1,13 @@
 package com.spring.joonggo.web.nboard.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Date;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class NBoard {
 
@@ -21,6 +19,6 @@ public class NBoard {
     private int views; //게시글 조회수
     private int recommend; //게시글 추천수
     private Date postDate; //작성일자
-
+    private Category category;  //게시글 카테고리
 
 }

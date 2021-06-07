@@ -8,9 +8,9 @@
     <!--        void save(NBoard nBoard);-->
     <insert id="save">
     INSERT INTO nboard
-    (board_no, user_id, user_nickname, title, content)
+    (board_no, user_id, user_nickname, title, content, category)
     VALUES
-    (seq_nboard.nextval, #{userId}, #{userNickName}, #{title}, #{content})
+    (seq_nboard.nextval, #{userId}, #{userNickName}, #{title}, #{content}, #{category})
     </insert>
 
     <!--        // 게시글 삭제 기능-->
@@ -38,19 +38,36 @@
     <update id="change">
         UPDATE nboard
         SET title = #{title},
-        content = #{content}
+        content = #{content},
+        category = #{category}
         WHERE board_no = #{boardNo}
     </update>
+<!--    // 전체 게시글 조회 기능(페이징 기능)-->
+<!--    List<NBoard> findAll();-->
+    <select id="findAll" resultMap="nBoardMap">
+        <!--        특수 기호를 사용하기 위해서는 <![CDATA[    ]]>로 감싸주면 됨-->
+        <![CDATA[
+        SELECT
+            board_no, user_nickname, title, content, views, recommend, post_date, category
+        FROM
+            (SELECT /*+INDEX_DESC(nboard pk_nboard)*/
+            rownum rn, board_no, user_nickname, title, content, views, recommend, post_date, category
+            FROM board
+            WHERE rownum <= #{page} * #{amount} )
+        WHERE rn > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
 
-    <!--        // 전체 게시글 조회 기능-->
-    <!--        List<NBoard> getSearchBoards(Criteria criteria);-->
+
+<!--    // 전체 게시글 조회 기능(페이징 + 검색 기능)-->
+<!--    List<NBoard> getSearchBoards(Criteria criteria);-->
     <select id="getSearchBoards" resultMap="nBoardMap">
         <![CDATA[
         SELECT
-            board_no, user_nickname, title, content, views, recommend, post_date
+            board_no, user_nickname, title, content, views, recommend, post_date, category
         FROM
             (SELECT /*+INDEX_DESC(nboard pk_nboard)*/
-            rownum rn, board_no, user_nickname, title, content, views, recommend, post_date
+            rownum rn, board_no, user_nickname, title, content, views, recommend, post_date, category
             FROM nboard
             WHERE
             ]]>
