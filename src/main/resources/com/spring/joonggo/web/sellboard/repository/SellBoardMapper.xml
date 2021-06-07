@@ -2,9 +2,39 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.joonggo.web.nboard.repository.NBoardMapper">
+<mapper namespace="com.spring.joonggo.web.sellboard.repository.SellBoardMapper">
 
     <!-- 게시글 등록 -->
+    <insert id="addProduct">
+        INSERT INTO goods
+        (goods_no, goods_title, goods_price, goods_content, sales_area_number, sell_user_id, sell_user_nickname)
+        VALUES
+        (goods_seq.nextval, #{productName}, #{sellPrice}, #{productContent}, #{sellArea}, #{sellerId}, #{sellerNick})
+    </insert>
+
+    <resultMap id="sellMap" type="com.spring.joonggo.web.sellboard.domain.SellBoard">
+        <!--  property속성에는 자바핑드명, column은 테이블 컬럼명    -->
+        <result property="productNum" column="goods_no"/>
+        <result property="sellPrice" column="goods_price"/>
+        <result property="productContent" column="goods_content"/>
+        <result property="sellArea" column="sales_area_number"/>
+        <result property="sellerId" column="sell_user_id"/>
+        <result property="sellerNick" column="sell_user_nickname"/>
+    </resultMap>
+
+    <!-- 게시글 전체 조회 -->
+    <select id="findAll" resultMap="sellMap">
+        <![CDATA[
+        SELECT
+            goods_no, sell_user_nickname, goods_title, goods_content, goods_category
+        FROM
+            (SELECT /*+INDEX_DESC(goods pk_goods)*/
+                ROWNUM rn, goods_no, sell_user_nickname, goods_title, goods_content, goods_category
+            FROM goods
+            WHERE ROWNUM <= #{page} * #{amount} )
+        WHERE rn > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
 
 
 
