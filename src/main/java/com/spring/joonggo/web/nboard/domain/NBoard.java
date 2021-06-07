@@ -20,7 +20,7 @@ public class NBoard {
     private String content; //게시글 내용
     private int views; //게시글 조회수
     private int recommend; //게시글 추천수
-    private Date regDate; //작성일자
+    private Date postDate; //작성일자
 
 
 }

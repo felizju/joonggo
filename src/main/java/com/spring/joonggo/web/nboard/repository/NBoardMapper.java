@@ -1,5 +1,6 @@
 package com.spring.joonggo.web.nboard.repository;
 
+import com.spring.joonggo.web.common.paging.Criteria;
 import com.spring.joonggo.web.nboard.domain.DummyNBoard;
 import com.spring.joonggo.web.nboard.domain.NBoard;
 import org.apache.ibatis.annotations.Mapper;
@@ -22,10 +23,10 @@ public interface NBoardMapper {
     void change(DummyNBoard dummyNBoard);
 
     // 전체 게시글 조회 기능
-    List<NBoard> getSearchBoards();
+    List<NBoard> getSearchBoards(Criteria criteria);
 
     // 총 게시물 수 조회
-    int getTotalBoardCount();
+    int getTotalBoardCount(Criteria criteria);
 
     // 게시글 추천 기능
     void plusRec(int boardNo);
