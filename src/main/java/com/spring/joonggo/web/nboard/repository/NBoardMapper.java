@@ -22,7 +22,10 @@ public interface NBoardMapper {
     // 게시글 수정 기능
     void change(DummyNBoard dummyNBoard);
 
-    // 전체 게시글 조회 기능
+    // 전체 게시글 조회 기능(페이징 기능)
+    List<NBoard> findAll();
+
+    // 전체 게시글 조회 기능(페이징 + 검색 기능)
     List<NBoard> getSearchBoards(Criteria criteria);
 
     // 총 게시물 수 조회

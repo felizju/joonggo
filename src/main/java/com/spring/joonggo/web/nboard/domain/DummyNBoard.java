@@ -20,5 +20,6 @@ public class DummyNBoard {
     private int views; //게시글 조회수
     private int recommend; //게시글 추천수
     private Date postDate; //작성일자
+    private Category category;  //게시글 카테고리
 
 }
