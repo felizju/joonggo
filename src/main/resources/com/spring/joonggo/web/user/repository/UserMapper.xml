@@ -5,15 +5,13 @@
 
 <mapper namespace="com.spring.joonggo.web.user.repository.UserMapper">
 
-
     <!--    //회원 가입 기능-->
     <insert id="registerAccount">
         INSERT INTO users
-        (user_id, user_pw, user_email, user_nickname, user_rating_score, user_role, SYSDATE)
+        (user_id, user_pw, user_email, user_nickname, user_rating_score, user_role)
         VALUES
-        (#{userId}, #{userPw}, #{userEmail}, #{userNickname}, #{userRatingScore}, #{role}, #{userCreateDate})
+        (#{userId}, #{userPw}, #{userEmail}, #{userNickname}, #{userRatingScore}, #{role})
     </insert>
-
 
     <resultMap id="userMap" type="com.spring.joonggo.web.user.domain.User">
         <result property="userId" column="user_id"/>
@@ -36,6 +34,9 @@
         <if test="type == 'userEmail'">
             WHERE user_email = #{keyword}
         </if>
+        <if test="type == 'userNickname'">
+            WHERE user_nickname = #{keyword}
+        </if>
     </select>
 
 
@@ -44,6 +45,7 @@
         SELECT * FROM users
         WHERE user_id = #{userId}
     </select>
+
 
 
     <!--    //전체 회원 조회-->
@@ -57,25 +59,24 @@
         DELETE FROM users WHERE user_id = #{userId}
     </delete>
 
+
     <!--    //회원 정보 수정-->
     <update id="modifyUserInfo">
         UPDATE users
-        SET
-            user_pw = #{userPw},
-            user_email = #{userEmail},
-            user_nickname = #{userNickname}
+        SET user_pw = #{userPw}, user_email = #{userEmail}, user_nickname = #{userNickname}
         WHERE user_id = #{userId}
     </update>
+
 
     <!--    //자동로그인 관련 기능-->
     <update id="saveKeepLogin">
         UPDATE users
-        SET session_id = #{sid},
-        limit_time = #{lt}
-        WHERE account = #{acc}
+        SET session_id = #{sid}, limit_time = #{lt}
+        WHERE user_id = #{userId}
     </update>
 
-    <!--    //세션 아이디값을 통한 회원정보 조회기-->
+
+    <!--    //세션 아이디값을 통한 회원정보 조회 기능-->
     <select id="getUserBySessionId" resultMap="userMap">
         SELECT * FROM users
         WHERE session_id = #{sessionId}

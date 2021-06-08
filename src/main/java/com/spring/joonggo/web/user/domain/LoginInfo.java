@@ -8,7 +8,7 @@ import lombok.ToString;
 @ToString
 public class LoginInfo {
 
-    private String userId;
-    private String userPw;
-    private boolean autoLogin;
+    private String userId; //아이디
+    private String userPw; //비밀번호
+    private boolean autoLogin; //자동로그인 여부
 }
