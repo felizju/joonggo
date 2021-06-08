@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.joonggo.web.sellboard.repository.SellBoardMapper">
+
+    <!-- 게시글 등록 -->
+    <insert id="addProduct">
+        INSERT INTO goods
+        (goods_no, goods_title, goods_price, goods_content
+        , sales_area_number, sell_user_id, sell_user_nickname
+        , goods_category, goods_status)
+        VALUES
+        (goods_seq.nextval, #{productName}, #{sellPrice}
+        , #{productContent}, #{sellArea}, #{sellerId}, #{sellerNick}
+        , #{sellCategory}, #{stateFlag})
+    </insert>
+
+    <resultMap id="sellMap" type="com.spring.joonggo.web.sellboard.domain.SellBoard">
+        <!--  property속성에는 자바핑드명, column은 테이블 컬럼명    -->
+        <result property="productNum" column="goods_no"/>
+        <result property="sellPrice" column="goods_price"/>
+        <result property="productContent" column="goods_content"/>
+        <result property="sellArea" column="sales_area_number"/>
+        <result property="sellerId" column="sell_user_id"/>
+        <result property="sellerNick" column="sell_user_nickname"/>
+        <result property="sellCategory" column="goods_category"/>
+        <result property="productName" column="goods_title"/>
+        <result property="stateFlag" column="goods_status"/>
+        <result property="createDate" column="goods_created_date"/>
+    </resultMap>
+
+    <!-- 게시글 전체 조회 -->
+    <select id="findAll" resultMap="sellMap">
+        <![CDATA[
+        SELECT
+            goods_no, sell_user_nickname, goods_title, goods_content, goods_category
+            , goods_price, sales_area_number, goods_status, goods_created_date
+            , sell_user_id
+        FROM
+            (SELECT /*+INDEX_DESC(goods pk_goods)*/
+                ROWNUM rn, goods_no, sell_user_nickname, goods_title, goods_content, goods_category
+                , goods_price, sales_area_number, goods_status, goods_created_date
+                , sell_user_id
+            FROM goods
+            WHERE ROWNUM <= #{page} * #{amount} )
+        WHERE rn > (#{page} - 1) * #{amount}
+        ]]>
+    </select>
+
+    <!--게시물 상세보기-->
+    <select id="intoContent" resultMap="sellMap">
+        SELECT * FROM goods
+        WHERE goods_no = #{productNum}
+    </select>
+
+    <!-- 정보 변경 기능 -->
+    <update id="modifyProduct">
+        UPDATE goods SET
+        goods_content = #{productContent}
+        , goods_title = #{productName}
+        , goods_price = #{sellPrice}
+        , sales_area_number = #{sellArea}
+        WHERE goods_no = #{productNum}
+    </update>
+
+    <!-- 판매 상태 정보 변경 -->
+    <update id="modifyState">
+        UPDATE goods SET
+        goods_status = #{stateFlag}
+        WHERE goods_no = #{productNum}
+    </update>
+
+
+
+</mapper>

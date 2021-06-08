@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.joonggo.web.user.repository.UserMapper">
+
+
+    <!--    //회원 가입 기능-->
+    <insert id="registerAccount">
+        INSERT INTO users
+        (user_id, user_pw, user_email, user_nickname, user_rating_score, user_role, SYSDATE)
+        VALUES
+        (#{userId}, #{userPw}, #{userEmail}, #{userNickname}, #{userRatingScore}, #{role}, #{userCreateDate})
+    </insert>
+
+
+    <resultMap id="userMap" type="com.spring.joonggo.web.user.domain.User">
+        <result property="userId" column="user_id"/>
+        <result property="userPw" column="user_pw"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userNickname" column="user_nickname"/>
+        <result property="userRatingScore" column="user_rating_score"/>
+        <result property="role" column="user_role"/>
+        <result property="userCreatedDate" column="user_created_date"/>
+    </resultMap>
+
+
+    <!--    //아이디, 이메일, 닉네임 중복체크-->
+    <select id="isDuplicate" resultType="int" parameterType="hashmap">
+        SELECT COUNT(*)
+        FROM users
+        <if test="type == 'userId'">
+            WHERE user_id = #{keyword}
+        </if>
+        <if test="type == 'userEmail'">
+            WHERE user_email = #{keyword}
+        </if>
+    </select>
+
+
+    <!--    //회원 정보 조회 기능-->
+    <select id="getUser" resultMap="userMap">
+        SELECT * FROM users
+        WHERE user_id = #{userId}
+    </select>
+
+
+    <!--    //전체 회원 조회-->
+    <select id="getAllUser" resultMap="userMap">
+        SELECT * FROM users
+    </select>
+
+
+    <!--    //회원 탈퇴 기능-->
+    <delete id="deleteAccount">
+        DELETE FROM users WHERE user_id = #{userId}
+    </delete>
+
+    <!--    //회원 정보 수정-->
+    <update id="modifyUserInfo">
+        UPDATE users
+        SET
+            user_pw = #{userPw},
+            user_email = #{userEmail},
+            user_nickname = #{userNickname}
+        WHERE user_id = #{userId}
+    </update>
+
+    <!--    //자동로그인 관련 기능-->
+    <update id="saveKeepLogin">
+        UPDATE users
+        SET session_id = #{sid},
+        limit_time = #{lt}
+        WHERE account = #{acc}
+    </update>
+
+    <!--    //세션 아이디값을 통한 회원정보 조회기-->
+    <select id="getUserBySessionId" resultMap="userMap">
+        SELECT * FROM users
+        WHERE session_id = #{sessionId}
+    </select>
+
+
+</mapper>
