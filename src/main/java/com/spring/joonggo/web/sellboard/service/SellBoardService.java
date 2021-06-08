@@ -7,6 +7,7 @@ import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
 
 import com.spring.joonggo.web.sellboard.repository.SellBoardMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SellBoardService {
 
+    @Autowired
     private final SellBoardMapper sellBoardMapper;
 
     // 게시물 검색
@@ -43,6 +45,10 @@ public class SellBoardService {
         return sellBoardMapper.intoContent(productNum);
     }
 
+    // 게시물 총 수 확인
+    public int getTotal(Criteria criteria) {
+        return sellBoardMapper.getTotalCounter(criteria);
+    }
 
     // 상태 변경 기능
     public void modifyState(int productNum, SellStateFlag stateFlag) {
