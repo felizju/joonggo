@@ -1,5 +1,6 @@
 package com.spring.joonggo.web.common.paging;
 
+import com.spring.joonggo.web.nboard.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,8 @@ public class Criteria {
 
     private String type;    //검색 조건
     private String keyword; //검색어
+
+    private Category category; //일반 게시판 카테고리
 
 
     public Criteria() {

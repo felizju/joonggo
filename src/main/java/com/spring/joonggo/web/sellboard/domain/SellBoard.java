@@ -22,10 +22,11 @@ public class SellBoard {
     private String sellerNick; // 판매자 닉네임
     private String buyerId; // 구매자 ID
     private String buyerNick; // 구매자 닉네임
-    private String sellState; // 판매 상태
+    private SellCategory sellCategory; // 카테고리
+    private SellStateFlag stateFlag; // 판매 상태
 
     public SellBoard() {
-        this.productNum = ++sequence;
+        this.productNum = sequence++;
     }
 
     public SellBoard(String productName
@@ -33,7 +34,8 @@ public class SellBoard {
             , String productContent
             , String sellArea
             , String sellerId
-            , String sellerNick) {
+            , String sellerNick
+            , SellCategory sellCategory) {
         this();
         this.productName = productName;
         this.sellPrice = sellPrice;
@@ -41,6 +43,9 @@ public class SellBoard {
         this.sellArea = sellArea;
         this.sellerId = sellerId;
         this.sellerNick = sellerNick;
+        this.sellCategory = sellCategory;
+        this.stateFlag = SellStateFlag.SALE;
+
 
     }
 
