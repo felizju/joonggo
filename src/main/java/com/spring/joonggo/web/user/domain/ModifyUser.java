@@ -4,11 +4,13 @@ import lombok.*;
 
 import java.util.Date;
 
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class ModifyUser {
 
     private String userId; //아이디
     private String userPw; //비밀번호
@@ -17,9 +19,5 @@ public class User {
     private String userRatingScore; //평가점수
     private Role role; //권한 (USER,ADMIN)
     private Date userCreatedDate; //생성일자
-
-
-
-
 
 }
