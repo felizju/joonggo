@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.nboard.repository;
 
 import com.spring.joonggo.web.common.paging.Criteria;
+import com.spring.joonggo.web.nboard.domain.Category;
 import com.spring.joonggo.web.nboard.domain.DummyNBoard;
 import com.spring.joonggo.web.nboard.domain.NBoard;
 import org.junit.jupiter.api.DisplayName;
@@ -26,6 +27,7 @@ class NBoardMapperTest {
         nb.setContent("테스트용 컨텐츠입니다.");
         nb.setUserId("테스트용 아이디1입니다.");
         nb.setUserNickName("테스트용 닉네임1입니다.");
+        nb.setCategory(Category.ETC);
 
         nBoardMapper.save(nb);
 
