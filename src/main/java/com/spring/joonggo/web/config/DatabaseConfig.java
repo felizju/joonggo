@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 public class DatabaseConfig {
 
     // 커넥션 풀 및 연결정보 설정
+
     @Bean
     public DataSource dataSource(){
         HikariConfig config = new HikariConfig();
