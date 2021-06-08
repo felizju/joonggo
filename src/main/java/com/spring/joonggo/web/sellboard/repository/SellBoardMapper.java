@@ -2,7 +2,9 @@ package com.spring.joonggo.web.sellboard.repository;
 
 import com.spring.joonggo.web.common.paging.Criteria;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
+
 import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

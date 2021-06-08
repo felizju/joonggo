@@ -2,7 +2,9 @@ package com.spring.joonggo.web.sellboard.service;
 
 import com.spring.joonggo.web.common.paging.Criteria;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
+
 import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
+
 import com.spring.joonggo.web.sellboard.repository.SellBoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,9 +43,11 @@ public class SellBoardService {
         return sellBoardMapper.intoContent(productNum);
     }
 
+
     // 상태 변경 기능
     public void modifyState(int productNum, SellStateFlag stateFlag) {
         sellBoardMapper.modifyState(productNum, stateFlag);
     }
+
 
 }

@@ -46,6 +46,7 @@ public class SellBoard {
         this.sellCategory = sellCategory;
         this.stateFlag = SellStateFlag.SALE;
 
+
     }
 
 }
