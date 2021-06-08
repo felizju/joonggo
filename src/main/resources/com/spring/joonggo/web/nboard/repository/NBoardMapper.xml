@@ -7,10 +7,10 @@
     <!--// 게시글 저장 기능-->
     <!--        void save(NBoard nBoard);-->
     <insert id="save">
-    INSERT INTO nboard
-    (board_no, user_id, user_nickname, title, content, category)
-    VALUES
-    (seq_nboard.nextval, #{userId}, #{userNickName}, #{title}, #{content}, #{category})
+        INSERT INTO nboard
+        (board_no, user_id, user_nickname, title, content, category)
+        VALUES
+        (seq_nboard.nextval, #{userId}, #{userNickName}, #{title}, #{content}, #{category})
     </insert>
 
     <!--        // 게시글 삭제 기능-->
@@ -42,8 +42,9 @@
         category = #{category}
         WHERE board_no = #{boardNo}
     </update>
-<!--    // 전체 게시글 조회 기능(페이징 기능)-->
-<!--    List<NBoard> findAll();-->
+
+    <!--    // 전체 게시글 조회 기능(페이징 기능)-->
+    <!--    List<NBoard> findAll();-->
     <select id="findAll" resultMap="nBoardMap">
         <!--        특수 기호를 사용하기 위해서는 <![CDATA[    ]]>로 감싸주면 됨-->
         <![CDATA[
@@ -52,15 +53,45 @@
         FROM
             (SELECT /*+INDEX_DESC(nboard pk_nboard)*/
             rownum rn, board_no, user_nickname, title, content, views, recommend, post_date, category
-            FROM board
+            FROM nboard
             WHERE rownum <= #{page} * #{amount} )
         WHERE rn > (#{page} - 1) * #{amount}
         ]]>
     </select>
 
 
-<!--    // 전체 게시글 조회 기능(페이징 + 검색 기능)-->
-<!--    List<NBoard> getSearchBoards(Criteria criteria);-->
+    <!--    // 전체 게시글 조회 기능(페이징 + 검색 기능)-->
+    <!--    List<NBoard> getSearchBoards(Criteria criteria);-->
+<!--    <select id="getSearchBoards" resultMap="nBoardMap">-->
+<!--        <![CDATA[-->
+<!--        SELECT-->
+<!--            board_no, user_nickname, title, content, views, recommend, post_date, category-->
+<!--        FROM-->
+<!--            (SELECT /*+INDEX_DESC(nboard pk_nboard)*/-->
+<!--            rownum rn, board_no, user_nickname, title, content, views, recommend, post_date, category-->
+<!--            FROM nboard-->
+<!--            WHERE-->
+<!--            ]]>-->
+<!--        <if test="type == 'title'">-->
+<!--            title LIKE '%' || #{keyword} || '%' AND-->
+<!--        </if>-->
+<!--        <if test="type == 'nickname'">-->
+<!--            user_nickname LIKE '%' || #{keyword} || '%' AND-->
+<!--        </if>-->
+<!--        <if test="type == 'content'">-->
+<!--            content LIKE '%' || #{keyword} || '%' AND-->
+<!--        </if>-->
+<!--        <if test="type == 'titleContent'">-->
+<!--            (title LIKE '%' || #{keyword} || '%'-->
+<!--            OR content LIKE '%' || #{keyword} || '%')-->
+<!--            AND-->
+<!--        </if>-->
+<!--        <![CDATA[-->
+<!--                rownum <= #{page} * #{amount} )-->
+<!--        WHERE rn > (#{page} - 1) * #{amount}-->
+<!--        ]]>-->
+<!--    </select>-->
+
     <select id="getSearchBoards" resultMap="nBoardMap">
         <![CDATA[
         SELECT
@@ -68,9 +99,32 @@
         FROM
             (SELECT /*+INDEX_DESC(nboard pk_nboard)*/
             rownum rn, board_no, user_nickname, title, content, views, recommend, post_date, category
+ ]]>
+        FROM
+            (SELECT
+            board_no, user_nickname, title, content, views, recommend, post_date, category
             FROM nboard
             WHERE
-            ]]>
+            <if test="category == 'NEIGHBOR'">
+                category = neighbor AND
+            </if>
+            <if test="category == 'ISSUE'">
+                category = issue AND
+            </if>
+            <if test="category == 'DAIYLYLIFE'">
+                category = dailylife AND
+            </if>
+            <if test="category == 'NOTICE'">
+                category = notice AND
+            </if>
+            <if test="category == 'ETC'">
+               category = etc AND
+            </if>
+<!--            <if test="category == 'ALL'">-->
+<!--                -->
+<!--            </if>-->
+            board_no is not null )
+        WHERE
         <if test="type == 'title'">
             title LIKE '%' || #{keyword} || '%' AND
         </if>
@@ -91,7 +145,6 @@
         ]]>
     </select>
 
-
     <!--    // 총 게시물 수 조회-->
     <!--    int getTotalBoardCount(Criteria criteria);-->
     <select id="getTotalBoardCount" resultType="int">
@@ -101,13 +154,13 @@
             WHERE title LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'nickname'">
-            WHERE  user_nickname LIKE '%' || #{keyword} || '%'
+            WHERE user_nickname LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'content'">
-            WHERE  content LIKE '%' || #{keyword} || '%'
+            WHERE content LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'titleContent'">
-            WHERE  (title LIKE '%' || #{keyword} || '%'
+            WHERE (title LIKE '%' || #{keyword} || '%'
             OR content LIKE '%' || #{keyword} || '%')
         </if>
     </select>
