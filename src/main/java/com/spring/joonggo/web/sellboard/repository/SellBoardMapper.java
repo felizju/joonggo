@@ -2,6 +2,9 @@ package com.spring.joonggo.web.sellboard.repository;
 
 import com.spring.joonggo.web.common.paging.Criteria;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
+
+import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -26,6 +29,9 @@ public interface SellBoardMapper {
 
     // 게시물 상세보기
     SellBoard intoContent(int productNum);
+
+    // 게시물 판매 상태 변경
+    void modifyState(int productNum, SellStateFlag stateFlag);
 
     // 조회수 상승
     void addViews(int productNum);

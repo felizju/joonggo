@@ -43,11 +43,14 @@ class NBoardMapperTest {
     @DisplayName("특정 게시글이 정상적으로 변경, 저장되어야 한다.")
     void changeTest() {
         DummyNBoard nb = new DummyNBoard();
+
         nb.setBoardNo(7);
+
         nb.setTitle("변경된 제목입니다.");
         nb.setContent("변경된 컨텐츠입니다.");
         nb.setUserId("변경 아이디");
         nb.setUserNickName("변경 닉네임");
+
         nb.setCategory(Category.ISSUE);
         nBoardMapper.change(nb);
     }
@@ -69,6 +72,7 @@ class NBoardMapperTest {
             nb.setContent(i + "테스트용 컨텐츠입니다." + i);
             nb.setUserId("테스트용 아이디" + i + "입니다.");
             nb.setUserNickName("테스트용 닉네임" + i + "입니다.");
+
             nb.setCategory(Category.ETC);
 
             nBoardMapper.save(nb);
@@ -104,6 +108,7 @@ class NBoardMapperTest {
 
     }
 
+
     @Test
     @DisplayName("카테고리로 검색된 게시물 리스트를 반환해야 한다.")
     void searchByCategoryTest() {
@@ -121,6 +126,7 @@ class NBoardMapperTest {
         }
         System.out.println("=======================================");
     }
+
 
 
 }
