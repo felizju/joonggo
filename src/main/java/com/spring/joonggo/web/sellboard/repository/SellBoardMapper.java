@@ -5,6 +5,7 @@ import com.spring.joonggo.web.sellboard.domain.SellBoard;
 
 import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
 
+import com.spring.joonggo.web.user.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

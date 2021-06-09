@@ -5,6 +5,7 @@ import com.spring.joonggo.web.sellboard.domain.SellBoard;
 
 import com.spring.joonggo.web.sellboard.domain.SellCategory;
 
+import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -55,8 +56,16 @@ class SellBoardMapperTest {
             , String sellerNick
             , SellCategory sellCategory*/
 
-        SellBoard sellBoard = new SellBoard("자전거", 5000000, "테슬라 최고급 자전거팝니다. 네고없음"
-                , "서울광역시 구로구", "qwe123", "양아치", SellCategory.HOME);
+        SellBoard sellBoard = SellBoard.builder()
+                .sellCategory(SellCategory.LIVING)
+                .sellArea("서울특별시")
+                .sellPrice(150000)
+                .sellerId("xodnjs")
+                .sellerNick("야옹이")
+                .productName("침대 매트리스 팝니다.")
+                .productContent("침대 매트리스 팝니다. 아직 쓸만합니다. 생활 얼룩은 있음.")
+                .stateFlag(SellStateFlag.SALE)
+                .build();
 
 //        System.out.println(sellBoard);
 
@@ -77,7 +86,7 @@ class SellBoardMapperTest {
         sellBoard.setSellPrice(7000000);
         sellBoard.setProductContent("페라리 자전거 살 사람 구함. 네고 절대 안됨");
         sellBoard.setProductName("페롸리~ 고급진 자전차~~");
-        sellBoard.setSellArea("부산광역시 해운대~~");
+        sellBoard.setSellArea("부산광역시 해운대~~ 변겨 2");
         sellBoard.setProductNum(4);
         sellBoardMapper.modifyProduct(sellBoard);
 
@@ -94,4 +103,10 @@ class SellBoardMapperTest {
 
     }
 
+    @Test
+    void modifyState() {
+
+        sellBoardMapper.modifyState(4, SellStateFlag.SALE);
+
+    }
 }
