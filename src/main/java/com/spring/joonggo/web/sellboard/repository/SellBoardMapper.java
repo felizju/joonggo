@@ -13,6 +13,9 @@ import java.util.List;
 public interface SellBoardMapper {
 
     // 판매 게시물 전체 검색(페이징없는 버전)
+//    List<SellBoard> findAll(Criteria criteria);
+
+    // 검색 퀴리 추가버전
     List<SellBoard> findAll(Criteria criteria);
 
     // 총 게시물 수 조회

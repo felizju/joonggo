@@ -34,6 +34,13 @@ class SellBoardMapperTest {
 
     @Test
     void getTotalCounter() {
+        Criteria criteria = new Criteria();
+        criteria.setType("title");
+        criteria.setKeyword("고급");
+
+        for (SellBoard searchArticles : sellBoardMapper.findAll(criteria)){
+            System.out.println(searchArticles);
+        }
     }
 
     @Test
@@ -53,32 +60,26 @@ class SellBoardMapperTest {
 
 //        System.out.println(sellBoard);
 
-        SellBoard sellBoard = new SellBoard();
-        sellBoard.setProductName("자전거");
-        sellBoard.setSellPrice(5000000);
-        sellBoard.setProductContent("테슬라 최고급 자전거팝니다. 네고없음");
-        sellBoard.setSellerNick("양아치");
-        sellBoard.setSellerId("qwe123");
-        sellBoard.setSellArea("서울광역시 구로구");
-
-
         sellBoardMapper.addProduct(sellBoard);
 
     }
 
     @Test
     void deleteProduct() {
+        sellBoardMapper.deleteProduct(2);
     }
 
     @Test
     void modifyProduct() {
 
-
         System.out.println("================================================");
         SellBoard sellBoard = new SellBoard();
-//        sellBoard.set
-        System.out.println("================================================");
-
+        sellBoard.setSellPrice(7000000);
+        sellBoard.setProductContent("페라리 자전거 살 사람 구함. 네고 절대 안됨");
+        sellBoard.setProductName("페롸리~ 고급진 자전차~~");
+        sellBoard.setSellArea("부산광역시 해운대~~");
+        sellBoard.setProductNum(4);
+        sellBoardMapper.modifyProduct(sellBoard);
 
     }
 
@@ -93,7 +94,4 @@ class SellBoardMapperTest {
 
     }
 
-    @Test
-    void addViews() {
-    }
 }

@@ -136,7 +136,6 @@
         WHERE
             FROM nboard
             WHERE
-            ]]>
 
         <if test="type == 'title'">
             title LIKE '%' || #{keyword} || '%' AND
