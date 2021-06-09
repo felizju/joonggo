@@ -115,7 +115,7 @@ class NBoardMapperTest {
         Criteria criteria = new Criteria();
         criteria.setPage(1);
         criteria.setAmount(10);
-//        criteria.setCategory(Category.ISSUE);
+        criteria.setCategory(Category.ISSUE);
         criteria.setType("title");
         criteria.setKeyword("변경");
 

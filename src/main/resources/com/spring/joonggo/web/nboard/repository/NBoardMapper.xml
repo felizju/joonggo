@@ -107,36 +107,9 @@
         FROM
             (SELECT /*+INDEX_DESC(nboard pk_nboard)*/
             rownum rn, board_no, user_nickname, title, content, views, recommend, post_date, category
-
  ]]>
-        FROM
-            (SELECT
-            board_no, user_nickname, title, content, views, recommend, post_date, category
             FROM nboard
             WHERE
-            <if test="category == 'NEIGHBOR'">
-                category = neighbor AND
-            </if>
-            <if test="category == 'ISSUE'">
-                category = issue AND
-            </if>
-            <if test="category == 'DAIYLYLIFE'">
-                category = dailylife AND
-            </if>
-            <if test="category == 'NOTICE'">
-                category = notice AND
-            </if>
-            <if test="category == 'ETC'">
-               category = etc AND
-            </if>
-<!--            <if test="category == 'ALL'">-->
-<!--                -->
-<!--            </if>-->
-            board_no is not null )
-        WHERE
-            FROM nboard
-            WHERE
-
         <if test="type == 'title'">
             title LIKE '%' || #{keyword} || '%' AND
         </if>
@@ -151,7 +124,6 @@
             OR content LIKE '%' || #{keyword} || '%')
             AND
         </if>
-
         <if test="category != null">-->
             category = #{category} AND
         </if>
