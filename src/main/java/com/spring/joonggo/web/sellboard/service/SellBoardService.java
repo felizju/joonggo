@@ -55,5 +55,4 @@ public class SellBoardService {
         sellBoardMapper.modifyState(productNum, stateFlag);
     }
 
-
 }

@@ -1,12 +1,14 @@
 package com.spring.joonggo.web.sellboard.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
 import java.util.Date;
 
 @Getter @Setter
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class SellBoard {
 
     private static int sequence;
@@ -25,28 +27,28 @@ public class SellBoard {
     private SellCategory sellCategory; // 카테고리
     private SellStateFlag stateFlag; // 판매 상태
 
-    public SellBoard() {
-        this.productNum = sequence++;
-    }
-
-    public SellBoard(String productName
-            , int sellPrice
-            , String productContent
-            , String sellArea
-            , String sellerId
-            , String sellerNick
-            , SellCategory sellCategory) {
-        this();
-        this.productName = productName;
-        this.sellPrice = sellPrice;
-        this.productContent = productContent;
-        this.sellArea = sellArea;
-        this.sellerId = sellerId;
-        this.sellerNick = sellerNick;
-        this.sellCategory = sellCategory;
-        this.stateFlag = SellStateFlag.SALE;
-
-
-    }
+//    public SellBoard() {
+//        this.productNum = sequence++;
+//    }
+//
+//    public SellBoard(String productName
+//            , int sellPrice
+//            , String productContent
+//            , String sellArea
+//            , String sellerId
+//            , String sellerNick
+//            , SellCategory sellCategory) {
+//        this();
+//        this.productName = productName;
+//        this.sellPrice = sellPrice;
+//        this.productContent = productContent;
+//        this.sellArea = sellArea;
+//        this.sellerId = sellerId;
+//        this.sellerNick = sellerNick;
+//        this.sellCategory = sellCategory;
+//        this.stateFlag = SellStateFlag.SALE;
+//
+//
+//    }
 
 }
