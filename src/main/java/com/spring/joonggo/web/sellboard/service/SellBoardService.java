@@ -55,4 +55,8 @@ public class SellBoardService {
         sellBoardMapper.modifyState(productNum, stateFlag);
     }
 
+    // 파일 업로드 기능
+
+    // 파일 로드 기능
+
 }

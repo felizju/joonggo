@@ -54,6 +54,7 @@ CREATE TABLE wishlist (
     user_id VARCHAR2(20) NOT NULL, -- 아이디
     user_nickname VARCHAR2(20) NOT NULL, -- 닉네임
     goods_no NUMBER(5) NOT NULL, -- 상품번호
+    goods_tile VARCHAR2(100)
     wishlist_created_date DATE DEFAULT SYSDATE
 );
 
