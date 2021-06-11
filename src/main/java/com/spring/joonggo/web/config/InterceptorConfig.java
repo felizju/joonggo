@@ -16,6 +16,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Autowired //자동로그인 검증 인터셉터 주입
     private AutoLoginInterceptor autoLoginInterceptor;
 
+    //인터셉터 적용 설정 메서드ㅡ
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
@@ -23,7 +24,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/")
                 .excludePathPatterns("/","/"); //비회원에게 제외할 페이지 지정
 
-        registry.addInterceptor(authInterceptor).addPathPatterns("/**"); //자동로그인 회원 모든 페이지 허용
+        registry.addInterceptor(autoLoginInterceptor).addPathPatterns("/"); //자동로그인 회원 모든 페이지 허용
 
     }
 }
