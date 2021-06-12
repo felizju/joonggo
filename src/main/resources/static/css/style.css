@@ -7,7 +7,7 @@ File: style.css
 =========================================================================
 =================================================================================== */
 /* cyrillic-ext */
-@import url(plugins/animate.min.css);
+@import url(../css/plugins/animate.min.css);
 
 @font-face {
     font-family: 'Open Sans';
@@ -11156,10 +11156,10 @@ a.text-dark:focus {
     h3 {
         page-break-after: avoid;
     }
-
+/* 
     @ page {
         size: a3;
-    }
+    } */
 
     body {
         min-width: 992px !important;
@@ -18049,7 +18049,7 @@ a.text-dark:focus {
 
 .card .card-block,
 .card .card-body {
-    margin: ;
+    margin: 1px;
     padding: 20px 20px;
 }
 

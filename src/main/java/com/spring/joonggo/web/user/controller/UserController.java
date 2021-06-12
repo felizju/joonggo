@@ -1,4 +1,4 @@
-package com.spring.joonggo.web.user.controller;
+/*package com.spring.joonggo.web.user.controller;
 
 import com.spring.joonggo.web.user.domain.User;
 import com.spring.joonggo.web.user.service.UserService;
@@ -21,6 +21,6 @@ public class UserController {
 
 
 
-}
+}*/
 
 
