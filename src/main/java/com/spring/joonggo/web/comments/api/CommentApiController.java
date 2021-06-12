@@ -15,7 +15,7 @@ import java.util.Map;
 @Log4j2
 @CrossOrigin
 @RequiredArgsConstructor
-@RequestMapping("")
+@RequestMapping("/qq")
 public class CommentApiController {
 
 
