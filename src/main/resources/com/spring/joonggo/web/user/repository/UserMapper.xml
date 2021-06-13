@@ -8,9 +8,9 @@
     <!--    //회원 가입 기능-->
     <insert id="registerAccount">
         INSERT INTO users
-        (user_id, user_pw, user_email, user_nickname, user_rating_score, user_role)
+        (user_id, user_pw, user_email, user_nickname, user_rating_score, user_auth)
         VALUES
-        (#{userId}, #{userPw}, #{userEmail}, #{userNickname}, #{userRatingScore}, #{role})
+        (#{userId}, #{userPw}, #{userEmail}, #{userNickname}, #{userRatingScore}, #{auth})
     </insert>
 
     <resultMap id="userMap" type="com.spring.joonggo.web.user.domain.User">
@@ -19,7 +19,7 @@
         <result property="userEmail" column="user_email"/>
         <result property="userNickname" column="user_nickname"/>
         <result property="userRatingScore" column="user_rating_score"/>
-        <result property="role" column="user_role"/>
+        <result property="auth" column="user_auth"/>
         <result property="userCreatedDate" column="user_created_date"/>
     </resultMap>
 
@@ -71,15 +71,15 @@
     <!--    //자동로그인 관련 기능-->
     <update id="saveKeepLogin">
         UPDATE users
-        SET session_id = #{sid}, limit_time = #{lt}
-        WHERE user_id = #{userId}
+        SET user_session_id = #{sid}, user_limit_time = #{lt}
+        WHERE user_id = #{acc}
     </update>
 
 
     <!--    //세션 아이디값을 통한 회원정보 조회 기능-->
     <select id="getUserBySessionId" resultMap="userMap">
         SELECT * FROM users
-        WHERE session_id = #{sessionId}
+        WHERE user_session_id = #{sessionId}
     </select>
 
 

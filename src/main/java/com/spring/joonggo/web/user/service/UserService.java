@@ -101,7 +101,7 @@ public class UserService {
         //자동 로그인 유지시간을 날짜로 변환
         long expireMs = System.currentTimeMillis() + ((long)limitTime * 1000);
         Date limitDate = new Date(expireMs);
-        keepLoginMap.put("lt", limitTime);
+        keepLoginMap.put("lt", limitDate);
         keepLoginMap.put("acc", userId);
 
         userMapper.saveKeepLogin(keepLoginMap);
