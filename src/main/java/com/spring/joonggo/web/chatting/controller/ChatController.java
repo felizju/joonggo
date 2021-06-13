@@ -7,6 +7,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ChatController {
@@ -16,6 +17,11 @@ public class ChatController {
     메서드로 라우팅 됨. 예를 들어 /app/chat.sendMessage 인 메세지는 sendMessage()로 라우팅 되며
     /app/chat.addUser인 메시지는 addUser()로 라우팅됨.
     */
+
+    @GetMapping("/chatting")
+    public String chatting() {
+        return "chatting/chat";
+    }
 
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/public")

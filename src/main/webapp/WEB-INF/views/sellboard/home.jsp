@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -18,10 +20,10 @@
     <meta name="author" content="Phoenixcoded" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="/resources/static/images/market_favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/market_favicon.ico" type="image/x-icon">
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="/resources/static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- linear icon css -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
@@ -44,8 +46,7 @@
 
                 <div class="">
                     <div class="main-menu-header">
-                        <img class="img-radius" src="/resources/static/images/user/memoji1.png"
-                            alt="User-Profile-Image">
+                        <img class="img-radius" src="/images/user/memoji1.png" alt="User-Profile-Image">
                         <div class="user-details">
                             <div id="more-details">둘리<i class="fa fa-caret-down"></i></div>
                         </div>
@@ -115,9 +116,10 @@
                     <li class="nav-item pcoded-menu-caption">
                         <label>동네생활</label>
                     </li>
-                   
+
                     <li class="nav-item"><a href="sample-page.html" class="nav-link "><span class="pcoded-micon"><i
-                        class="feather icon-sidebar"></i></span><span class="pcoded-mtext">동네생활 게시판</span></a></li>
+                                    class="feather icon-sidebar"></i></span><span class="pcoded-mtext">동네생활
+                                게시판</span></a></li>
 
                     <li class="nav-item pcoded-menu-caption">
                         <label>마이페이지</label>
@@ -286,6 +288,33 @@
 
             <!-- [ Main Content ] start -->
             <div class="row">
+
+                <!-- 검색창 영역 -->
+                <div class="search">
+                    <form action="/board/list" id="search-form">
+
+                        <input type="hidden" name="amount" value="${pageMaker.criteria.amount}">
+
+                        <select name="type">
+                            <option value="title" ${pageMaker.criteria.type=='title' ? 'selected' : '' }>제목
+                            </option>
+                            <option value="content" ${pageMaker.criteria.type=='content' ? 'selected' : '' }>내용
+                            </option>
+                            <option value="writer" ${pageMaker.criteria.type=='writer' ? 'selected' : '' }>작성자
+                            </option>
+                            <option value="titleContent" ${pageMaker.criteria.type=='titleContent' ? 'selected' : '' }>
+                                제목 + 내용
+                            </option>
+                        </select>
+
+                        <input type="text" name="keyword" placeholder="검색어를 입력" value="${pageMaker.criteria.keyword}">
+
+                        <button type="submit">검색</button>
+
+                    </form>
+                </div>
+
+
                 <!-- project ,team member start -->
                 <div class="col-xl-6 col-md-12">
                     <div class="card table-card">
@@ -314,6 +343,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table table-hover mb-0">
@@ -331,42 +362,50 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <div class="d-inline-block product">
-                                                    <img src="/resources/static/images/product/apple.jpg"
-                                                        alt="user image" class="img-radius wid-80 hei-70 align-top m-r-15">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <h6>애플워치 판매합니다.</h6>
-                                                </div>
-                                            </td>
-                                            <td>100,000</td>
-                                            <td>
-                                                도우너
-                                                <div class="d-inline-block align-middle">
-                                                    <img src="/resources/static/images/user/memoji4.png"
-                                                        alt="user image" class="img-radius wid-40 hei-50 align-top m-r-15">
-                                                </div>
-                                            </td>
-                                            <td>2021/06/10</td>
-                                            <td>봉명동</td>
-                                            <td>
-                                                <span class="lnr lnr-heart"> 1</span>
-                                            </td>
-                                            <td>
-                                                <span class="lnr lnr-bubble"> </span>
-                                            </td>
-                                        </tr>
+                                        <c:forEach var="board" items="${sellList}">
+                                            <tr>
+                                                <td>${board.productNum}</td>
+                                                <td>
+                                                    <div class="d-inline-block product">
+                                                        <img src="/resources/static/images/product/apple.jpg"
+                                                            alt="user image"
+                                                            class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h6>${board.productName}</h6>
+                                                    </div>
+                                                </td>
+
+                                                <td>${board.sellPrice}</td>
+
+                                                <td>${board.sellerNick}</td>
+
+                                                <td>${board.createDate}</td>
+
+                                                <td>${board.sellArea}</td>
+
+                                                <td>
+                                                    <span class="lnr lnr-heart"> 1</span>
+                                                </td>
+                                                <td>
+                                                    <span class="lnr lnr-bubble"> </span>
+                                                </td>
+
+                                            </tr>
+
+                                        </c:forEach>
+
+                                        <!-- <tr>
                                         <tr>
                                             <td>2</td>
                                             <td>
                                                 <div class="d-inline-block product">
                                                     <img src="/resources/static/images/product/notebook.jpg"
-                                                        alt="user image" class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>
@@ -379,7 +418,8 @@
                                                 고길동
                                                 <div class="d-inline-block align-middle">
                                                     <img src="/resources/static/images/user/memoji10.png"
-                                                        alt="user image" class="img-radius wid-40 hei-50 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-40 hei-50 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>2021/06/09</td>
@@ -396,7 +436,8 @@
                                             <td>
                                                 <div class="d-inline-block product">
                                                     <img src="/resources/static/images/product/nintendo.jpg"
-                                                        alt="user image" class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>
@@ -409,7 +450,8 @@
                                                 노홍철
                                                 <div class="d-inline-block align-middle">
                                                     <img src="/resources/static/images/user/memoji8.png"
-                                                        alt="user image" class="img-radius wid-50 hei-50 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-50 hei-50 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>2021/06/08</td>
@@ -426,7 +468,8 @@
                                             <td>
                                                 <div class="d-inline-block product">
                                                     <img src="/resources/static/images/product/sofa.jpg"
-                                                        alt="user image" class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>
@@ -439,7 +482,8 @@
                                                 둘리
                                                 <div class="d-inline-block align-middle">
                                                     <img src="/resources/static/images/user/memoji9.png"
-                                                        alt="user image" class="img-radius wid-50 hei-50 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-50 hei-50 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>2021/06/07</td>
@@ -456,7 +500,8 @@
                                             <td>
                                                 <div class="d-inline-block product">
                                                     <img src="/resources/static/images/product/samsung.jpg"
-                                                        alt="user image" class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>
@@ -469,7 +514,8 @@
                                                 하이
                                                 <div class="d-inline-block align-middle">
                                                     <img src="/resources/static/images/user/memoji1.png"
-                                                        alt="user image" class="img-radius wid-50 hei-50 align-top m-r-15">
+                                                        alt="user image"
+                                                        class="img-radius wid-50 hei-50 align-top m-r-15">
                                                 </div>
                                             </td>
                                             <td>2021/06/07</td>
@@ -480,30 +526,7 @@
                                             <td>
                                                 <span class="lnr lnr-bubble"> 1</span>
                                             </td>
-                                        </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                        </tr> -->
 
                                     </tbody>
                                 </table>
