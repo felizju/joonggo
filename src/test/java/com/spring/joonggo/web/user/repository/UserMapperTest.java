@@ -1,14 +1,13 @@
 package com.spring.joonggo.web.user.repository;
 
+import com.spring.joonggo.web.user.domain.Auth;
 import com.spring.joonggo.web.user.domain.ModifyUser;
-import com.spring.joonggo.web.user.domain.Role;
 import com.spring.joonggo.web.user.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,11 +25,11 @@ class UserMapperTest {
     @DisplayName("회원가입 테스트")
     void registerTest(){
         User user = new User();
-        user.setUserId("bbb123");
+        user.setUserId("bbb1123");
         user.setUserPw("465798");
         user.setUserEmail("bbb123@naver.com");
         user.setUserNickname("고길동");
-        user.setRole(Role.USER);
+        user.setAuth(Auth.USER);
         user.setUserRatingScore(0);
 
         userMapper.registerAccount(user);
