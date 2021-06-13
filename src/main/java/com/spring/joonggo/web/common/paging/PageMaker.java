@@ -1,5 +1,6 @@
 package com.spring.joonggo.web.common.paging;
 
+import com.spring.joonggo.web.nboard.domain.Category;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.web.util.UriComponents;
@@ -63,6 +64,7 @@ public class PageMaker {
                 .queryParam("type", criteria.getType())
                 .queryParam("keyword", criteria.getKeyword())
                 .queryParam("amount", criteria.getAmount())
+                .queryParam("category", criteria.getCategory())
                 .build();
 
         return build.toString();
@@ -74,6 +76,20 @@ public class PageMaker {
                 .queryParam("type", criteria.getType())
                 .queryParam("keyword", criteria.getKeyword())
                 .queryParam("amount", amount)
+                .queryParam("category", criteria.getCategory())
+                .build();
+
+        return build.toString();
+    }
+
+    //카테고리 makeParam
+    public String makeParam(int page, int amount, Category category) {
+        UriComponents build = UriComponentsBuilder.newInstance()
+                .queryParam("page", page)
+                .queryParam("type", criteria.getType())
+                .queryParam("keyword", criteria.getKeyword())
+                .queryParam("amount", amount)
+                .queryParam("category", category)
                 .build();
 
         return build.toString();

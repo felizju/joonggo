@@ -65,14 +65,14 @@
                     </li>
                     <li class="nav-item">
                         <a href="form_elements.html" class="nav-link "><span class="pcoded-micon">
-                                <i class="feather icon-message-circle"></i></span><span
+                            <i class="feather icon-message-circle"></i></span><span
                                 class="pcoded-mtext">채팅하기</span></a>
                     </li>
                     <li class="nav-item pcoded-menu-caption">
                         <label>동네생활</label>
                     </li>
                     <li class="nav-item"><a href="sample-page.html" class="nav-link "><span class="pcoded-micon">
-                                <i class="feather icon-layout"></i></span><span class="pcoded-mtext">동네생활
+                        <i class="feather icon-layout"></i></span><span class="pcoded-mtext">동네생활
                                 게시판</span></a></li>
 
                     <li class="nav-item pcoded-menu-caption">
@@ -80,7 +80,7 @@
                     </li>
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon">
-                                <i class="feather icon-lock"></i></span>
+                            <i class="feather icon-lock"></i></span>
                             <span class="pcoded-mtext">프로필</span></a>
                         <ul class="pcoded-submenu">
                             <li><a href="#" target="_blank">구매내역</a></li> <!-- 구매내역 상세페이지 만들기-->
@@ -224,7 +224,6 @@
 
 
 
-
     <!-- [ Main Content ] start -->
     <div class="pcoded-main-container">
         <div class="pcoded-content">
@@ -243,119 +242,223 @@
             <!-- [ breadcrumb ] end -->
 
 
-
-
             <!-- [ Main Content ] start -->
             <div class="row">
-                <!-- [ stiped-table ] start -->
-                <div class="col-xl-12">
-                    <div class="card">
+                <!-- project ,team member start -->
+                <div class="col-xl-6 col-md-12">
+                    <div class="card table-card">
                         <div class="card-header">
-                            <h5>동네생활 게시판</h5>
+                            <h5>최신글</h5>
+                            <div class="card-header-right">
+                                <div class="btn-group card-option">
+                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <i class="feather icon-more-horizontal"></i>
+                                    </button>
+                                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                                        <li class="dropdown-item full-card"><a href="#!">
+                                                <span><i class="feather icon-maximize"></i> maximize</span>
+                                                <span style="display:none"><i class="feather icon-minimize"></i>
+                                                    Restore</span></a></li>
+                                        <li class="dropdown-item minimize-card"><a href="#!">
+                                                <span><i class="feather icon-minus"></i> collapse</span>
+                                                <span style="display:none"><i class="feather icon-plus"></i>
+                                                    expand</span></a></li>
+                                        <li class="dropdown-item reload-card"><a href="#!"><i
+                                                    class="feather icon-refresh-cw"></i> reload</a></li>
+                                        <li class="dropdown-item close-card"><a href="#!"><i
+                                                    class="feather icon-trash"></i> remove</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <!-- 동네생활 카테고리 -->
-                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">NEIGHBOR</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">ISSUE</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">DAILYLIFE</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">NOTICE</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">ETC</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body table-border-style">
+                        <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-hover mb-0">
                                     <thead>
                                         <tr>
-                                            <th>번호</th>
-                                            <th>아이디</th>
-                                            <th>닉네임</th>
-                                            <th>제목</th>
-                                            <th>내용</th>
-                                            <th>조회수</th>
-                                            <th>추천수</th>
-                                            <th>작성일자</th>
+                                            <th>NO</th>
+                                            <th>IMAGE</th>
+                                            <th>TITLE</th>
+                                            <th>PRICE</th>
+                                            <th>USER NAME</th>
+                                            <th>DATE</th>
+                                            <th>REGION</th>
+                                            <th>LIKES</th>
+                                            <th>CHAT</th>
                                         </tr>
                                     </thead>
-                                    
-                                    <!-- 반복문 -->
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
+                                            <td>
+                                                <div class="d-inline-block product">
+                                                    <img src="/src/main/resources/static/images/product/apple.jpg"
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6>애플워치 판매합니다.</h6>
+                                                </div>
+                                            </td>
+                                            <td>100,000</td>
+                                            <td>
+                                                <div class="d-inline-block align-middle">
+                                                    도우너
+                                                </div>
+                                            </td>
+                                            <td>2021/06/10</td>
+                                            <td>봉명동</td>
+                                            <td>
+                                                <span class="lnr lnr-heart"> 1</span>
+                                            </td>
+                                            <td>
+                                                <span class="lnr lnr-bubble"> 2</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
+                                            <td>
+                                                <div class="d-inline-block product">
+                                                    <img src="/src/main/resources/static/images/product/notebook.jpg"
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6>갤럭시 노트북 판매합니다.</h6>
+                                                </div>
+                                            </td>
+                                            <td>1650,000</td>
+                                            <td>
+                                                <div class="d-inline-block align-middle">
+                                                    고길동
+                                                </div>
+                                            </td>
+                                            <td>2021/06/09</td>
+                                            <td>도룡동</td>
+                                            <td>
+                                                <span class="lnr lnr-heart"> 1</span>
+                                            </td>
+                                            <td>
+                                                <span class="lnr lnr-bubble"> 2</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
+                                            <td>
+                                                <div class="d-inline-block product">
+                                                    <img src="/src/main/resources/static/images/product/nintendo.jpg"
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6>닌텐도 판매합니다.</h6>
+                                                </div>
+                                            </td>
+                                            <td>500,000</td>
+                                            <td>
+                                                <div class="d-inline-block align-middle">
+                                                    노홍철
+                                                </div>
+                                            </td>
+                                            <td>2021/06/08</td>
+                                            <td>둔산동</td>
+                                            <td>
+                                                <span class="lnr lnr-heart"> 1</span>
+                                            </td>
+                                            <td>
+                                                <span class="lnr lnr-bubble"> 2</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
+                                            <td>
+                                                <div class="d-inline-block product">
+                                                    <img src="/src/main/resources/static/images/product/sofa.jpg"
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6>소파 판매합니다.</h6>
+                                                </div>
+                                            </td>
+                                            <td>200,000</td>
+                                            <td>
+                                                <div class="d-inline-block align-middle">
+                                                    둘리
+                                                </div>
+                                            </td>
+                                            <td>2021/06/07</td>
+                                            <td>용문동</td>
+                                            <td>
+                                                <span class="lnr lnr-heart"> 3</span>
+                                            </td>
+                                            <td>
+                                                <span class="lnr lnr-bubble"> 1</span>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
+                                            <td>
+                                                <div class="d-inline-block product">
+                                                    <img src="/src/main/resources/static/images/product/samsung.jpg"
+                                                        alt="user image"
+                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <h6>갤럭시 판매합니다.</h6>
+                                                </div>
+                                            </td>
+                                            <td>800,000</td>
+                                            <td>
+                                                <div class="d-inline-block align-middle">
+                                                    하이
+                                                </div>
+                                            </td>
+                                            <td>2021/06/07</td>
+                                            <td>둔산동</td>
+                                            <td>
+                                                <span class="lnr lnr-heart"> 3</span>
+                                            </td>
+                                            <td>
+                                                <span class="lnr lnr-bubble"> 1</span>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn  btn-primary">글쓰기</button>
-                            <!-- <button type="button" class="btn  btn-success">Success</button> -->
-                        </div>
                     </div>
                 </div>
-                <!-- [ stiped-table ] end -->
+
             </div>
             <!-- [ Main Content ] end -->
         </div>
-    </section>
+    </div>
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
+    <script src="assets/js/ripple.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+
+    <!-- Apex Chart -->
+    <!-- <script src="assets/js/plugins/apexcharts.min.js"></script> -->
+
+
+    <!-- custom-chart js -->
+    <!-- <script src="assets/js/pages/dashboard-main.js"></script> -->
+
 
 </body>
 

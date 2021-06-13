@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,19 +15,19 @@
     <meta name="author" content="Phoenixcoded" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="/src/main/resources/static/images/market_favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/market_favicon.ico" type="image/x-icon">
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- linear icon css -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
     <!-- Required Js -->
-    <script src="/src/main/resources/static/js/vendor-all.min.js" defer></script>
-    <script src="/src/main/resources/static/js/plugins/bootstrap.min.js" defer></script>
-    <script src="/src/main/resources/static/js/ripple.js" defer></script>
-    <script src="/src/main/resources/static/js/pcoded.min.js" defer></script>
+    <script src="/js/vendor-all.min.js" defer></script>
+    <script src="/js/plugins/bootstrap.min.js" defer></script>
+    <script src="/js/ripple.js" defer></script>
+    <script src="/js/pcoded.min.js" defer></script>
 </head>
 
 <body class="loader-fill">
@@ -44,8 +46,7 @@
             <div class="navbar-content scroll-div">
                 <div class="">
                     <div class="main-menu-header">
-                        <img class="img-radius" src="/src/main/resources/static/images/user/user_basic.png"
-                            alt="User-Profile-Image">
+                        <img class="img-radius" src="/images/user/user_basic.png" alt="User-Profile-Image">
                         <div class="user-details">
                             <div id="more-details">둘리</div>
                         </div>
@@ -100,8 +101,8 @@
         <div class="m-header">
             <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
             <a href="#!" class="b-brand">
-                <img src="/src/main/resources/static/images/logo.png" alt="로고이미지" class="logo">
-                <img src="/src/main/resources/static/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
+                <img src="/images/logo.png" alt="로고이미지" class="logo">
+                <img src="/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
             </a>
             <a href="#!" class="mob-toggler">
                 <i class="feather icon-more-vertical"></i>
@@ -137,7 +138,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji1.png"
+                                        <img class="img-radius" src="/images/user/memoji1.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>John Doe</strong><span class="n-time text-muted"><i
@@ -151,7 +152,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji2.png"
+                                        <img class="img-radius" src="/images/user/memoji2.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>둘리</strong><span class="n-time text-muted"><i
@@ -162,7 +163,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji1.png"
+                                        <img class="img-radius" src="/images/user/memoji1.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>고길동</strong><span class="n-time text-muted"><i
@@ -173,7 +174,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji2.png"
+                                        <img class="img-radius" src="/images/user/memoji2.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>하이</strong><span class="n-time text-muted"><i
@@ -196,8 +197,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-notification">
                             <div class="pro-head">
-                                <img src="/src/main/resources/static/images/user/user_basic.png" class="img-radius"
-                                    alt="User-Profile-Image">
+                                <img src="/images/user/user_basic.png" class="img-radius" alt="User-Profile-Image">
                                 <span>John Doe</span>
                                 <a href="auth-signin.html" class="dud-logout" title="Logout">
                                     <i class="feather icon-log-out"></i>
@@ -256,17 +256,18 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <form>
-                                        <div class="form-group">
+                                        <div class="form-group" id="boardNo" value="${nBoard.boardNo}">
                                             <label for="exampleInputNo">글번호</label>
-                                            <p class="form-control">1</p>
+                                            <p class="form-control">${nBoard.boardNo}</p>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputUserId">아이디</label>
-                                            <p class="form-control">bbb111</p>
+                                        <div class="form-group" id="views" value="${nBoard.views}">
+                                            <label for="exampleInputUserId">조회수</label>
+                                            <p class="form-control">${nBoard.views}</p>
                                         </div>
-                                        <div class="form-group">
-                                            <label>닉네임</label>
-                                            <p class="form-control">둘리</p>
+                                        <div class="form-group" id="postDate" value="${nBoard.postDate}">
+                                            <label>작성시간</label>
+                                            <p class="form-control"><fmt:formatDate value="${nBoard.postDate}" pattern="yyyy년 MM월 dd일 HH:mm:ss"  /></p>
+                                            <!-- 안나옴 -->
                                         </div>
 
                                     </form>
@@ -274,17 +275,17 @@
 
                                 <div class="col-md-6">
                                     <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputNo">조회수</label>
-                                            <p class="form-control">3</p>
+                                        <div class="form-group" id="userNickName" value="${nBoard.userNickName}">
+                                            <label for="exampleInputNo">닉네임</label>
+                                            <p class="form-control">${nBoard.userNickName}</p>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="recommend" value="${nBoard.recommend}">
                                             <label for="exampleInputUserId">추천수</label>
-                                            <p class="form-control">2</p>
+                                            <p class="form-control">${nBoard.recommend}</p>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="category" value="${nBoard.category}">
                                             <label for="exampleFormControlSelect1">카테고리</label>
-                                            <p class="form-control">ETC</p>
+                                            <p class="form-control">${nBoard.category}</p>
                                         </div>
                                     </form>
                                 </div>
@@ -293,23 +294,42 @@
                             <h5 class="mt-5">글 내용</h5>
                             <hr>
                             <form>
-                                <div class="form-group">
+                                <div class="form-group" id="title" value="${nBoard.title}">
                                     <label for="inputTitle">제목</label>
-                                    <p class="form-control">제목제목제목</p>
+                                    <p class="form-control">${nBoard.title}</p>
 
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" id="content" value="${nBoard.content}">
                                     <label for="inputContent">내용</label>
-                                    <p class="form-control">내용내용내용</p>
+                                    <p class="form-control">${nBoard.content}</p>
                                 </div>
                                 <!-- 첨부파일 영역 -->
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">파일 업로드 비활성화하기!!!!!!</label>
+                                    <label class="custom-file-label" for="validatedCustomFile">파일 업로드
+                                        비활성화하기!!!!!!</label>
                                 </div><br><br>
-                                <button type="submit" class="btn  btn-primary">수정하기</button>
-                                <button type="button" class="btn  btn-success">삭제하기</button>
-                                <button type="button" class="btn disabled btn-secondary">목록으로 돌아가기</button>
+                                <%--
+                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}"></c:if>
+                                --%>
+                                <button type="button"
+                                    onclick="location.href='/nboard/modify?boardNo=?{nBOard.boardNo}&vf=false'"
+                                    class="btn  btn-primary">수정하기</button>
+                                    <%--
+                                </c:if>
+                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
+                                    --%>
+                                    <button type="button"
+                                        onclick="location.href='/nboard/delete?boardNo=${nBoard.boardNo}'"
+                                        class="btn  btn-success">삭제하기</button>
+                                        <%--
+                                    </c:if>
+                                    --%>
+                                <!-- <button type="button" class="btn disabled btn-secondary">목록으로 돌아가기</button> -->
+                                <!-- <button type="button" onclick="location.href='nboard-list.html' " class="btn disabled btn-secondary">목록으로 돌아가기</button> -->
+                                <button type="button"
+                                    onclick="location.href='/nboard/list?page=${cri.page}&type=${cri.type}&keyword=${cri.keyword}&amount=${cri.amount}&category=${cri.category}' "
+                                    class="btn disabled btn-secondary">목록으로 돌아가기</button>
                             </form><br>
 
                         </div>
