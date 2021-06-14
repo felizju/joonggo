@@ -100,7 +100,7 @@
 		$idInput.on('keyup', e => {
 			if ($idInput.val().trim() === '') {
 				$idInput.css('background', 'pink');
-				$('#idChk').html('<b style="color:red; font-size:14px;">[아이디는 필수 정보입니다!]</b>');
+				$('#idChk').html('<b style="color:red; font-size:14px;">[Danger : 아이디 필수정보]</b>');
 				chk1 = false;
 
 			} else if (!getIdCheck.test($idInput.val())) {
@@ -117,12 +117,12 @@
 						if (flag === 'true') { //중복
 							$idInput.css('backgroud', 'pink');
 							$('#idChk').html(
-								'<b style="color:red; font-size:14px;">[아이디가 중복되었습니다.]</b>');
+								'<b style="color:red; font-size:14px;">[Danger : 아이디 중복]</b>');
 							chk1 = false;
 						} else { //중복x
 							$idInput.css('background', 'aqua');
 							$('#idChk').html(
-								'<b style="color:green; font-size:14px;">[멋진 아이디네요!]</b>');
+								'<b style="color:green; font-size:14px;">[Success : 아이디]</b>');
 							chk1 = true;
 						}
 					});
@@ -134,7 +134,7 @@
 			//비밀번호 공백 확인
 			if ($("#userPw").val().trim() === "") {
 				$('#userPw').css("background-color", "pink");
-				$('#pwChk').html('<b style="font-size:14px;color:red;">[패스워드는 필수정보!]</b>');
+				$('#pwChk').html('<b style="font-size:14px;color:red;">[Danger : 비밀번호 필수정보]</b>');
 				chk2 = false;
 			}
 			//비밀번호 유효성검사
@@ -144,7 +144,7 @@
 				chk2 = false;
 			} else {
 				$('#userPw').css("background-color", "aqua");
-				$('#pwChk').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+				$('#pwChk').html('<b style="font-size:14px;color:green;">[Success : 비밀번호]</b>');
 				chk2 = true;
 			}
 		});
@@ -154,7 +154,7 @@
 			//비밀번호 확인란 공백 확인
 			if ($("#userPwChk").val().trim() === "") {
 				$('#userPwChk').css("background-color", "pink");
-				$('#pwChk2').html('<b style="font-size:14px;color:red;">[패스워드확인은 필수정보!]</b>');
+				$('#pwChk2').html('<b style="font-size:14px;color:red;">[Danger : 비밀번호 확인 필수정보]</b>');
 				chk3 = false;
 			}
 			//비밀번호 확인란 유효성검사
@@ -164,27 +164,27 @@
 				chk3 = false;
 			} else {
 				$('#userPwChk').css("background-color", "aqua");
-				$('#pwChk2').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+				$('#pwChk2').html('<b style="font-size:14px;color:green;">[Success : 비밀번호]</b>');
 				chk3 = true;
 			}
 		});
 
 		//닉네임 입력값 검증
 		$('#userNickname').on('keyup', function () {
-			//이름값 공백 확인
+			//닉네임값 공백 확인
 			if ($("#userNickname").val().trim() === "") {
 				$('#userNickname').css("background-color", "pink");
-				$('#nicknameChk').html('<b style="font-size:14px;color:red;">[이름은 필수정보!]</b>');
+				$('#nicknameChk').html('<b style="font-size:14px;color:red;">[Danger : 닉네임 필수정보]</b>');
 				chk4 = false;
 			}
-			//이름값 유효성검사
+			//닉네임값 유효성검사
 			else if (!getNickname.test($("#userNickname").val())) {
 				$('#userNickname').css("background-color", "pink");
-				$('#nicknameChk').html('<b style="font-size:14px;color:red;">[한글로 최대 10자]]</b>');
+				$('#nicknameChk').html('<b style="font-size:14px;color:red;">[한글로 최대 10자]</b>');
 				chk4 = false;
 			} else {
 				$('#userNickname').css("background-color", "aqua");
-				$('#nicknameChk').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+				$('#nicknameChk').html('<b style="font-size:14px;color:green;">[Success : 닉네임]</b>');
 				chk4 = true;
 			}
 		});
@@ -195,13 +195,13 @@
 			//이메일값 공백 확인
 			if ($emailInput.val().trim() === "") {
 				$emailInput.css("background-color", "pink");
-				$('#emailChk').html('<b style="font-size:14px;color:red;">[이메일은 필수정보!]</b>');
+				$('#emailChk').html('<b style="font-size:14px;color:red;">[Danger : 이메일 필수정보]</b>');
 				chk5 = false;
 			}
 			//이메일값 유효성검사
 			else if (!getMail.test($emailInput.val())) {
 				$emailInput.css("background-color", "pink");
-				$('#emailChk').html('<b style="font-size:14px;color:red;">[이메일 형식 확인해주세요.]</b>');
+				$('#emailChk').html('<b style="font-size:14px;color:red;">[Danger : 이메일 형식 오류]</b>');
 				chk5 = false;
 			} else {
 				//이메일 중복확인 비동기 통신
@@ -212,12 +212,12 @@
 						if (flag === 'true') {
 							$emailInput.css('background', 'pink');
 							$('#emailChk').html(
-								'<b style="font-size:14px; color:red;">[이메일이 중복되었습니다!]</b>');
+								'<b style="font-size:14px; color:red;">[Danger : 이메일 중복]</b>');
 							chk5 = false;
 						} else {
 							$emailInput.css('background', 'aqua');
 							$('#emailChk').html(
-								'<b style="font-size:14px; color:green;">[사용가능한 이메일입니다.]</b>'
+								'<b style="font-size:14px; color:green;">[Success : 이메일]</b>'
 							);
 							chk5 = true;
 						}

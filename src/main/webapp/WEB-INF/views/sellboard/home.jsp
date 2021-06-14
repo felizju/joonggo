@@ -42,9 +42,9 @@
     <!-- [ Main Content ] start -->
     <div class="pcoded-main-container">
         <div class="pcoded-content">
-            <!-- [ breadcrumb ] start -->
+            <!-- [ sitename ] start -->
             <%@ include file="../include/sitename.jsp" %>
-            <!-- [ breadcrumb ] end -->
+            <!-- [ sitename ] end -->
 
 
             <!-- [ Main Content ] start -->
