@@ -94,7 +94,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+
+                                        <c:forEach var="sellBoard" items="${sellList}">
+                                            <tr>
+                                                <td>${sellBoard.productNum}</td>
+                                                <td>이미지 경로</td>
+                                                <td>
+                                                    <a href="#">
+                                                        ${sellBoard.productName}</a>
+                                                </td>
+                                                <td>${sellBoard.sellPrice}</td>
+                                                <td>${sellBoard.sellerNick}</td>
+                                                <td>${sellBoard.createDate}</td>
+                                                <td>${sellBoard.sellArea}</td>
+                                                <td>
+                                                    <span class="lnr lnr-heart"> 1</span>
+                                                </td>
+                                                <td>
+                                                    <span class="lnr lnr-bubble"> 2</span>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+
+
+
+                                        <!-- <tr>
                                             <td>1</td>
                                             <td>
                                                 <div class="d-inline-block product">
@@ -122,123 +146,8 @@
                                             <td>
                                                 <span class="lnr lnr-bubble"> 2</span>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                <div class="d-inline-block product">
-                                                    <img src="/src/main/resources/static/images/product/notebook.jpg"
-                                                        alt="user image"
-                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <h6>갤럭시 노트북 판매합니다.</h6>
-                                                </div>
-                                            </td>
-                                            <td>1650,000</td>
-                                            <td>
-                                                <div class="d-inline-block align-middle">
-                                                    고길동
-                                                </div>
-                                            </td>
-                                            <td>2021/06/09</td>
-                                            <td>도룡동</td>
-                                            <td>
-                                                <span class="lnr lnr-heart"> 1</span>
-                                            </td>
-                                            <td>
-                                                <span class="lnr lnr-bubble"> 2</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>
-                                                <div class="d-inline-block product">
-                                                    <img src="/src/main/resources/static/images/product/nintendo.jpg"
-                                                        alt="user image"
-                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <h6>닌텐도 판매합니다.</h6>
-                                                </div>
-                                            </td>
-                                            <td>500,000</td>
-                                            <td>
-                                                <div class="d-inline-block align-middle">
-                                                    노홍철
-                                                </div>
-                                            </td>
-                                            <td>2021/06/08</td>
-                                            <td>둔산동</td>
-                                            <td>
-                                                <span class="lnr lnr-heart"> 1</span>
-                                            </td>
-                                            <td>
-                                                <span class="lnr lnr-bubble"> 2</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>
-                                                <div class="d-inline-block product">
-                                                    <img src="/src/main/resources/static/images/product/sofa.jpg"
-                                                        alt="user image"
-                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <h6>소파 판매합니다.</h6>
-                                                </div>
-                                            </td>
-                                            <td>200,000</td>
-                                            <td>
-                                                <div class="d-inline-block align-middle">
-                                                    둘리
-                                                </div>
-                                            </td>
-                                            <td>2021/06/07</td>
-                                            <td>용문동</td>
-                                            <td>
-                                                <span class="lnr lnr-heart"> 3</span>
-                                            </td>
-                                            <td>
-                                                <span class="lnr lnr-bubble"> 1</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>
-                                                <div class="d-inline-block product">
-                                                    <img src="/src/main/resources/static/images/product/samsung.jpg"
-                                                        alt="user image"
-                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <h6>갤럭시 판매합니다.</h6>
-                                                </div>
-                                            </td>
-                                            <td>800,000</td>
-                                            <td>
-                                                <div class="d-inline-block align-middle">
-                                                    하이
-                                                </div>
-                                            </td>
-                                            <td>2021/06/07</td>
-                                            <td>둔산동</td>
-                                            <td>
-                                                <span class="lnr lnr-heart"> 3</span>
-                                            </td>
-                                            <td>
-                                                <span class="lnr lnr-bubble"> 1</span>
-                                            </td>
-                                        </tr>
+                                        </tr> -->
+
                                     </tbody>
                                 </table>
                             </div>

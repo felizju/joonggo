@@ -70,15 +70,15 @@ public class UserController {
                 log.info("자동로그인 처리");
                 userService.saveKeepLogin(httpSession, response, inputUser.getUserId());
             }
-//            return "redirect:/home-copy";
-            return "user/logIn";
+            return "redirect:/";
+//            return "user/logIn";
         }
         return "user/login-result";
     }
 
 
     //로그아웃 요청처리
-    @GetMapping("/user/logout")
+    @GetMapping("/logout")
     public String logOut(HttpSession session, HttpServletResponse response, HttpServletRequest request) {
         log.info("/user/logOut GET 요청! - ");
         User loginUser = (User) session.getAttribute("loginUser");
@@ -93,7 +93,7 @@ public class UserController {
                 response.addCookie(logInCookie);
                 userService.logout(loginUser.getUserId());
             }
-            return "redirect:/home";
+            return "redirect:/";
         }
         return "redirect:/user/login";
     }

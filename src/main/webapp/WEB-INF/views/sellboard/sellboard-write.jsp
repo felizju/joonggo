@@ -14,7 +14,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
-    
+
     <%@ include file="../include/static-head.jsp" %>
 </head>
 
@@ -58,56 +58,61 @@
                         <div class="card-body">
                             <h5>글 작성</h5>
                             <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <form>
+                            <form method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <input type="hidden" name="sellerId" value="${loginUser.userId}">
+                                        <input type="hidden" name="sellerNick" value="${loginUser.userNickname}">
                                         <div class="form-group">
                                             <label>닉네임</label>
-                                            <p class="form-control">닉네임 자동 부여</p>
+                                            <p class="form-control">${loginUser.userNickname}</p>
                                         </div>
 
-                                    </form>
-                                </div>
-                                <div class="col-md-6">
-                                    <form>
+
+                                    </div>
+                                    <div class="col-md-6">
+
 
                                         <div class="form-group">
                                             <label>지역</label>
-                                            <p class="form-control">지역 자동 부여</p>
+                                            <input class="form-control" name="sellArea"></input>
                                         </div>
-                                    </form>
-                                </div>
-                            </div>
 
-                            <h5 class="mt-5">글 상세내용 작성</h5>
-                            <hr>
-                            <form>
+                                    </div>
+                                </div>
+
+                                <h5 class="mt-5">글 상세내용 작성</h5>
+                                <hr>
+
                                 <div class="form-group">
                                     <label for="inputTitle">제목</label>
-                                    <textarea class="form-control" id="inputTitle" placeholder="게시글 제목을 작성해주세요."></textarea>
+                                    <textarea class="form-control" name="productName" id="inputTitle"
+                                        placeholder="게시글 제목을 작성해주세요."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">카테고리</label>
-                                    <select class="form-control" id="category">
-                                        <option>의류</option>
-                                        <option>전자기기</option>
-                                        <option>가전가구</option>
-                                        <option>생활용품</option>
-                                        <option>기타</option>
+                                    <select class="form-control" name="sellCategory" id="category">
+                                        <option value="CLOTHING">의류</option>
+                                        <option value="ELECTRONIC">전자기기</option>
+                                        <option value="HOME">가전가구</option>
+                                        <option value="LIVING">생활용품</option>
+                                        <option value="REMARK">기타</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputTitle">가격</label>
-                                    <input class="form-control" placeholder="₩"></input>
+                                    <input class="form-control" name="sellPrice" placeholder="₩"></input>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputContent">내용</label>
-                                    <textarea class="form-control" id="inputContent" placeholder="게시글 내용을 작성해주세요. (가품 및 판매금지품목은 게시가 제한될 수 있습니다.)"></textarea>
+                                    <textarea class="form-control" name="productContent" id="inputContent"
+                                        placeholder="게시글 내용을 작성해주세요. (가품 및 판매금지품목은 게시가 제한될 수 있습니다.)"></textarea>
                                 </div>
-                                <div class="custom-file">
+                                <!-- <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                                     <label class="custom-file-label" for="validatedCustomFile">파일 찾아보기</label>
-                                </div><br><br>
+                                </div><br><br> -->
                                 <button type="submit" class="btn  btn-primary">등록하기</button>
                             </form>
 
