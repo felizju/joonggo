@@ -37,6 +37,9 @@ public class SellBoardService {
 
     // 게시물 수정
     public void modifyProduct(int productNum, DummyBoard dummyBoard) {
+        System.out.println("====================================================");
+        System.out.println(productNum);
+
         dummyBoard.setProductNum(productNum);
         sellBoardMapper.modifyProduct(productNum, dummyBoard);
     }

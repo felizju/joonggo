@@ -4,6 +4,7 @@ import com.spring.joonggo.web.common.paging.Criteria;
 import com.spring.joonggo.web.common.paging.PageMaker;
 import com.spring.joonggo.web.nboard.domain.DummyNBoard;
 import com.spring.joonggo.web.nboard.domain.NBoard;
+import com.spring.joonggo.web.sellboard.domain.DummyBoard;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
 import com.spring.joonggo.web.sellboard.service.SellBoardService;
 import com.spring.joonggo.web.user.domain.User;
@@ -28,10 +29,11 @@ public class SellController {
     }*/
 
     @GetMapping("")
-    public String sellList(Criteria criteria, Model model
+    public String sellList(@ModelAttribute("cri") Criteria criteria
+            , Model model
             , HttpSession session) {
-        List<SellBoard> sellList = sellBoardService.findAll(criteria);
-        model.addAttribute("sellList", sellList);
+//        List<SellBoard> sellList = sellBoardService.findAll();
+        model.addAttribute("sellList", sellBoardService.findAll(criteria));
 
         // 페이지 정보 만들어서 jsp에게 전달
         model.addAttribute("pageMaker", new PageMaker(criteria, sellBoardService.getTotal(criteria)));
@@ -46,7 +48,9 @@ public class SellController {
     @PostMapping("/sellboard-write")
     public String write(SellBoard sellBoard
             , HttpSession session) {
-        System.out.println(sellBoard);
+//        System.out.println("============================================");
+//        System.out.println(sellBoard);
+//        System.out.println("============================================");
         sellBoardService.addProduct(sellBoard);
         return "redirect:/";
     }
@@ -74,10 +78,19 @@ public class SellController {
                     , Model model
                     , HttpSession session) {
         SellBoard sellBoard = sellBoardService.intoContent(productNum);
+//        User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("sellBoard", sellBoard);
-        User loginUser = (User) session.getAttribute("loginUser");
-        model.addAttribute("loginUser", loginUser);
-        return "/modify";
+//        model.addAttribute("loginUser", session);
+        return "/sellboard/sellboard-modify";
+    }
+
+    @PostMapping("/modify")
+    public String modifySave(int productNum, DummyBoard dummyBoard) {
+        System.out.println("==============================================");
+        System.out.println(dummyBoard);
+        System.out.println("==============================================");
+        sellBoardService.modifyProduct(productNum, dummyBoard);
+        return "redirect:/";
     }
 
 
