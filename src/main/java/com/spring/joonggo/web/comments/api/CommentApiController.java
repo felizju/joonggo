@@ -35,6 +35,7 @@ public class CommentApiController {
 
         if (commentMap != null) {
             log.info("commentMap 전달 성공!");
+            log.info(commentMap.get("count"));
             return new ResponseEntity<>(commentMap, HttpStatus.OK);
         } else {
             //리스트가 없으면 500 에러를 리턴

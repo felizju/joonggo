@@ -67,7 +67,9 @@ public class UserController {
         model.addAttribute("result", resultMessage);
 
         if(resultMessage.equals("success")) {
-            httpSession.setAttribute("loginUser", userService.getUser(inputUser.getUserId())); //세션에 정보 저장
+            User user = userService.getUser(inputUser.getUserId());
+            log.info("user" + user);
+            httpSession.setAttribute("loginUser", user); //세션에 정보 저장
             if(inputUser.isAutoLogin()) {
                 log.info("자동로그인 처리");
                 userService.saveKeepLogin(httpSession, response, inputUser.getUserId());

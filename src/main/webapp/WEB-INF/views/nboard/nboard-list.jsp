@@ -7,6 +7,13 @@
 <head>
     <title>JOONGGO MARKET</title>
 
+    <style>
+        .pagination {
+            justify-content: center;
+            font-size: 15px;
+        }
+    </style>
+
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -62,26 +69,28 @@
                             <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NEIGHBOR')}" role="tab" aria-controls="home" aria-selected="true">우리동네</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NEIGHBOR')}"
+                                        role="tab" aria-controls="home" aria-selected="true">우리동네</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ISSUE')}" role="tab" aria-controls="profile"
-                                        aria-selected="false">사건/사고</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ISSUE')}"
+                                        role="tab" aria-controls="profile" aria-selected="false">사건/사고</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, DAIYLYLIFE)}" role="tab" aria-controls="contact"
-                                        aria-selected="false">일상&자유</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, DAIYLYLIFE)}"
+                                        role="tab" aria-controls="contact" aria-selected="false">일상&자유</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, NOTICE)}" role="tab" aria-controls="contact"
-                                        aria-selected="false">공지사항</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, NOTICE)}"
+                                        role="tab" aria-controls="contact" aria-selected="false">공지사항</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ETC')}" role="tab" aria-controls="contact" aria-selected="false">기타</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ETC')}"
+                                        role="tab" aria-controls="contact" aria-selected="false">기타</a>
                                 </li>
                             </ul>
                         </div>
@@ -105,71 +114,59 @@
                                         <c:forEach var="board" items="${nBoardList}">
                                             <tr>
                                                 <td id="boardNo" value="${board.boardNo}">${board.boardNo}</td>
-                                                <td id="userNickName" value="${board.userNickName}">${board.userNickName}</td>
+                                                <td id="userNickName" value="${board.userNickName}">
+                                                    ${board.userNickName}</td>
                                                 <td id="title" value="${board.title}">
-                                                    <a href="/nboard/detail${pageMaker.makeParam(pageMaker.criteria.page)}&boardNo=${board.boardNo}&vf=true">${board.title}</a>
+                                                    <a
+                                                        href="/nboard/detail${pageMaker.makeParam(pageMaker.criteria.page)}&boardNo=${board.boardNo}&vf=true">${board.title}</a>
 
                                                 </td>
                                                 <td id="content" value="${board.content}">${board.content}</td>
                                                 <td id="views" value="${board.views}">${board.views}</td>
                                                 <td id="recommend" value="${board.recommend}">${board.recommend}</td>
                                                 <td id="postDate" value="${board.postDate}">${board.postDate}</td>
-                                                
+
                                             </tr>
                                         </c:forEach>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                            <td>@twitter</td>
-                                        </tr>
                                     </tbody>
                                 </table>
+
+                                <!-- 페이지 영역 -->
+                                <ul class="pagination">
+
+                                    <c:if test="${pageMaker.prev}">
+                                        
+                                        <li class="page-item">
+                                            <a class="page-link" href="/nboard/list${pageMaker.makeParam(pageMaker.beginPage-1)}" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+
+                                    <!-- li*5>a{[$]} -->
+                                    <c:forEach var="i" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}"
+                                        step="1">
+                                        <li class="page-item"><a class="page-link" href="/nboard/list${pageMaker.makeParam(i)}">${i}</a></li>
+                                        <!-- makeParam은 메서드이기 때문에 ()를 붙여서 call 해줌 -->
+                                    </c:forEach>
+
+                                    <c:if test="${pageMaker.next}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="/nboard/list${pageMaker.makeParam(pageMaker.endPage+1)}" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                </ul>
+                                <!-- 페이지 영역 종료 -->
+
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="button" 
-                            onclick="location.href='/nboard/register' "
-                            class="btn  btn-primary">글쓰기</button>
+                            <button type="button" onclick="location.href='/nboard/register' "
+                                class="btn  btn-primary">글쓰기</button>
                             <!-- <button type="button" class="btn  btn-success">Success</button> -->
                         </div>
                     </div>
@@ -183,11 +180,11 @@
     <script>
         // 카테고리 변경 함수
         function changeCategory() {
-            
+
         }
 
         (function () {
-            
+
         }());
     </script>
 
