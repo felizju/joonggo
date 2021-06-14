@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,12 +14,6 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
-
-	<!-- Favicon icon -->
-	<link rel="icon" href="/images/market_favicon.ico" type="image/x-icon">
-
-	<!-- vendor css -->
-	<link rel="stylesheet" href="/css/style.css">
 
 	<%@ include file="../include/static-head.jsp" %>
 </head>
@@ -53,10 +48,9 @@
 							<input type="submit" id="signIn-btn" class="btn btn-block btn-primary mb-4" value="로그인">
 							<!-- <p class="mb-2 text-muted"><a href="#" class="f-w-400">비밀번호 찾기</a></p> -->
 							<!-- 비밀번호 찾기 페이지 만들기!!! -->
-							<p class="mb-0 text-muted"><a href="/user/sign-up"
-									class="f-w-400">회원가입하기</a></p>
+							<p class="mb-0 text-muted"><a href="/user/sign-up" class="f-w-400">회원가입하기</a></p>
 						</form>
-						
+
 					</div>
 				</div>
 			</div>
@@ -64,14 +58,6 @@
 	</div>
 </div>
 <!-- [ auth-signin ] end -->
-
-<!-- Required Js -->
-<!-- <script src="assets/js/vendor-all.min.js"></script>
-<script src="assets/js/plugins/bootstrap.min.js"></script>
-<script src="assets/js/ripple.js"></script>
-<script src="assets/js/pcoded.min.js"></script> -->
-
-
 
 </body>
 
