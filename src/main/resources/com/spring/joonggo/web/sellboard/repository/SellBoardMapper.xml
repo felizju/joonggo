@@ -8,12 +8,12 @@
     <insert id="addProduct">
         INSERT INTO goods
         (goods_no, goods_title, goods_price, goods_content
-        , sales_area_number, sell_user_id, sell_user_nickname
-        , goods_category, goods_status)
+        , sales_area, sell_user_id, sell_user_nickname
+        , goods_category)
         VALUES
         (goods_seq.nextval, #{productName}, #{sellPrice}
         , #{productContent}, #{sellArea}, #{sellerId}, #{sellerNick}
-        , #{sellCategory}, #{stateFlag})
+        , #{sellCategory})
 
     </insert>
 
@@ -22,7 +22,7 @@
         <result property="productNum" column="goods_no"/>
         <result property="sellPrice" column="goods_price"/>
         <result property="productContent" column="goods_content"/>
-        <result property="sellArea" column="sales_area_number"/>
+        <result property="sellArea" column="sales_area"/>
         <result property="sellerId" column="sell_user_id"/>
         <result property="sellerNick" column="sell_user_nickname"/>
         <result property="sellCategory" column="goods_category"/>
@@ -56,12 +56,12 @@
         <![CDATA[
         SELECT
             goods_no, sell_user_nickname, goods_title, goods_content, goods_category
-            , goods_price, sales_area_number, goods_status, goods_created_date
+            , goods_price, sales_area, goods_status, goods_created_date
             , sell_user_id
         FROM
             (SELECT /*+INDEX_DESC(goods pk_goods)*/
                 ROWNUM rn, goods_no, sell_user_nickname, goods_title, goods_content, goods_category
-                , goods_price, sales_area_number, goods_status, goods_created_date
+                , goods_price, sales_area, goods_status, goods_created_date
                 , sell_user_id
             FROM goods
             WHERE
@@ -118,7 +118,7 @@
         goods_content = #{productContent}
         , goods_title = #{productName}
         , goods_price = #{sellPrice}
-        , sales_area_number = #{sellArea}
+        , sales_area = #{sellArea}
         WHERE goods_no = #{productNum}
     </update>
 

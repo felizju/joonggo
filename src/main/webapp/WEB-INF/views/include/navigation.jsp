@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+
 <!-- [ navigation menu ] start -->
 <nav class="pcoded-navbar menu-light">
     <div class="navbar-wrapper">
@@ -11,7 +12,7 @@
                     <img class="img-radius" src="/images/user/user_basic.png"
                         alt="User-Profile-Image">
                     <div class="user-details">
-                        <div id="more-details">둘리</div>
+                        <div id="more-details">${loginUser.userId}</div>
                     </div>
                 </div>
             </div>

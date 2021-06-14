@@ -4,6 +4,7 @@
 
 <!-- [ Header ] start -->
 <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
         <a href="#!" class="b-brand">
@@ -103,24 +104,34 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img src="/src/main/resources/static/images/user/user_basic.png" class="img-radius"
-                                alt="User-Profile-Image">
+                            <img src="/images/user/user_basic.png" class="img-radius" alt="User-Profile-Image">
                             <span>John Doe</span>
                             <a href="auth-signin.html" class="dud-logout" title="Logout">
                                 <i class="feather icon-log-out"></i>
                             </a>
                         </div>
                         <ul class="pro-body">
-                            <li><a href="user-profile.html" class="dropdown-item"><i class="feather icon-user"></i>
+                            <li><a href="#" class="dropdown-item"><i class="feather icon-user"></i>
                                     Profile</a></li>
-                            <li><a href="email_inbox.html" class="dropdown-item"><i class="feather icon-mail"></i>
+                            <li><a href="#" class="dropdown-item"><i class="feather icon-mail"></i>
                                     My Messages</a></li>
-                            <li><a href="auth-signin.html" class="dropdown-item"><i class="feather icon-lock"></i>
+                            <li><a href="#" class="dropdown-item"><i class="feather icon-lock"></i>
                                     Lock Screen</a></li>
                         </ul>
                     </div>
                 </div>
             </li>
+
+            <li>
+                <c:if test="${loginUser == null}">
+                    <a class="login" href="/user/sign-in"><i class="icon feather icon-log-in"></i>  로그인</a>
+                </c:if>
+
+                <c:if test="${loginUser != null}">
+                    <a class="login" href="/user/logout"><i class="icon feather icon-log-in"></i>  로그아웃</a>
+                </c:if>
+            </li>
+
         </ul>
     </div>
 </header>
