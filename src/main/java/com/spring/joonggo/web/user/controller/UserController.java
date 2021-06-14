@@ -102,7 +102,7 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-/*
+
     //회원탈퇴 요청처리
     @GetMapping("/withdraw")
     public String withdraw(HttpSession session) {
@@ -110,9 +110,9 @@ public class UserController {
         User loginUser = (User) session.getAttribute("loginUser");
         userService.deleteAccount(loginUser.getUserId());
 //            return "redirect:/home-copy";
-        return "redirect:/user/login";
+        return "redirect:/user/sign-in";
+
     }
-*/
 
 
     //프로필 화면 요청
@@ -122,6 +122,7 @@ public class UserController {
 //        User user = userService.getUser(userId);
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
+//        model.addAttribute("user", user);
         return "user/profile";
     }
 

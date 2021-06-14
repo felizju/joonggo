@@ -46,10 +46,10 @@
                             <i class="feather icon-lock"></i></span>
                         <span class="pcoded-mtext">프로필</span></a>
                     <ul class="pcoded-submenu">
-                        <li><a href="#" target="_blank">구매내역</a></li> <!-- 구매내역 상세페이지 만들기-->
-                        <li><a href="#" target="_blank">판매내역</a></li> <!-- 판매내역 상세페이지 만들기-->
-                        <li><a href="#" target="_blank">관심상품</a></li> <!-- 관심상품 상세페이지 만들기-->
-                        <li><a href="#" target="_blank">프로필</a></li> <!-- 프로필 상세페이지 만들기 (정보수정)-->
+                        <li><a href="#!" target="_blank">구매내역</a></li> <!-- 구매내역 상세페이지 만들기-->
+                        <li><a href="#!" target="_blank">판매내역</a></li> <!-- 판매내역 상세페이지 만들기-->
+                        <li><a href="#!" target="_blank">관심상품</a></li> <!-- 관심상품 상세페이지 만들기-->
+                        <li><a href="/user/profile" target="_blank">프로필</a></li>
                     </ul>
                 </li>
             </ul>
