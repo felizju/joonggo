@@ -62,26 +62,26 @@
                             <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab"
-                                        href="#home" role="tab" aria-controls="home" aria-selected="true">NEIGHBOR</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NEIGHBOR')}" role="tab" aria-controls="home" aria-selected="true">우리동네</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab"
-                                        href="#profile" role="tab" aria-controls="profile"
-                                        aria-selected="false">ISSUE</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ISSUE')}" role="tab" aria-controls="profile"
+                                        aria-selected="false">사건/사고</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="#contact" role="tab" aria-controls="contact"
-                                        aria-selected="false">DAILYLIFE</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, DAIYLYLIFE)}" role="tab" aria-controls="contact"
+                                        aria-selected="false">일상&자유</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="#contact" role="tab" aria-controls="contact"
-                                        aria-selected="false">NOTICE</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, NOTICE)}" role="tab" aria-controls="contact"
+                                        aria-selected="false">공지사항</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="#contact" role="tab" aria-controls="contact" aria-selected="false">ETC</a>
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ETC')}" role="tab" aria-controls="contact" aria-selected="false">기타</a>
                                 </li>
                             </ul>
                         </div>
@@ -91,7 +91,6 @@
                                     <thead>
                                         <tr>
                                             <th>번호</th>
-                                            <th>아이디</th>
                                             <th>닉네임</th>
                                             <th>제목</th>
                                             <th>내용</th>
@@ -106,7 +105,6 @@
                                         <c:forEach var="board" items="${nBoardList}">
                                             <tr>
                                                 <td id="boardNo" value="${board.boardNo}">${board.boardNo}</td>
-                                                <td id="userId" value="${board.userId}">${board.userId}</td>
                                                 <td id="userNickName" value="${board.userNickName}">${board.userNickName}</td>
                                                 <td id="title" value="${board.title}">
                                                     <a href="/nboard/detail${pageMaker.makeParam(pageMaker.criteria.page)}&boardNo=${board.boardNo}&vf=true">${board.title}</a>
@@ -121,7 +119,6 @@
                                         </c:forEach>
                                         <tr>
                                             <td>1</td>
-                                            <td>Mark</td>
                                             <td>Otto</td>
                                             <td>@mdo</td>
                                             <td>@mdo</td>
@@ -131,7 +128,6 @@
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Jacob</td>
                                             <td>Thornton</td>
                                             <td>@fat</td>
                                             <td>@fat</td>
@@ -141,7 +137,6 @@
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Larry</td>
                                             <td>the Bird</td>
                                             <td>@twitter</td>
                                             <td>@twitter</td>
@@ -151,7 +146,6 @@
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>Larry</td>
                                             <td>the Bird</td>
                                             <td>@twitter</td>
                                             <td>@twitter</td>
@@ -161,7 +155,6 @@
                                         </tr>
                                         <tr>
                                             <td>5</td>
-                                            <td>Larry</td>
                                             <td>the Bird</td>
                                             <td>@twitter</td>
                                             <td>@twitter</td>
@@ -186,6 +179,17 @@
             <!-- [ Main Content ] end -->
         </div>
     </div>
+
+    <script>
+        // 카테고리 변경 함수
+        function changeCategory() {
+            
+        }
+
+        (function () {
+            
+        }());
+    </script>
 
 </body>
 

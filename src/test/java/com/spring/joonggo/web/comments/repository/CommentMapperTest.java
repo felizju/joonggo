@@ -34,7 +34,7 @@ class CommentMapperTest {
     void bulkInsertTest() {
         for (int i = 100; i < 130; i++) {
             Comment comment = new Comment();
-            comment.setBoardNo(1);
+            comment.setBoardNo(101);
             comment.setUserId("사용자" + i);
             comment.setUserNickName("닉네임" + i);
             comment.setCommentContent("댓글 내용 " + i);

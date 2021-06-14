@@ -3,9 +3,11 @@ package com.spring.joonggo.web.common.paging;
 import com.spring.joonggo.web.nboard.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class Criteria {
 
     private int page;       //페이지 넘버
