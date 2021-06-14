@@ -295,8 +295,18 @@
                                     <tbody>
                                         <c:forEach var="board" items="${nBoardList}">
                                             <tr>
-                                                <td></td>
-                                                <td></td>
+                                                <td id="boardNo" value="${board.boardNo}">${board.boardNo}</td>
+                                                <td id="userId" value="${board.userId}">${board.userId}</td>
+                                                <td id="userNickName" value="${board.userNickName}">${board.userNickName}</td>
+                                                <td id="title" value="${board.title}">
+                                                    <a href="/nboard/detail${pageMaker.makeParam(pageMaker.criteria.page)}&boardNo=${board.boardNo}&vf=true">${board.title}</a>
+
+                                                </td>
+                                                <td id="content" value="${board.content}">${board.content}</td>
+                                                <td id="views" value="${board.views}">${board.views}</td>
+                                                <td id="recommend" value="${board.recommend}">${board.recommend}</td>
+                                                <td id="postDate" value="${board.postDate}">${board.postDate}</td>
+                                                
                                             </tr>
                                         </c:forEach>
                                         <tr>
@@ -354,7 +364,9 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn  btn-primary">글쓰기</button>
+                            <button type="button" 
+                            onclick="location.href='/nboard/register' "
+                            class="btn  btn-primary">글쓰기</button>
                             <!-- <button type="button" class="btn  btn-success">Success</button> -->
                         </div>
                     </div>
