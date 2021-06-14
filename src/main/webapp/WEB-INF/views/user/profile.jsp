@@ -64,7 +64,7 @@
                                     <div class="user-details">
                                         <div id="more-details">${loginUser.userNickname}</div>
                                         <div id="profile-info">
-                                            <p id="region">봉명동</p><!--지역 확인-->
+                                            <p id="region">봉명동</p><!-- 지역 확인 -->
                                             <p id="userId"> #${loginUser.userId}</p>
                                         </div>
                                         <a href="/user/profile-modify" type="button" class="btn  btn-primary">프로필 수정하기</a>

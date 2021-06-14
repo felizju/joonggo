@@ -70,23 +70,22 @@
                                                 <span id="nicknameChk"></span>
                                                 <input type="text" class="form-control" name="userNickname"
                                                     id="userNickname" required="required" aria-required="true"
-                                                    maxlength="10" placeholder="${loginUser.userNickname}">
+                                                    maxlength="10" placeholder="# ${loginUser.userNickname}">
                                             </div>
                                             <div class="form-group mb-3">
                                                 <label class="floating-label" for="userEmail">이메일</label>
                                                 <span id="emailChk"></span>
                                                 <input type="text" class="form-control" name="userEmail" id="userEmail"
                                                     required="required" aria-required="true"
-                                                    placeholder="${loginUser.userEmail}">
+                                                    placeholder="# ${loginUser.userEmail}">
                                             </div>
-                                            <div class="form-group mb-3">
+                                            <!-- <div class="form-group mb-3">
                                                 <label class="floating-label" for="userId">지역</label>
                                                 <span id="idChk"></span>
                                                 <input type="text" class="form-control" name="userId" id="user_id"
                                                     maxlength="14" required="required" aria-required="true"
-                                                    placeholder="지역 선택">
-                                                <!--지역 설정-->
-                                            </div>
+                                                    placeholder="지역 선택"> 지역 설정
+                                            </div> -->
                                             <div class="form-group mb-4">
                                                 <label class="floating-label" for="userPw">새로운 비밀번호</label>
                                                 <span id="pwChk"></span>
@@ -103,10 +102,11 @@
                                                     aria-required="true" placeholder="비밀번호가 일치해야 합니다.">
                                             </div>
                                         </form>
-                                        <a href="/user/profile?userId=${loginUser.userId}" type="button" class="btn btn-primary btn-block mb-4"
-                                            id="modify-btn">수정하기</a>
-                                        <p class="mb-2"><a href="/user/withdraw?userId=${loginUser.userId}"
-                                                class="f-w-400">탈퇴하기</a>
+                                        <a href="/user/profile?userId=${loginUser.userId}" type="button"
+                                            class="btn btn-primary btn-block mb-4" id="modify-btn">수정하기</a>
+                                        <p class="mb-2">
+                                            <a href="/user/withdraw?userId=${loginUser.userId}" class="f-w-400"
+                                                id="delete-btn">탈퇴하기</a>
                                         </p>
                                     </div>
                                 </div>
@@ -118,9 +118,6 @@
                 <!-- [ Main Content ] end -->
             </div>
         </div>
-    </div>
-    </div>
-    </div>
     </div>
 
 
@@ -202,7 +199,7 @@
                 } else {
                     $('#userNickname').css("background-color", "aqua");
                     $('#nicknameChk').html(
-                    '<b style="font-size:14px;color:green;">[Success : 닉네임]</b>');
+                        '<b style="font-size:14px;color:green;">[Success : 닉네임]</b>');
                     chk3 = true;
                 }
             });
@@ -220,7 +217,7 @@
                 else if (!getMail.test($emailInput.val())) {
                     $emailInput.css("background-color", "pink");
                     $('#emailChk').html(
-                    '<b style="font-size:14px;color:red;">[Danger : 이메일 형식 오류]</b>');
+                        '<b style="font-size:14px;color:red;">[Danger : 이메일 형식 오류]</b>');
                     chk4 = false;
                 } else {
                     //이메일 중복확인 비동기 통신
@@ -232,7 +229,7 @@
                                 $emailInput.css('background', 'pink');
                                 $('#emailChk').html(
                                     '<b style="font-size:14px; color:red;">[Danger : 이메일 중복]</b>'
-                                    );
+                                );
                                 chk4 = false;
                             } else {
                                 $emailInput.css('background', 'aqua');
@@ -247,12 +244,14 @@
 
             //수정하기 버튼 클릭 이벤트
             $('#modify-btn').on('click', e => {
+                e.preventDefault();
                 if (chk1 && chk2 && chk3 && chk4) {
                     $('#modifyForm').submit(); //수동 submit
                 } else {
-                    alert('입력값을 확인하세요!');
+                    alert('입력값을 모두 기재해주세요.');
                 }
             });
+
 
         }); //jQuery End
     </script>

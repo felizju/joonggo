@@ -7,7 +7,7 @@
 
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-        <a href="#!" class="b-brand">
+        <a href="/" class="b-brand">
             <img src="/images/logo.png" alt="로고이미지" class="logo">
             <img src="/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
         </a>
@@ -29,75 +29,6 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li>
-                <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i
-                            class="icon feather icon-bell"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right notification">
-                        <div class="noti-head">
-                            <h6 class="d-inline-block m-b-0">알림</h6>
-                            <div class="float-right">
-                                <a href="#!" class="m-r-10">모두 읽음으로 표시</a>
-                            </div>
-                        </div>
-                        <ul class="noti-body">
-                            <li class="n-title">
-                                <p class="m-b-0">새로운 알림</p>
-                            </li>
-                            <li class="notification">
-                                <div class="media">
-                                    <img class="img-radius" src="/src/main/resources/static/images/user/memoji1.png"
-                                        alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <p><strong>John Doe</strong><span class="n-time text-muted"><i
-                                                    class="icon feather icon-clock m-r-10"></i>5분 전</span></p>
-                                        <p>새로운 글 등록</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="n-title">
-                                <p class="m-b-0">최근 알림</p>
-                            </li>
-                            <li class="notification">
-                                <div class="media">
-                                    <img class="img-radius" src="/src/main/resources/static/images/user/memoji2.png"
-                                        alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <p><strong>둘리</strong><span class="n-time text-muted"><i
-                                                    class="icon feather icon-clock m-r-10"></i>10분 전</span></p>
-                                        <p>새로운 채팅 1건</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="notification">
-                                <div class="media">
-                                    <img class="img-radius" src="/src/main/resources/static/images/user/memoji1.png"
-                                        alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <p><strong>고길동</strong><span class="n-time text-muted"><i
-                                                    class="icon feather icon-clock m-r-10"></i>12분 전</span></p>
-                                        <p>내 글 좋아요</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="notification">
-                                <div class="media">
-                                    <img class="img-radius" src="/src/main/resources/static/images/user/memoji2.png"
-                                        alt="Generic placeholder image">
-                                    <div class="media-body">
-                                        <p><strong>하이</strong><span class="n-time text-muted"><i
-                                                    class="icon feather icon-clock m-r-10"></i>30분 전</span></p>
-                                        <p>새로운 채팅 1건</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="noti-footer">
-                            <a href="#!">더보기</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li>
                 <div class="dropdown drp-user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="feather icon-user"></i>
@@ -105,18 +36,13 @@
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
                             <img src="/images/user/user_basic.png" class="img-radius" alt="User-Profile-Image">
-                            <span>John Doe</span>
-                            <a href="auth-signin.html" class="dud-logout" title="Logout">
-                                <i class="feather icon-log-out"></i>
-                            </a>
+                            <span>${loginUser.userNickname}님 (#${loginUser.userId})</span>
                         </div>
                         <ul class="pro-body">
-                            <li><a href="#" class="dropdown-item"><i class="feather icon-user"></i>
-                                    Profile</a></li>
-                            <li><a href="#" class="dropdown-item"><i class="feather icon-mail"></i>
-                                    My Messages</a></li>
-                            <li><a href="#" class="dropdown-item"><i class="feather icon-lock"></i>
-                                    Lock Screen</a></li>
+                            <li><a href="/user/profile" class="dropdown-item"><i class="feather icon-user"></i>
+                                    프로필보기</a></li>
+                            <li><a href="/chatting" class="dropdown-item"><i class="feather icon-message-circle"></i>
+                                    채팅하기</a></li>
                         </ul>
                     </div>
                 </div>
@@ -124,11 +50,11 @@
 
             <li>
                 <c:if test="${loginUser == null}">
-                    <a class="login" href="/user/sign-in"><i class="icon feather icon-log-in"></i>  로그인</a>
+                    <a class="login" href="/user/sign-in"><i class="icon feather icon-log-in"></i> 로그인</a>
                 </c:if>
 
                 <c:if test="${loginUser != null}">
-                    <a class="login" href="/user/logout"><i class="icon feather icon-log-in"></i>  로그아웃</a>
+                    <a class="login" href="/user/logout"><i class="icon feather icon-log-in"></i> 로그아웃</a>
                 </c:if>
             </li>
 
