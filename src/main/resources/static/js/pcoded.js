@@ -815,6 +815,6 @@ $('#more-details').on('click', function() {
     $('#nav-user-link').slideToggle();
 });
 // more-details end
-$("body").append('<div class="fixed-button active"><a href="/sellboard-content" target="_blank" class="btn btn-md btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> 글 작성</a> </div>');
+// $("body").append('<div class="fixed-button active"><a href="/sellboard-write" class="btn btn-md btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> 글 작성</a> </div>');
 // var $window=$(window),nav=$(".fixed-button");
 // $window.scroll(function(){$window.scrollTop()>=200?nav.addClass("active"):nav.removeClass("active")});

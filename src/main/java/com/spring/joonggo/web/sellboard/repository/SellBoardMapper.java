@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.sellboard.repository;
 
 import com.spring.joonggo.web.common.paging.Criteria;
+import com.spring.joonggo.web.sellboard.domain.DummyBoard;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
 
 import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
@@ -29,7 +30,7 @@ public interface SellBoardMapper {
     void deleteProduct(int productNum);
 
     // 게시물 수정
-    void modifyProduct(SellBoard sellBoard);
+    void modifyProduct(int productNum, DummyBoard dummyBoard);
 
     // 게시물 상세보기
     SellBoard intoContent(int productNum);

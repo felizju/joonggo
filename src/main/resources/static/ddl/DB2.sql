@@ -34,12 +34,12 @@ CREATE TABLE goods (
     goods_no NUMBER(5) PRIMARY KEY, -- 상품번호
     sell_user_id VARCHAR2(20) NOT NULL, -- 판매자 아이디
     sell_user_nickname VARCHAR2(20) NOT NULL, -- 판매자 닉네임
-    buy_user_id VARCHAR2(20) NOT NULL, -- 구매자 아이디
-    buy_user_nickname VARCHAR2(20) NOT NULL, -- 구매자 닉네임
+    buy_user_id VARCHAR2(20), -- 구매자 아이디
+    buy_user_nickname VARCHAR2(20), -- 구매자 닉네임
     goods_category VARCHAR2(10) NOT NULL, -- 상품 카테고리
-    sales_area_number NUMBER(5) NOT NULL, -- 판매지역 번호
+    sales_area VARCHAR2(100), -- 판매지역
     goods_title VARCHAR2(100) NOT NULL, -- 상품 제목
-    goods_status VARCHAR2(20) NOT NULL, -- 상품 판매 상태
+    goods_status VARCHAR2(20) DEFAULT 'SALE' , -- 상품 판매 상태
     goods_content VARCHAR2(2000) NOT NULL, -- 상품 내용
     goods_price NUMBER(10) NOT NULL, -- 판매금액
     goods_view_cnt NUMBER(5), -- 조회수
@@ -54,7 +54,7 @@ CREATE TABLE wishlist (
     user_id VARCHAR2(20) NOT NULL, -- 아이디
     user_nickname VARCHAR2(20) NOT NULL, -- 닉네임
     goods_no NUMBER(5) NOT NULL, -- 상품번호
-    goods_tile VARCHAR2(100)
+    goods_tile VARCHAR2(100),
     wishlist_created_date DATE DEFAULT SYSDATE
 );
 
@@ -178,3 +178,18 @@ DROP TABLE users;
 
 COMMIT;
 
+SELECT
+    *
+FROM users;
+
+SELECT
+    *
+FROM goods;
+
+SELECT
+    *
+FROM files;
+
+SELECT
+    *
+FROM users;
