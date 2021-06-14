@@ -246,8 +246,8 @@
 
             <div class="row">
                 <!-- [ form-element ] start -->
-                <div class="col-sm-12">
-                    <div class="card">
+                <div class="card">
+                    <div class="col-sm-12">
                         <div class="card-header">
                             <h5>프로필 수정</h5>
                         </div>
@@ -261,72 +261,62 @@
                                         <div id="profile-info">
                                             <p id="userId"> #aaa123</p>
                                         </div><br>
-                                        <div class="card">
-                                            <div class="row align-items-center text-center">
-                                                <div class="col-md-12">
-                                                    <div class="card-body">
-                                                        <form action="/user/sign-up" name="signup" id="signUpForm"
-                                                            method="post">
-                                                            <input type="hidden" name="auth" value="USER">
-                                                            <div class="form-group mb-3">
-                                                                <label class="floating-label"
-                                                                    for="userNickname">닉네임</label>
-                                                                <span id="nicknameChk"></span>
-                                                                <input type="text" class="form-control"
-                                                                    name="userNickname" id="userNickname"
-                                                                    required="required" aria-required="true"
-                                                                    maxlength="10" placeholder="한글로 최대 10자">
-                                                            </div>
-                                                            <div class="form-group mb-3">
-                                                                <label class="floating-label"
-                                                                    for="userEmail">이메일</label>
-                                                                <span id="emailChk"></span>
-                                                                <input type="text" class="form-control" name="userEmail"
-                                                                    id="userEmail" required="required"
-                                                                    aria-required="true"
-                                                                    placeholder="ex) abc@gmail.com">
-                                                            </div>
-                                                            <div class="form-group mb-3">
-                                                                <label class="floating-label" for="userId">지역</label>
-                                                                <span id="idChk"></span>
-                                                                <input type="text" class="form-control" name="userId"
-                                                                    id="user_id" maxlength="14" required="required"
-                                                                    aria-required="true" placeholder="지역 선택">
-                                                            </div>
-                                                            <div class="form-group mb-4">
-                                                                <label class="floating-label" for="userPw">비밀번호</label>
-                                                                <span id="pwChk"></span>
-                                                                <input type="password" class="form-control"
-                                                                    name="userPw" id="userPw" maxlength="20"
-                                                                    required="required" aria-required="true"
-                                                                    placeholder="영문과 특수문자를 포함한 최소 8자">
-                                                            </div>
-                                                            <div class="form-group mb-4">
-                                                                <label class="floating-label" for="userPwChk">비밀번호
-                                                                    확인</label>
-                                                                <span id="pwChk2"></span>
-                                                                <input type="password" class="form-control"
-                                                                    name="userPwChk" id="userPwChk" maxlength="20"
-                                                                    required="required" aria-required="true"
-                                                                    placeholder="비밀번호가 일치해야 합니다.">
-                                                            </div>
-                                                        </form>
-                                                        <input type="button" value="수정하기"
-                                                            class="btn btn-primary btn-block mb-4" id="signup-btn">
-                                                        <p class="mb-2"><a href="/user/sign-in"
-                                                                class="f-w-400">탈퇴하기</a>
-                                                        </p>
-                                                    </div>
+                                        <div class="card-body">
+                                            <form action="/user/sign-up" name="signup" id="signUpForm" method="post">
+                                                <input type="hidden" name="auth" value="USER">
+                                                <div class="form-group mb-3">
+                                                    <label class="floating-label" for="userNickname">닉네임</label>
+                                                    <span id="nicknameChk"></span>
+                                                    <input type="text" class="form-control" name="userNickname"
+                                                        id="userNickname" required="required" aria-required="true"
+                                                        maxlength="10" placeholder="한글로 최대 10자">
                                                 </div>
-                                            </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="floating-label" for="userEmail">이메일</label>
+                                                    <span id="emailChk"></span>
+                                                    <input type="text" class="form-control" name="userEmail"
+                                                        id="userEmail" required="required" aria-required="true"
+                                                        placeholder="ex) abc@gmail.com">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="floating-label" for="userId">지역</label>
+                                                    <span id="idChk"></span>
+                                                    <input type="text" class="form-control" name="userId" id="user_id"
+                                                        maxlength="14" required="required" aria-required="true"
+                                                        placeholder="지역 선택">
+                                                </div>
+                                                <div class="form-group mb-4">
+                                                    <label class="floating-label" for="userPw">비밀번호</label>
+                                                    <span id="pwChk"></span>
+                                                    <input type="password" class="form-control" name="userPw"
+                                                        id="userPw" maxlength="20" required="required"
+                                                        aria-required="true" placeholder="영문과 특수문자를 포함한 최소 8자">
+                                                </div>
+                                                <div class="form-group mb-4">
+                                                    <label class="floating-label" for="userPwChk">비밀번호
+                                                        확인</label>
+                                                    <span id="pwChk2"></span>
+                                                    <input type="password" class="form-control" name="userPwChk"
+                                                        id="userPwChk" maxlength="20" required="required"
+                                                        aria-required="true" placeholder="비밀번호가 일치해야 합니다.">
+                                                </div>
+                                            </form>
+                                            <input type="button" value="수정하기" class="btn btn-primary btn-block mb-4"
+                                                id="signup-btn">
+                                            <p class="mb-2"><a href="/user/withdraw?userId=${user.userId}"
+                                                    class="f-w-400">탈퇴하기</a>
+                                            </p>
                                         </div>
                                     </div>
-                                    <!-- [ form-element ] end -->
                                 </div>
                             </div>
-                            <!-- [ Main Content ] end -->
                         </div>
+                        <!-- [ form-element ] end -->
                     </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
 
 </body>
 

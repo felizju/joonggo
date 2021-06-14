@@ -7,8 +7,8 @@
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
         <a href="#!" class="b-brand">
-            <img src="/src/main/resources/static/images/logo.png" alt="로고이미지" class="logo">
-            <img src="/src/main/resources/static/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
+            <img src="/images/logo.png" alt="로고이미지" class="logo">
+            <img src="/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
         </a>
         <a href="#!" class="mob-toggler">
             <i class="feather icon-more-vertical"></i>

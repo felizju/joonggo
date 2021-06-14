@@ -62,7 +62,8 @@ public class UserService {
     }
 
     //회원 정보 수정
-    public void modifyUserInfo(ModifyUser modifyUser) {
+    public void modifyUserInfo(String userId, ModifyUser modifyUser) {
+        modifyUser.setUserId(userId);
         userMapper.modifyUserInfo(modifyUser);
     }
 
@@ -117,6 +118,15 @@ public class UserService {
         userMapper.saveKeepLogin(logoutMap);
     }
 
+    //비밀번호 확인 기능
+    public boolean pwCheck(User loginUser) {
+        User user = userMapper.getUser(loginUser.getUserId());
+        if (user.getUserPw().equals(loginUser.getUserPw())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 

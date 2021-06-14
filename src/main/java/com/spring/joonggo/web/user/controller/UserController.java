@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.user.controller;
 
 import com.spring.joonggo.web.user.domain.LoginInfo;
+import com.spring.joonggo.web.user.domain.ModifyUser;
 import com.spring.joonggo.web.user.domain.User;
 import com.spring.joonggo.web.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -55,6 +56,7 @@ public class UserController {
         return "user/logIn";
     }
 
+
     //로그인 검증 요청처리
     @PostMapping("/loginCheck")
     public String loginCheck(LoginInfo inputUser, Model model, HttpSession httpSession, HttpServletResponse response) {
@@ -78,7 +80,7 @@ public class UserController {
 
 
     //로그아웃 요청처리
-    @GetMapping("/user/logout")
+    @GetMapping("/logout")
     public String logOut(HttpSession session, HttpServletResponse response, HttpServletRequest request) {
         log.info("/user/logOut GET 요청! - ");
         User loginUser = (User) session.getAttribute("loginUser");
@@ -98,13 +100,48 @@ public class UserController {
         return "redirect:/user/login";
     }
 
+/*
+    //회원탈퇴 요청처리
+    @GetMapping("/withdraw")
+    public String withdraw(HttpSession session) {
+        log.info("/user/withdraw GET 요청! - ");
+        User loginUser = (User) session.getAttribute("loginUser");
+        userService.deleteAccount(loginUser.getUserId());
+//            return "redirect:/home-copy";
+        return "redirect:/user/login";
+    }
+*/
 
 
+    //프로필 화면 요청
+    @GetMapping("/profile")
+    public String profile(HttpSession session, Model model) {
+        log.info("/user/profile GET 요청! - ");
+//        User user = userService.getUser(userId);
+        User loginUser = (User) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
+        return "user/profile";
+    }
 
 
+    //프로필 수정 화면 요청
+    @GetMapping("/profile-modify")
+    public String profileModify(HttpSession session, Model model) {
+        log.info("/user/profile-modify GET 요청! - ");
+        User loginUser = (User) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
+        return "user/profile-modify";
+    }
 
 
-
+    //프로필 수정 처리 요청
+    @PostMapping("/profile-modify")
+    public String profileModify(HttpSession session, ModifyUser modifyUser) {
+        log.info("/user/profile-modify POST 요청! - ");
+        User loginUser = (User) session.getAttribute("loginUser");
+        userService.modifyUserInfo(loginUser.getUserId(), modifyUser);
+        return "redirect:/user/profile";
+    }
 
 
 }

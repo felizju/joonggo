@@ -8,7 +8,7 @@
         <div class="navbar-content scroll-div">
             <div class="">
                 <div class="main-menu-header">
-                    <img class="img-radius" src="/src/main/resources/static/images/user/user_basic.png"
+                    <img class="img-radius" src="/images/user/user_basic.png"
                         alt="User-Profile-Image">
                     <div class="user-details">
                         <div id="more-details">둘리</div>
