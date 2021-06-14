@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -14,15 +15,7 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="Phoenixcoded" />
 
-	<!-- Favicon icon -->
-	<link rel="icon" href="/images/market_favicon.ico" type="image/x-icon">
-
-	<!-- vendor css -->
-	<link rel="stylesheet" href="/css/style.css">
-
 	<%@ include file="../include/static-head.jsp" %>
-	
-	
 </head>
 
 <!-- [ signup ] start -->
@@ -155,82 +148,82 @@
 				chk2 = true;
 			}
 		});
-		
-        //패스워드 확인 입력값 검증
+
+		//패스워드 확인 입력값 검증
 		$('#userPwChk').on('keyup', function () {
-                //비밀번호 확인란 공백 확인
-                if ($("#userPwChk").val().trim() === "") {
-                    $('#userPwChk').css("background-color", "pink");
-                    $('#pwChk2').html('<b style="font-size:14px;color:red;">[패스워드확인은 필수정보!]</b>');
-                    chk3 = false;
-                }
-                //비밀번호 확인란 유효성검사
-                else if ($("#userPw").val() !== $("#userPwChk").val()) {
-                    $('#userPwChk').css("background-color", "pink");
-                    $('#pwChk2').html('<b style="font-size:14px;color:red;">[특수문자 포함 8자이상]</b>');
-                    chk3 = false;
-                } else {
-                    $('#userPwChk').css("background-color", "aqua");
-                    $('#pwChk2').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
-                    chk3 = true;
-                }
-            });
+			//비밀번호 확인란 공백 확인
+			if ($("#userPwChk").val().trim() === "") {
+				$('#userPwChk').css("background-color", "pink");
+				$('#pwChk2').html('<b style="font-size:14px;color:red;">[패스워드확인은 필수정보!]</b>');
+				chk3 = false;
+			}
+			//비밀번호 확인란 유효성검사
+			else if ($("#userPw").val() !== $("#userPwChk").val()) {
+				$('#userPwChk').css("background-color", "pink");
+				$('#pwChk2').html('<b style="font-size:14px;color:red;">[특수문자 포함 8자이상]</b>');
+				chk3 = false;
+			} else {
+				$('#userPwChk').css("background-color", "aqua");
+				$('#pwChk2').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+				chk3 = true;
+			}
+		});
 
-            //닉네임 입력값 검증
-            $('#userNickname').on('keyup', function () {
-                //이름값 공백 확인
-                if ($("#userNickname").val().trim() === "") {
-                    $('#userNickname').css("background-color", "pink");
-                    $('#nicknameChk').html('<b style="font-size:14px;color:red;">[이름은 필수정보!]</b>');
-                    chk4 = false;
-                }
-                //이름값 유효성검사
-                else if (!getNickname.test($("#userNickname").val())) {
-                    $('#userNickname').css("background-color", "pink");
-                    $('#nicknameChk').html('<b style="font-size:14px;color:red;">[한글로 최대 10자]]</b>');
-                    chk4 = false;
-                } else {
-                    $('#userNickname').css("background-color", "aqua");
-                    $('#nicknameChk').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
-                    chk4 = true;
-                }
-            });
+		//닉네임 입력값 검증
+		$('#userNickname').on('keyup', function () {
+			//이름값 공백 확인
+			if ($("#userNickname").val().trim() === "") {
+				$('#userNickname').css("background-color", "pink");
+				$('#nicknameChk').html('<b style="font-size:14px;color:red;">[이름은 필수정보!]</b>');
+				chk4 = false;
+			}
+			//이름값 유효성검사
+			else if (!getNickname.test($("#userNickname").val())) {
+				$('#userNickname').css("background-color", "pink");
+				$('#nicknameChk').html('<b style="font-size:14px;color:red;">[한글로 최대 10자]]</b>');
+				chk4 = false;
+			} else {
+				$('#userNickname').css("background-color", "aqua");
+				$('#nicknameChk').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+				chk4 = true;
+			}
+		});
 
-            //이메일 입력값 검증
-            const $emailInput = $('#userEmail');
-            $emailInput.on('keyup', function () {
-                //이메일값 공백 확인
-                if ($emailInput.val().trim() === "") {
-                    $emailInput.css("background-color", "pink");
-                    $('#emailChk').html('<b style="font-size:14px;color:red;">[이메일은 필수정보!]</b>');
-                    chk5 = false;
-                }
-                //이메일값 유효성검사
-                else if (!getMail.test($emailInput.val())) {
-                    $emailInput.css("background-color", "pink");
-                    $('#emailChk').html('<b style="font-size:14px;color:red;">[이메일 형식 확인해주세요.]</b>');
-                    chk5 = false;
-                } else {
-                    //이메일 중복확인 비동기 통신
-                    fetch('/check?type=email&keyword=' + $emailInput.val())
-                        .then(res => res.text())
-                        .then(flag => {
-                            //console.log(flag);
-                            if (flag === 'true') {
-                                $emailInput.css('background', 'pink');
-                                $('#emailChk').html(
-                                    '<b style="font-size:14px; color:red;">[이메일이 중복되었습니다!]</b>');
-                                chk5 = false;
-                            } else {
-                                $emailInput.css('background', 'aqua');
-                                $('#emailChk').html(
-                                    '<b style="font-size:14px; color:green;">[사용가능한 이메일입니다.]</b>'
-                                );
-                                chk5 = true;
-                            }
-                        });
-                }
-            });
+		//이메일 입력값 검증
+		const $emailInput = $('#userEmail');
+		$emailInput.on('keyup', function () {
+			//이메일값 공백 확인
+			if ($emailInput.val().trim() === "") {
+				$emailInput.css("background-color", "pink");
+				$('#emailChk').html('<b style="font-size:14px;color:red;">[이메일은 필수정보!]</b>');
+				chk5 = false;
+			}
+			//이메일값 유효성검사
+			else if (!getMail.test($emailInput.val())) {
+				$emailInput.css("background-color", "pink");
+				$('#emailChk').html('<b style="font-size:14px;color:red;">[이메일 형식 확인해주세요.]</b>');
+				chk5 = false;
+			} else {
+				//이메일 중복확인 비동기 통신
+				fetch('/check?type=email&keyword=' + $emailInput.val())
+					.then(res => res.text())
+					.then(flag => {
+						//console.log(flag);
+						if (flag === 'true') {
+							$emailInput.css('background', 'pink');
+							$('#emailChk').html(
+								'<b style="font-size:14px; color:red;">[이메일이 중복되었습니다!]</b>');
+							chk5 = false;
+						} else {
+							$emailInput.css('background', 'aqua');
+							$('#emailChk').html(
+								'<b style="font-size:14px; color:green;">[사용가능한 이메일입니다.]</b>'
+							);
+							chk5 = true;
+						}
+					});
+			}
+		});
 
 		//회원가입 버튼 클릭 이벤트
 		$('#signup-btn').on('click', e => {
@@ -243,9 +236,6 @@
 
 	}); //jQuery End
 </script>
-
-
-
 
 
 </body>

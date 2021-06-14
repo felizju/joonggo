@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.chatting.controller;
 
 import com.spring.joonggo.web.chatting.domain.ChatMessage;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -10,6 +11,7 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@Log4j2
 public class ChatController {
 
     /*
@@ -20,6 +22,7 @@ public class ChatController {
 
     @GetMapping("/chatting")
     public String chatting() {
+        log.info("GET 요청");
         return "chatting/chat";
     }
 

@@ -14,15 +14,23 @@
 <!-- main.css -->
 <link href="/css/main.css" rel="stylesheet">
 
+<!-- Favicon icon -->
+<link rel="icon" href="/images/market_favicon.ico" type="image/x-icon">
+
+<!-- vendor css -->
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- linear icon css -->
+<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
 <!-- Required Js -->
-<script src="assets/js/vendor-all.min.js"></script>
-<script src="assets/js/plugins/bootstrap.min.js"></script>
-<script src="assets/js/ripple.js"></script>
-<script src="assets/js/pcoded.min.js"></script>
+<script src="/js/vendor-all.min.js" defer></script>
+<script src="/js/plugins/bootstrap.min.js" defer></script>
+<script src="/js/ripple.js" defer></script>
+<script src="/js/pcoded.min.js" defer></script>
 
 <!-- Apex Chart -->
-<script src="assets/js/plugins/apexcharts.min.js"></script>
-
+<!-- <script src="/js/plugins/apexcharts.min.js"></script> -->
 
 <!-- custom-chart js -->
-<script src="assets/js/pages/dashboard-main.js"></script>
+<!-- <script src="/js/pages/dashboard-main.js"></script> -->

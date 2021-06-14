@@ -1,7 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
+
 
 <head>
     <title>JOONGGO MARKET</title>
@@ -15,19 +14,20 @@
     <meta name="author" content="Phoenixcoded" />
 
     <!-- Favicon icon -->
-    <link rel="icon" href="/images/market_favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/src/main/resources/static/images/market_favicon.ico" type="image/x-icon">
 
     <!-- vendor css -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
 
     <!-- linear icon css -->
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
     <!-- Required Js -->
-    <script src="/js/vendor-all.min.js" defer></script>
-    <script src="/js/plugins/bootstrap.min.js" defer></script>
-    <script src="/js/ripple.js" defer></script>
-    <script src="/js/pcoded.min.js" defer></script>
+    <script src="/src/main/resources/static/js/vendor-all.min.js" defer></script>
+    <script src="/src/main/resources/static/js/plugins/bootstrap.min.js" defer></script>
+    <script src="/src/main/resources/static/js/ripple.js" defer></script>
+    <script src="/src/main/resources/static/js/pcoded.min.js" defer></script>
+
 </head>
 
 <body class="loader-fill">
@@ -46,7 +46,7 @@
             <div class="navbar-content scroll-div">
                 <div class="">
                     <div class="main-menu-header">
-                        <img class="img-radius" src="/images/user/user_basic.png"
+                        <img class="img-radius" src="/src/main/resources/static/images/user/user_basic.png"
                             alt="User-Profile-Image">
                         <div class="user-details">
                             <div id="more-details">둘리</div>
@@ -102,8 +102,8 @@
         <div class="m-header">
             <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
             <a href="#!" class="b-brand">
-                <img src="/images/logo.png" alt="로고이미지" class="logo">
-                <img src="/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
+                <img src="/src/main/resources/static/images/logo.png" alt="로고이미지" class="logo">
+                <img src="/src/main/resources/static/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
             </a>
             <a href="#!" class="mob-toggler">
                 <i class="feather icon-more-vertical"></i>
@@ -139,7 +139,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/images/user/memoji1.png"
+                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji1.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>John Doe</strong><span class="n-time text-muted"><i
@@ -153,7 +153,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/images/user/memoji2.png"
+                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji2.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>둘리</strong><span class="n-time text-muted"><i
@@ -164,7 +164,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/images/user/memoji1.png"
+                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji1.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>고길동</strong><span class="n-time text-muted"><i
@@ -175,7 +175,7 @@
                                 </li>
                                 <li class="notification">
                                     <div class="media">
-                                        <img class="img-radius" src="/images/user/memoji2.png"
+                                        <img class="img-radius" src="/src/main/resources/static/images/user/memoji2.png"
                                             alt="Generic placeholder image">
                                         <div class="media-body">
                                             <p><strong>하이</strong><span class="n-time text-muted"><i
@@ -198,7 +198,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-notification">
                             <div class="pro-head">
-                                <img src="/images/user/user_basic.png" class="img-radius"
+                                <img src="/src/main/resources/static/images/user/user_basic.png" class="img-radius"
                                     alt="User-Profile-Image">
                                 <span>John Doe</span>
                                 <a href="auth-signin.html" class="dud-logout" title="Logout">
@@ -228,7 +228,7 @@
     <!-- [ Main Content ] start -->
     <div class="pcoded-main-container">
         <div class="pcoded-content">
-            <!-- [ breadcrumb ] start -->
+            <!-- [ sitename ] start -->
             <div class="page-header">
                 <div class="page-block">
                     <div class="row align-items-center">
@@ -240,9 +240,7 @@
                     </div>
                 </div>
             </div>
-            <!-- [ breadcrumb ] end -->
-
-
+            <!-- [ sitename ] end -->
 
             <!-- [ Main Content ] start -->
             <div class="row">
@@ -250,72 +248,90 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>동네생활 게시판</h5>
+                            <h5>중고거래 게시판</h5>
                         </div>
                         <div class="card-body">
-                            <h5>글 작성</h5>
+                            <h5>글 정보</h5>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
                                     <form>
-                                        <div class="form-group">
+                                        <div class="form-group" id="boardNo" value="${nBoard.boardNo}">
                                             <label for="exampleInputNo">글번호</label>
-                                            <p class="form-control">글번호 자동 부여</p>
+                                            <p class="form-control">1</p>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputUserId">아이디</label>
-                                            <p class="form-control">아이디 자동 부여</p>
+                                        <div class="form-group" id="views" value="${nBoard.views}">
+                                            <label for="exampleInputUserId">추천수</label>
+                                            <p class="form-control">2</p>
+                                        </div>
+                                        <div class="form-group" id="postDate" value="${nBoard.postDate}">
+                                            <label>작성시간</label>
+                                            <p class="form-control">2021/06/13</p>
+                                        </div>
+                                        <div class="form-group" id="category" value="${nBoard.category}">
+                                            <label for="exampleFormControlSelect1">카테고리</label>
+                                            <p class="form-control">의류</p>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="col-md-6">
                                     <form>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">카테고리</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>NEIGHBOR</option>
-                                                <option>ISSUE</option>
-                                                <option>DAILYLIFE</option>
-                                                <option>NOTICE</option>
-                                                <option>ETC</option>
-                                            </select>
+                                        <div class="form-group" id="userNickName" value="${nBoard.userNickName}">
+                                            <label for="exampleInputNo">닉네임</label>
+                                            <p class="form-control">도우너</p>
+                                        </div>
+                                        <div class="form-group" id="recommend" value="${nBoard.recommend}">
+                                            <label for="exampleInputUserId">채팅수</label>
+                                            <p class="form-control">3</p>
+                                        </div>
+                                        <div class="form-group" id="recommend" value="${nBoard.recommend}">
+                                            <label for="exampleInputUserId">판매상태</label>
+                                            <p class="form-control">예약 중</p>
                                         </div>
                                         <div class="form-group">
-                                            <label>닉네임</label>
-                                            <p class="form-control">닉네임 자동 부여</p>
-
+                                            <label for="inputTitle">지역</label>
+                                            <p class="form-control">봉명동</p>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-
-                            <h5 class="mt-5">글 상세내용 작성</h5>
+                            <h5 class="mt-5">글 내용</h5>
                             <hr>
                             <form>
-                                <div class="form-group">
+                                <div class="form-group" id="title" value="${nBoard.title}">
                                     <label for="inputTitle">제목</label>
-                                    <textarea class="form-control" id="inputTitle"></textarea>
+                                    <p class="form-control">제목제목제목</p>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="inputContent">내용</label>
-                                    <textarea class="form-control" id="inputContent"></textarea>
+                                    <label for="inputTitle">가격</label>
+                                    <p class="form-control">250,000</p>
                                 </div>
+                                <div class="form-group" id="content" value="${nBoard.content}">
+                                    <label for="inputContent">내용</label>
+                                    <p class="form-control">내용내용내용</p>
+                                </div>
+                                <!-- 첨부파일 영역 -->
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">파일 찾아보기</label>
+                                    <label class="custom-file-label" for="validatedCustomFile">파일 업로드
+                                        비활성화하기!!!!!!</label>
                                 </div><br><br>
-                                <button type="submit" class="btn  btn-primary">등록하기</button>
-                            </form>
+                                <button type="button" class="btn  btn-primary">수정하기</button>
+                                <button type="button" class="btn  btn-success">삭제하기</button>
+                                <button type="button" class="btn  btn-secondary">목록으로 돌아가기</button>
+                            </form><br>
 
                         </div>
                     </div>
                 </div>
                 <!-- [ form-element ] end -->
-            </div>
-            <!-- [ Main Content ] end -->
 
+            </div>
         </div>
-        </section>
+        <!-- [ Main Content ] end -->
+    </div>
+    </div>
 
 </body>
 

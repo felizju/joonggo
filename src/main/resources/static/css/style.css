@@ -21232,6 +21232,23 @@ pre[class*=language-]:before {
     display: inline-block;
     margin-left: 10px;
 }
+.profile-list {
+    display: inline-block;
+    margin: auto 100px;
+}
+.profile-img {
+    width: 200px;
+    height: 200px;
+}
+
+.profile-name {
+    text-align: center;
+    font-size: 25px;  
+}
+#region, #userId {
+    display: inline;
+    font-size: 15px;
+}
 
 .pcoded-navbar .main-menu-header {
     position: relative;
