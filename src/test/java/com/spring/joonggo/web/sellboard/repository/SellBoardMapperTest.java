@@ -56,20 +56,24 @@ class SellBoardMapperTest {
             , String sellerNick
             , SellCategory sellCategory*/
 
-        SellBoard sellBoard = SellBoard.builder()
-                .sellCategory(SellCategory.LIVING)
-                .sellArea("서울특별시")
-                .sellPrice(150000)
-                .sellerId("xodnjs")
-                .sellerNick("야옹이")
-                .productName("침대 매트리스 팝니다.")
-                .productContent("침대 매트리스 팝니다. 아직 쓸만합니다. 생활 얼룩은 있음.")
-                .stateFlag(SellStateFlag.SALE)
-                .build();
+        for (int i = 0; i <= 150; i++) {
+            SellBoard sellBoard = SellBoard.builder()
+                    .sellCategory(SellCategory.LIVING)
+                    .sellArea("서울특별시")
+                    .sellPrice(150000)
+                    .sellerId("xodnjs")
+                    .sellerNick("야옹이")
+                    .productName("침대 매트리스 팝니다.")
+                    .productContent("침대 매트리스 팝니다. 아직 쓸만합니다. 생활 얼룩은 있음.")
+                    .build();
+            sellBoardMapper.addProduct(sellBoard);
+        }
+
+
 
 //        System.out.println(sellBoard);
 
-        sellBoardMapper.addProduct(sellBoard);
+
 
     }
 
@@ -88,7 +92,7 @@ class SellBoardMapperTest {
         sellBoard.setProductName("페롸리~ 고급진 자전차~~");
         sellBoard.setSellArea("부산광역시 해운대~~ 변겨 2");
         sellBoard.setProductNum(4);
-        sellBoardMapper.modifyProduct(sellBoard);
+//        sellBoardMapper.modifyProduct(sellBoard);
 
     }
 

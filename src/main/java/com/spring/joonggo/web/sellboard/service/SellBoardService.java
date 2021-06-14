@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.sellboard.service;
 
 import com.spring.joonggo.web.common.paging.Criteria;
+import com.spring.joonggo.web.sellboard.domain.DummyBoard;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
 
 import com.spring.joonggo.web.sellboard.domain.SellStateFlag;
@@ -35,8 +36,9 @@ public class SellBoardService {
     }
 
     // 게시물 수정
-    public void modifyProduct(SellBoard sellBoard) {
-        sellBoardMapper.modifyProduct(sellBoard);
+    public void modifyProduct(int productNum, DummyBoard dummyBoard) {
+        dummyBoard.setProductNum(productNum);
+        sellBoardMapper.modifyProduct(productNum, dummyBoard);
     }
 
     // 게시물 상세보기

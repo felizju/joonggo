@@ -2,14 +2,16 @@ package com.spring.joonggo.web.sellboard.controller;
 
 import com.spring.joonggo.web.common.paging.Criteria;
 import com.spring.joonggo.web.common.paging.PageMaker;
+import com.spring.joonggo.web.nboard.domain.DummyNBoard;
+import com.spring.joonggo.web.nboard.domain.NBoard;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
 import com.spring.joonggo.web.sellboard.service.SellBoardService;
+import com.spring.joonggo.web.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -49,7 +51,34 @@ public class SellController {
         return "redirect:/";
     }
 
+    @GetMapping("/content")
+    public String detailContent(int productNum
+            , @ModelAttribute("cri") Criteria criteria
+            , Model model
+            , HttpSession session) {
+        SellBoard sellBoard = sellBoardService.intoContent(productNum);
+//        board =  boardService.viewCount(board);
+//        model.addAttribute("cri", criteria);
+        model.addAttribute("sellBoard", sellBoard);
+        return "/sellboard/sellboard-content";
+    }
 
+    @GetMapping("/delete")
+    public String deleteList(int productNum) {
+        sellBoardService.deleteProduct(productNum);
+        return "redirect:/";
+    }
+
+    @GetMapping("/modify")
+    public String modify(int productNum
+                    , Model model
+                    , HttpSession session) {
+        SellBoard sellBoard = sellBoardService.intoContent(productNum);
+        model.addAttribute("sellBoard", sellBoard);
+        User loginUser = (User) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
+        return "/modify";
+    }
 
 
 }

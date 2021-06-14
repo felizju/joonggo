@@ -6,6 +6,12 @@
 
 <head>
     <title>JOONGGO MARKET</title>
+    <style>
+        .pagination {
+            justify-content: center;
+            font-size: 15px;
+        }
+    </style>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -97,10 +103,11 @@
 
                                         <c:forEach var="sellBoard" items="${sellList}">
                                             <tr>
+                                                <!-- <script>console.log(sellBoard)</script> -->
                                                 <td>${sellBoard.productNum}</td>
                                                 <td>이미지 경로</td>
                                                 <td>
-                                                    <a href="#">
+                                                    <a href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
                                                         ${sellBoard.productName}</a>
                                                 </td>
                                                 <td>${sellBoard.sellPrice}</td>
@@ -116,47 +123,52 @@
                                             </tr>
                                         </c:forEach>
 
-
-
-                                        <!-- <tr>
-                                            <td>1</td>
-                                            <td>
-                                                <div class="d-inline-block product">
-                                                    <img src="/src/main/resources/static/images/product/apple.jpg"
-                                                        alt="user image"
-                                                        class="img-radius wid-80 hei-70 align-top m-r-15">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <h6>애플워치 판매합니다.</h6>
-                                                </div>
-                                            </td>
-                                            <td>100,000</td>
-                                            <td>
-                                                <div class="d-inline-block align-middle">
-                                                    도우너
-                                                </div>
-                                            </td>
-                                            <td>2021/06/10</td>
-                                            <td>봉명동</td>
-                                            <td>
-                                                <span class="lnr lnr-heart"> 1</span>
-                                            </td>
-                                            <td>
-                                                <span class="lnr lnr-bubble"> 2</span>
-                                            </td>
-                                        </tr> -->
-
                                     </tbody>
                                 </table>
+                                
+                                <!-- 페이지 영역 -->
+                                <ul class="pagination">
+
+                                    <c:if test="${pageMaker.prev}">
+                                        
+                                        <li class="page-item">
+                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.beginPage-1)}" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+
+                                    <!-- li*5>a{[$]} -->
+                                    <c:forEach var="i" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}"
+                                        step="1">
+                                
+                                        <li class="page-item"><a class="page-link" href="/${pageMaker.makeParam(i)}">${i}</a></li>
+                                        <!-- makeParam은 메서드이기 때문에 ()를 붙여서 call 해줌 -->
+                                    </c:forEach>
+
+                                    <c:if test="${pageMaker.next}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.endPage+1)}" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </c:if>
+                                </ul>
+                                <!-- 페이지 영역 종료 -->
+
+                                <div class="fixed-button active">
+                                    <a href="/sellboard-write" class="btn btn-md btn-primary">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i> 글 작성</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- [ Main Content ] end -->
+
         </div>
     </div>
 

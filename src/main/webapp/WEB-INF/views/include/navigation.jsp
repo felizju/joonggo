@@ -21,20 +21,20 @@
                     <label>중고 거래</label>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link "><span class="pcoded-micon">
+                    <a href="/" class="nav-link "><span class="pcoded-micon">
                             <i class="feather icon-home"></i></span><span class="pcoded-mtext">홈</span></a>
                 </li>
                 <li class="nav-item pcoded-menu-caption">
                     <label>채팅</label>
                 </li>
                 <li class="nav-item">
-                    <a href="form_elements.html" class="nav-link "><span class="pcoded-micon">
+                    <a href="/chatting" class="nav-link "><span class="pcoded-micon">
                             <i class="feather icon-message-circle"></i></span><span class="pcoded-mtext">채팅하기</span></a>
                 </li>
                 <li class="nav-item pcoded-menu-caption">
                     <label>동네 생활</label>
                 </li>
-                <li class="nav-item"><a href="sample-page.html" class="nav-link "><span class="pcoded-micon">
+                <li class="nav-item"><a href="/nboard/list" class="nav-link "><span class="pcoded-micon">
                             <i class="feather icon-layout"></i></span><span class="pcoded-mtext">동네생활
                             게시판</span></a></li>
 
@@ -42,7 +42,7 @@
                     <label>나의 당근</label>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
-                    <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon">
+                    <a href="/user/profile" class="nav-link has-ripple"><span class="pcoded-micon">
                             <i class="feather icon-lock"></i></span>
                         <span class="pcoded-mtext">프로필</span></a>
                     <ul class="pcoded-submenu">

@@ -61,41 +61,38 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <form>
-                                        <div class="form-group" id="boardNo" value="${nBoard.boardNo}">
-                                            <label for="exampleInputNo">글번호</label>
-                                            <p class="form-control">1</p>
+                                        <div class="form-group" id="productNum" value="${sellBoard.productNum}">
+                                            <label for="exampleInputNo">상품번호</label>
+                                            <p class="form-control">${sellBoard.productNum}</p>
                                         </div>
-                                        <div class="form-group" id="views" value="${nBoard.views}">
-                                            <label for="exampleInputUserId">추천수</label>
-                                            <p class="form-control">2</p>
+                                        <div class="form-group" id="viewCount" value="${sellBoard.viewCount}">
+                                            <label for="exampleInputUserId">조회수</label>
+                                            <p class="form-control">${sellBoard.viewCount}</p>
                                         </div>
-                                        <div class="form-group" id="postDate" value="${nBoard.postDate}">
+                                        <div class="form-group" id="createDate" value="${sellBoard.createDate}">
                                             <label>작성시간</label>
-                                            <p class="form-control">2021/06/13</p>
+                                            <p class="form-control">${sellBoard.createDate}</p>
                                         </div>
-                                        <div class="form-group" id="category" value="${nBoard.category}">
+                                        <div class="form-group" id="sellCategory" value="${sellBoard.sellCategory}">
                                             <label for="exampleFormControlSelect1">카테고리</label>
-                                            <p class="form-control">의류</p>
+                                            <p class="form-control">${sellBoard.sellCategory}</p>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="col-md-6">
                                     <form>
-                                        <div class="form-group" id="userNickName" value="${nBoard.userNickName}">
+                                        <div class="form-group" id="userNickName" value="${loginUser.userNickname}">
                                             <label for="exampleInputNo">닉네임</label>
-                                            <p class="form-control">도우너</p>
+                                            <p class="form-control">${loginUser.userNickname}</p>
                                         </div>
-                                        <div class="form-group" id="recommend" value="${nBoard.recommend}">
-                                            <label for="exampleInputUserId">채팅수</label>
-                                            <p class="form-control">3</p>
-                                        </div>
-                                        <div class="form-group" id="recommend" value="${nBoard.recommend}">
+
+                                        <div class="form-group" id="stateFlag" value="${sellBoard.stateFlag}">
                                             <label for="exampleInputUserId">판매상태</label>
-                                            <p class="form-control">예약 중</p>
+                                            <p class="form-control">${sellBoard.stateFlag}</p>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputTitle">지역</label>
-                                            <p class="form-control">봉명동</p>
+                                        <div class="form-group" id="sellArea" value="${sellBoard.sellArea}">
+                                            <label for="exampleInputUserId">판매 지역</label>
+                                            <p class="form-control">${sellBoard.sellArea}</p>
                                         </div>
                                     </form>
                                 </div>
@@ -103,18 +100,18 @@
                             <h5 class="mt-5">글 내용</h5>
                             <hr>
                             <form>
-                                <div class="form-group" id="title" value="${nBoard.title}">
+                                <div class="form-group" id="productName" value="${sellBoard.productName}">
                                     <label for="inputTitle">제목</label>
-                                    <p class="form-control">제목제목제목</p>
+                                    <p class="form-control">${sellBoard.productName}</p>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputTitle">가격</label>
-                                    <p class="form-control">250,000</p>
+                                    <p class="form-control">${sellBoard.sellPrice}</p>
                                 </div>
-                                <div class="form-group" id="content" value="${nBoard.content}">
+                                <div class="form-group" id="content" value="${sellBoard.productContent}">
                                     <label for="inputContent">내용</label>
-                                    <p class="form-control">내용내용내용</p>
+                                    <p class="form-control">${sellBoard.productContent}</p>
                                 </div>
                                 <!-- 첨부파일 영역 -->
                                 <div class="custom-file">
@@ -122,9 +119,19 @@
                                     <label class="custom-file-label" for="validatedCustomFile">파일 업로드
                                         비활성화하기!!!!!!</label>
                                 </div><br><br>
-                                <button type="button" class="btn  btn-primary">수정하기</button>
-                                <button type="button" class="btn  btn-success">삭제하기</button>
-                                <button type="button" class="btn  btn-secondary">목록으로 돌아가기</button>
+
+                                <button type="button"
+                                    onclick="location.href='/modify?productNum=?{sellBoard.productNum}&vf=false'"
+                                    class="btn  btn-primary">수정하기</button>
+
+                                <button type="button"
+                                    onclick="location.href='/delete?productNum=${sellBoard.productNum}'"
+                                    class="btn  btn-success">삭제하기</button>
+
+                                <button type="button"
+                                    onclick="location.href='/?page=${cri.page}&type=${cri.type}&keyword=${cri.keyword}&amount=${cri.amount}&category=${cri.category}' "
+                                    class="btn  btn-secondary">목록으로 돌아가기</button>
+
                             </form><br>
 
                         </div>
@@ -135,7 +142,6 @@
         </div>
         <!-- [ Main Content ] end -->
     </div>
-
 </body>
 
 </html>
