@@ -15,7 +15,7 @@ import java.util.Map;
 @Log4j2
 @CrossOrigin
 @RequiredArgsConstructor
-@RequestMapping("/qq")
+@RequestMapping("/api/comment")
 public class CommentApiController {
 
 
@@ -34,6 +34,7 @@ public class CommentApiController {
         log.info("CommentList " + boardNo + " GET!!");
 
         if (commentMap != null) {
+            log.info("commentMap 전달 성공!");
             return new ResponseEntity<>(commentMap, HttpStatus.OK);
         } else {
             //리스트가 없으면 500 에러를 리턴

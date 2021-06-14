@@ -5,6 +5,7 @@ import com.spring.joonggo.web.common.paging.PageMaker;
 import com.spring.joonggo.web.nboard.domain.DummyNBoard;
 import com.spring.joonggo.web.nboard.domain.NBoard;
 import com.spring.joonggo.web.nboard.service.NBoardService;
+import com.spring.joonggo.web.user.domain.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,19 +29,26 @@ public class NBoardController {
 
     //게시글 목록화면 요청
     @GetMapping("/list")
-    public String list(@ModelAttribute("cri") Criteria criteria, Model model) {
+    public String list(@ModelAttribute("cri") Criteria criteria, Model model, HttpSession session) {
+
+        log.info(criteria);
         model.addAttribute("nBoardList", nBoardService.getBoardList(criteria));
         //페이지 정보 만들어서 jsp에게 보내기
         model.addAttribute("pageMaker", new PageMaker(criteria, nBoardService.getTotal(criteria)));
         log.info("nboard list GET 요청!");
+
+        User loginUser = (User) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
 
         return "nboard/nboard-list";
     }
 
     //게시글 작성화면 요청
     @GetMapping("/register")
-    public String write(HttpSession session) {
+    public String write(HttpSession session, Model model) {
         log.info("nBoard register GET 요청!");
+        User loginUser = (User) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
         return "nboard/nboard-write";
     }
 
@@ -67,10 +75,15 @@ public class NBoardController {
             , @RequestParam("vf") boolean viewCntFlag
             , @ModelAttribute("cri") Criteria criteria
             , Model model
+            , HttpSession session
     ) {
         NBoard nBoard = nBoardService.viewDetail(boardNo, viewCntFlag);
         log.info("nboard detail GET!! - " + nBoard);
-        model.addAttribute("nBoard", nBoard);
+        model.addAttribute("board", nBoard);
+
+        User loginUser = (User) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
+        log.info("현재 사용중인 user : " + loginUser);
 
         return "nboard/nboard-content";
     }
@@ -84,6 +97,8 @@ public class NBoardController {
     ) {
         NBoard nBoard = nBoardService.viewDetail(boardNo, viewCntFlag);
         model.addAttribute("nBoard", nBoard);
+        User loginUser = (User) session.getAttribute("loginUser");
+        model.addAttribute("loginUser", loginUser);
         return "nBoard/modify";
     }
 
