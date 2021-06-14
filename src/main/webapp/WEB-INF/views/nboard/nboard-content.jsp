@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -150,7 +152,7 @@
                             <h5>댓글목록(<span id="commentCnt"></span>)</h5>
                         </div>
                         <div class="card-body">
-                            <form>
+                            
                                 <div class="row">
                                     <div class="col-md-9">
                                         <div class="form-group">
@@ -162,18 +164,16 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="newCommentWriter" hidden>댓글 작성자</label>
-                                            <input type="hidden" id="cUID" name="userId" value="${loginUser.userId}">
-                                            <input type="hidden" id="cUNick" name="userNickName" value="${loginUser.userNickname}">
-                                            <input type="hidden" name="boardNo" id="" value="${board.boardNo}">
                                             <button id="commentAddBtn" class="btn  btn-primary btn-lg">등록하기</button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            
 
                             <br>
+                            <!-- 댓글 내용 헤더 -->
                             <table class="table table-hover">
-                                <tbody>
+                                <thead>
                                     <tr class="table-active">
                                         <th scope="col">닉네임</th>
                                         <th scope="col">댓글내용</th>
@@ -181,32 +181,17 @@
                                         <th scope="col">수정</th>
                                         <th scope="col">삭제</th>
                                     </tr>
-                                    <!-- 댓글 내용  -->
-                                    <tr id="commentData" class="comment-list">
+                                </thead> 
+                                <!-- 댓글 내용 바디  -->
+                                <tbody id="commentData" class="comment-list">
 
-                                    </tr>
-                                    <!-- <c:forEach var="comment" items="${commentList}">
-                                        <tr class="comment-list" value="${comment.commentNo}">
-                                            <td>닉네임</td>
-                                            <td>댓글내용</td>
-                                            <td>작성일자</td>
-                                            <td>
-                                                <a class="modi" href="#" value="${comment.commentNo}}">
-                                                    <div class="modify">
-                                                        <span class="lnr lnr-undo"></span>
-                                                    </div>
-                                                </a>
-                                            <td>
-                                                <a href="#">
-                                                    <div class="remove">
-                                                        <span class="lnr lnr-cross-circle"></span>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody> -->
+                                </tbody>
+                                    
                             </table>
+                            <!-- 댓글 페이징 영역 -->
+                            <ul class="pagination">
+
+                            </ul>
                         </div>
                     </div>
                     <!-- [ reply ] end -->
@@ -266,8 +251,29 @@
             function makePageInfo(pageInfo) {
                 let tag = "";
 
+                const begin = pageInfo.beginPage;
+                const end = pageInfo.endPage;
 
-            }
+                //이전 버튼 만들기
+                if (pageInfo.prev) {
+                    tag += "<li class='page-item'><a class='page-link' href='" + (begin - 1) +"' aria-label='Previous'><span aria-hidden='true'>&laquo;</span><span class='sr-only'>Previous</span></a></li>";
+                }
+
+                //페이지 번호 리스트 만들기
+                for (let i = begin; i <= end; i++) {
+                    const active = (pageInfo.criteria.page === i) ? 'page-active' : '';
+                    tag += "<li class='page-item'><a class='page-link' href='" + i + "'>" + i + "</a></li>";
+                    //active는 클릭한 태그의 뒷배경 색을 넣는 클래스
+                }
+
+                //다음 버튼 만들기
+                if (pageInfo.next) {
+                    tag += "<li class='page-item'><a class='page-link' href='" + (end + 1) +"' aria-label='Previous'><span aria-hidden='true'>&laquo;</span><span class='sr-only'>Next</span></a></li>";
+                }
+
+                $('.pagination').html(tag);
+
+            };
 
             function makeCommentListDom(commentMap) {
                 let tag = '';
@@ -275,10 +281,11 @@
                 for (let comment of commentMap.commentList) {
 
                     // 댓글 내용
-
-                    tag += "<td id='commentUserNickName' data-commentNick='" + comment.userNickName + "'>" + comment.userNickName + "</td>" +
+            
+                    tag += "<tr id='commentList'>" +
+                    "<td id='commentUserNickName' data-commentNick='" + comment.userNickName + "'>" + comment.userNickName + "</td>" +
                         "<td id='commentContent' data-commentContent='" + comment.commentContent + "'>" + comment.commentContent + "</td>" +
-                        "<td id='commentDate' data-commentDate='" + comment.commentCreatedDate + "'>" +
+                        "<td id='commentDate' data-commentDate='" + comment.commentCreatedDate + "'>" + comment.commentCreatedDate + "</td>" +
                         "<td>" +
                         "   <a class='modi' href='#' value='" + comment.commentNo + "'>" +
                         "       <div class='modify' id='commentModBtn'>" +
@@ -292,7 +299,8 @@
                         "           <span class='lnr lnr-cross-circle'></span>" +
                         "       </div>" +
                         "   </a>" +
-                        "</td>"
+                        "</td>" +
+                        "</tr>";
 
                 }
                 //만든 태그를 댓글목록 안에 배치
@@ -305,8 +313,7 @@
                 //페이지 태그 배치
                 makePageInfo(commentMap.pageInfo);
 
-
-            }
+            };
 
             //댓글 목록 비동기 요청처리 함수
             function getCommentList(page) {
@@ -316,15 +323,34 @@
                     console.log(commentMap);
                     makeCommentListDom(commentMap);
                 });
-            }
+            };
 
             //페이지 첫 진입시 비동기로 댓글목록 1페이지를 불러옴
             getCommentList(1);
 
             //페이지 버튼 클릭 이벤트
+            $('.pagination').on('click', 'li a', e => { //'li a'는 e.target == 'li a'와 같은 의미
+                e.preventDefault();
+                getCommentList(e.target.getAttribute('href'));
+                console.log($(this));
+                //아래는 JQuery 버전. $(this)가 e.target
+                // getReplyList($(this).attr('href'));
+            });
 
             //댓글 등록 버튼 클릭 이벤트
             $('#commentAddBtn').on('click', e => {
+
+                e.preventDefault();
+
+                //댓글객체
+                const replyInfo = {
+                        boardNo: boardNo,
+                        commentContent: $('#newCommentText').val(),
+                        userId: '${loginUser.userId}',
+                        userNickName: '${loginUser.userNickname}'
+                    };
+
+                    console.log(replyInfo);
 
                 //서버로 댓글 내용을 전송해서 DB에 저장
                 const reqInfo = {
@@ -332,17 +358,12 @@
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        boardNo: boardNo,
-                        commentContent: $('#newCommentText').val(),
-                        userId: $('#cUID').val(),
-                        userNickName: $('cUNick').val()
-                    })
+                    body: JSON.stringify(replyInfo)
                 };
                 fetch('/api/comment', reqInfo)
                 .then(res => res.text())
                 .then(msg => {
-                    if (msg === 'InsertSuccess') {
+                    if (msg === 'insertSuccess') {
                         getCommentList(1);
                         $('newCommentText').val('');
                     } else {
@@ -356,7 +377,28 @@
             //댓글 삭제 비동기 요청 이벤트
             $('#commentData').on('click', '#commentDelBtn', e => {
 
+                e.preventDefault();
+
                 console.log(e.target);
+                const commentNo = e.target.parentNode.parentNode.parentNode.previousSibling.children[0].getAttribute('value');
+                console.log(commentNo);
+
+                const reqInfo = {
+                    method: 'DELETE'
+                }
+
+                if (!confirm("정말로 삭제하시겠습니까?")) {
+                    return;
+                }
+                fetch('/api/comment/' + commentNo, reqInfo)
+                .then(res => res.text())
+                .then(msg => {
+                    if (msg === 'delSuccess') {
+                            getCommentList(1);
+                        } else {
+                            alert('댓글 삭제에 실패했습니다.');
+                        }
+                })
             })
 
 
