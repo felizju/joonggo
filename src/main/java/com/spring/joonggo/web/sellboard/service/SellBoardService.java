@@ -32,6 +32,14 @@ public class SellBoardService {
 
         for (SellBoard sellBoard : sellBoards) {
             List<String> loadImgList = loadImg(sellBoard.getProductNum());
+
+            long regTime = sellBoard.getCreateDate().getTime();//getTime을 쓰면 시간을 밀리초로 가져옴
+            //현재시간 읽어오기 (밀리초)
+            long now = System.currentTimeMillis();
+            //3분이내(밀리초)면 신규게시글
+            if (now - regTime < 60 * 3 * 1000) {
+                sellBoard.setNewSellBoard(true);
+            }
             if (loadImgList.size() != 0) {
                 sellBoard.setMainImgPath(loadImgList.get(0));
             }
