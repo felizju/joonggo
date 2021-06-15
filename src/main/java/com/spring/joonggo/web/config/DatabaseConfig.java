@@ -19,8 +19,8 @@ public class DatabaseConfig {
         HikariConfig config = new HikariConfig();
         config.setDriverClassName("oracle.jdbc.driver.OracleDriver");
         config.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:xe");
-        config.setUsername("java_web2");
-        config.setPassword("202104");
+        config.setUsername("sqld");
+        config.setPassword("1234");
 
         return new HikariDataSource(config);
     }
