@@ -56,7 +56,7 @@ class SellBoardMapperTest {
             , String sellerNick
             , SellCategory sellCategory*/
 
-        for (int i = 0; i <= 150; i++) {
+        for (int i = 0; i <= 2; i++) {
             SellBoard sellBoard = SellBoard.builder()
                     .sellCategory(SellCategory.LIVING)
                     .sellArea("서울특별시")
@@ -66,7 +66,7 @@ class SellBoardMapperTest {
                     .productName("침대 매트리스 팝니다.")
                     .productContent("침대 매트리스 팝니다. 아직 쓸만합니다. 생활 얼룩은 있음.")
                     .build();
-//            sellBoardMapper.addProduct(sellBoard);
+            sellBoardMapper.addProduct(sellBoard);
         }
 
 

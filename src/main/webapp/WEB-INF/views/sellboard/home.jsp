@@ -142,6 +142,9 @@
                                                     <a
                                                         href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
                                                         ${sellBoard.productName}</a>
+                                                    <c:if test="${sellBoard.newSellBoard}">
+                                                        <span class="badge badge-pill badge-success">New</span>
+                                                    </c:if>
                                                 </td>
                                                 <td>${sellBoard.sellPrice}</td>
                                                 <td>${sellBoard.sellerNick}</td>
