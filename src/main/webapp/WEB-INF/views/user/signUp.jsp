@@ -42,6 +42,27 @@
 								<input type="text" class="form-control" name="userNickname" id="userNickname"
 									required="required" aria-required="true" maxlength="10" placeholder="한글로 최대 10자">
 							</div>
+<!-- 
+							<p>카카오(다음) 주소찾기</p>
+							<input id="member_post" type="text" placeholder="Zip Code" readonly onclick="findAddr()">
+							<input id="member_addr" type="text" placeholder="Address" readonly> <br>
+							<input type="text" placeholder="Detailed Address"> -->
+							
+							<div class="form-group mb-3">
+								<label class="floating-label">
+									주소<input type="hidden"id="userAd">
+								</label>
+								<!-- <span id="addrChk"></span> -->
+								<!-- <input type="text" class="form-control" name="userEmail" id="userAddress" required="required" aria-required="true" placeholder="ex) abc@gmail.com"> -->
+
+								<input  class="form-control" id="member_post" type="text" placeholder="주소검색하기" readonly onclick="findAddr()">
+								<input class="form-control" id="member_addr"  name="userAddress" type="text" placeholder="주소" readonly> <br>
+								<!-- <input class="form-control" type="text" placeholder="상세주소 입력"> -->
+								
+							
+							</div>
+
+
 							<div class="form-group mb-3">
 								<label class="floating-label" for="userEmail">이메일</label>
 								<span id="emailChk"></span>
@@ -66,10 +87,7 @@
 						<p class="mb-2"><a href="/user/sign-in" class="f-w-400">로그인하기</a>
 						</p>
 
-						<p>카카오(다음) 주소찾기</p>
-						<input id="member_post" type="text" placeholder="Zip Code" readonly onclick="findAddr()">
-						<input id="member_addr" type="text" placeholder="Address" readonly> <br>
-						<input type="text" placeholder="Detailed Address">
+
 
 					</div>
 				</div>
@@ -99,6 +117,8 @@
 				} else if (jibunAddr !== '') {
 					document.getElementById("member_addr").value = jibunAddr;
 				}
+				const addr = $('member_addr').val();
+				$('#userAd').val(addr);
 			}
 		}).open();
 	}
