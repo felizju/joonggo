@@ -2,6 +2,7 @@ package com.spring.joonggo.web.sellboard.controller;
 
 import com.spring.joonggo.web.common.paging.Criteria;
 import com.spring.joonggo.web.common.paging.PageMaker;
+import com.spring.joonggo.web.common.upload.FileList;
 import com.spring.joonggo.web.common.upload.FileUtils;
 import com.spring.joonggo.web.nboard.domain.DummyNBoard;
 import com.spring.joonggo.web.nboard.domain.NBoard;
@@ -63,6 +64,8 @@ public class SellController {
         // 두번쨰 파라미터로 파일명을 넣는다
         // 해당 저장위치에 저정명령
 
+        FileList fileData = new FileList();
+
         for (MultipartFile file : files) {
             log.info("/upload POST 요청");
             log.info("file name : " + file.getOriginalFilename());
@@ -71,8 +74,13 @@ public class SellController {
             log.info("================================================");
 //            File uploadFile = new File(UPLOAD_PATH, file.getOriginalFilename());
             try {
-                String uploadFile = FileUtils.uploadFile(file, UPLOAD_PATH);
-                System.out.println(uploadFile);
+                fileData = FileUtils.uploadFile(file, UPLOAD_PATH);
+                User loginUser =
+                        (User) session.getAttribute("loginUser");
+                fileData.setUserId(loginUser.getUserId());
+                fileData.setUserNick(loginUser.getUserNickname());
+                fileData.setProductNum(sellBoard.getProductNum());
+                System.out.println(fileData);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -80,7 +88,7 @@ public class SellController {
 //        System.out.println("============================================");
 //        System.out.println(sellBoard);
 //        System.out.println("============================================");
-//            sellBoardService.addProduct(sellBoard);
+            sellBoardService.addProduct(sellBoard, fileData);
         }
         return "redirect:/";
     }
