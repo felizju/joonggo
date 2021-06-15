@@ -136,15 +136,19 @@
                                                 <!-- <script>console.log(sellBoard)</script> -->
                                                 <td>${sellBoard.productNum}</td>
                                                 <td>${sellBoard.sellCategory}</td>
-                                                <td>${sellBoard.mainImgPath}</td>
+                                                <td><img src="/images/upload${sellBoard.mainImgPath}" width="100"
+                                                        height="100" alt="썸네일 이미지"></td>
                                                 <td>
-                                                    <a href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
+                                                    <a
+                                                        href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
                                                         ${sellBoard.productName}</a>
                                                 </td>
                                                 <td>${sellBoard.sellPrice}</td>
                                                 <td>${sellBoard.sellerNick}</td>
-                                                <td><fmt:formatDate value="${sellBoard.createDate}"
-                                                    pattern="yyyy년 MM월 dd일 HH:mm:ss" /></td>
+                                                <td>
+                                                    <fmt:formatDate value="${sellBoard.createDate}"
+                                                        pattern="yyyy년 MM월 dd일 HH:mm:ss" />
+                                                </td>
                                                 <td>${sellBoard.sellArea}</td>
                                                 <td>
                                                     <a href="#"><span class="lnr lnr-heart"> 1</span></a>
@@ -157,14 +161,15 @@
 
                                     </tbody>
                                 </table>
-                                
+
                                 <!-- 페이지 영역 -->
                                 <ul class="pagination">
 
                                     <c:if test="${pageMaker.prev}">
-                                        
+
                                         <li class="page-item">
-                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.beginPage-1)}" aria-label="Previous">
+                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.beginPage-1)}"
+                                                aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
@@ -174,14 +179,16 @@
                                     <!-- li*5>a{[$]} -->
                                     <c:forEach var="i" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}"
                                         step="1">
-                                
-                                        <li class="page-item"><a class="page-link" href="/${pageMaker.makeParam(i)}">${i}</a></li>
+
+                                        <li class="page-item"><a class="page-link"
+                                                href="/${pageMaker.makeParam(i)}">${i}</a></li>
                                         <!-- makeParam은 메서드이기 때문에 ()를 붙여서 call 해줌 -->
                                     </c:forEach>
 
                                     <c:if test="${pageMaker.next}">
                                         <li class="page-item">
-                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.endPage+1)}" aria-label="Next">
+                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.endPage+1)}"
+                                                aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span class="sr-only">Next</span>
                                             </a>
