@@ -88,6 +88,6 @@ class UserMapperTest {
         modifyUser.setUserEmail("aaa123@naver.com");
         modifyUser.setUserNickname("도우너");
 
-        userMapper.modifyUserInfo(modifyUser);
+//        userMapper.modifyUserInfo(modifyUser);
     }
 }
