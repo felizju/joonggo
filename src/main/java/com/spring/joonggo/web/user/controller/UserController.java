@@ -38,6 +38,7 @@ public class UserController {
     @PostMapping("/sign-up")
     public String signUp(User user) {
         log.info("/user/sign-up POST 요청! - " + user);
+        log.info("주소 : " + user.getUserAddress());
         userService.registerAccount(user);
         return "user/logIn";
     }

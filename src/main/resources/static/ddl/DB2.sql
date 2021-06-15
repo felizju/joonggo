@@ -4,7 +4,7 @@ CREATE TABLE users (
     user_pw VARCHAR2(200) NOT NULL, -- 비밀번호
     user_email VARCHAR2(30) NOT NULL, -- 이메일
     user_nickname VARCHAR2(20) NOT NULL, -- 닉네임
-    user_rating_score VARCHAR2(20) NOT NULL, -- 평가점수
+    user_address VARCHAR2(50) NOT NULL, -- 지역
     user_auth VARCHAR2(20) DEFAULT 'USER', -- 권한
     user_created_date DATE DEFAULT SYSDATE, -- 생성일자
     user_session_id VARCHAR2(200) DEFAULT 'none', -- 세션 아이디
