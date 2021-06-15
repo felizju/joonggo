@@ -30,7 +30,7 @@ class UserMapperTest {
         user.setUserEmail("bbb123@naver.com");
         user.setUserNickname("고길동");
         user.setAuth(Auth.USER);
-        user.setUserRatingScore(0);
+        user.setUserAddress("대전 봉명동");
 
         userMapper.registerAccount(user);
         System.out.println("user = " + user);
@@ -88,6 +88,6 @@ class UserMapperTest {
         modifyUser.setUserEmail("aaa123@naver.com");
         modifyUser.setUserNickname("도우너");
 
-        userMapper.modifyUserInfo(modifyUser);
+//        userMapper.modifyUserInfo(modifyUser);
     }
 }

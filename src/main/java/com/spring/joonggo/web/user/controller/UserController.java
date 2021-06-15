@@ -38,6 +38,7 @@ public class UserController {
     @PostMapping("/sign-up")
     public String signUp(User user) {
         log.info("/user/sign-up POST 요청! - " + user);
+        log.info("주소 : " + user.getUserAddress());
         userService.registerAccount(user);
         return "user/logIn";
     }
@@ -122,12 +123,13 @@ public class UserController {
     //프로필 화면 요청
     @GetMapping("/profile")
     public String profile(HttpSession session, Model model) {
-        log.info("/user/profile GET 요청! - ");
+        log.info("/user/profile GET 요청! - " );
 //        User user = userService.getUser(userId);
 //        System.out.println(session);
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 //        model.addAttribute("user", user);
+        log.info("session = "+session);
         return "user/profile";
     }
 
@@ -138,16 +140,19 @@ public class UserController {
         log.info("/user/profile-modify GET 요청! - ");
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
+
         return "user/profile-modify";
     }
 
 
     //프로필 수정 처리 요청
     @PostMapping("/profile-modify")
-    public String profileModify(HttpSession session, ModifyUser modifyUser) {
+    public String profileModify(HttpSession session, User user) {
         log.info("/user/profile-modify POST 요청! - ");
         User loginUser = (User) session.getAttribute("loginUser");
-        userService.modifyUserInfo(loginUser.getUserId(), modifyUser);
+        userService.modifyUserInfo(loginUser.getUserId(), user);
+        session.setAttribute("loginUser", user);
+
         return "redirect:/user/profile";
     }
 

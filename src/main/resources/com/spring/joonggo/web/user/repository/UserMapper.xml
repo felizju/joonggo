@@ -8,9 +8,9 @@
     <!--    //회원 가입 기능-->
     <insert id="registerAccount">
         INSERT INTO users
-        (user_id, user_pw, user_email, user_nickname, user_rating_score, user_auth)
+        (user_id, user_pw, user_email, user_nickname, user_address, user_auth)
         VALUES
-        (#{userId}, #{userPw}, #{userEmail}, #{userNickname}, #{userRatingScore}, #{auth})
+        (#{userId}, #{userPw}, #{userEmail}, #{userNickname}, #{userAddress}, #{auth})
     </insert>
 
     <resultMap id="userMap" type="com.spring.joonggo.web.user.domain.User">
@@ -18,7 +18,7 @@
         <result property="userPw" column="user_pw"/>
         <result property="userEmail" column="user_email"/>
         <result property="userNickname" column="user_nickname"/>
-        <result property="userRatingScore" column="user_rating_score"/>
+        <result property="userAddress" column="user_address"/>
         <result property="auth" column="user_auth"/>
         <result property="userCreatedDate" column="user_created_date"/>
     </resultMap>
