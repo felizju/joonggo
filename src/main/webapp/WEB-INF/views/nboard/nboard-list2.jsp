@@ -66,70 +66,55 @@
                             <!-- 동네생활 카테고리 -->
                             <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active text-uppercase neighbor" id="home-tab" data-toggle="tab"
-                                        href="#" role="tab" aria-controls="home" aria-selected="true">우리동네</a>
+                                    <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab"
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NEIGHBOR')}"
+                                        role="tab" aria-controls="home" aria-selected="true">우리동네</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase issue" id="profile-tab" data-toggle="tab" href="#"
+                                    <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab"
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ISSUE')}"
                                         role="tab" aria-controls="profile" aria-selected="false">사건/사고</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase daily" id="contact-tab" data-toggle="tab" href="#"
+                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'DAILYLIFE')}"
                                         role="tab" aria-controls="contact" aria-selected="false">일상&자유</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase notice" id="contact-tab" data-toggle="tab"
-                                        href="#" role="tab" aria-controls="contact" aria-selected="false">공지사항</a>
+                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NOTICE')}"
+                                        role="tab" aria-controls="contact" aria-selected="false">공지사항</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase etc" id="contact-tab" data-toggle="tab" href="#"
+                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
+                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ETC')}"
                                         role="tab" aria-controls="contact" aria-selected="false">기타</a>
                                 </li>
-                                <div class="search-icon">
-                                    <li class="nav-item">
-                                        <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
-                                    </li>
-                                </div>
+
                             </ul>
-
-                            <ul class="navbar-nav mr-auto">
-                                <div class="search-bar">
-                                    <div class="input-select float-effect">
-                                        <input type="hidden" name="amount" value="${pageMaker.criteria.amount}">
-                                        <input type="hidden" name="category" value="${pageMaker.criteria.category}">
-                                        <select data-trigger="" name="type">
-                                            <option value="title" ${pageMaker.criteria.type=='title' ? 'selected' : ''
-                                                }>제목
-                                            </option>
-                                            <option value="nickname" ${pageMaker.criteria.type=='nickname' ? 'selected'
-                                                : '' }>작성자</option>
-                                            <option value="content" ${pageMaker.criteria.type=='content' ? 'selected'
-                                                : '' }>내용</option>
-                                            <option value="titleContent" ${pageMaker.criteria.type=='titleContent'
-                                                ? 'selected' : '' }>제목
-                                                + 내용</option>
-                                        </select>
-                                    </div>
-                                    <div class="float-effect">
-                                        <input type="text" class="form-control" placeholder="Search hear"><br>
-                                    </div>
-                                    <div class="float-effect">
-                                        <button class="btn  btn-primary" type="submit"><i
-                                                class="feather icon-corner-down-right"></i></button>
-                                    </div>
-                                    <button type="button" class="close" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            </ul>
-
-
+                            
                             <!-- 검색창 -->
                             <div class="s003">
                                 <form action="/nboard/list">
                                     <div class="inner-form">
                                         <div class="input-field first-wrap">
-
+                                            <div class="input-select">
+                                                <input type="hidden" name="amount" value="${pageMaker.criteria.amount}">
+                                                <input type="hidden" name="category"
+                                                    value="${pageMaker.criteria.category}">
+                                                <select data-trigger="" name="type">
+                                                    <option value="title" ${pageMaker.criteria.type=='title'
+                                                        ? 'selected' : '' }>제목
+                                                    </option>
+                                                    <option value="nickname" ${pageMaker.criteria.type=='nickname'
+                                                        ? 'selected' : '' }>작성자</option>
+                                                    <option value="content" ${pageMaker.criteria.type=='content'
+                                                        ? 'selected' : '' }>내용</option>
+                                                    <option value="titleContent"
+                                                        ${pageMaker.criteria.type=='titleContent' ? 'selected' : '' }>제목
+                                                        + 내용</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="input-field second-wrap">
                                             <input id="search" type="text" name="keyword" placeholder="검색어를 입력하세요"
@@ -180,9 +165,7 @@
                                                 <td id="title" value="${board.title}">
                                                     <a
                                                         href="/nboard/detail${pageMaker.makeParam(pageMaker.criteria.page)}&boardNo=${board.boardNo}&vf=true">${board.title}</a>
-                                                    <c:if test="${board.newBoard}">
-                                                        <span class="badge badge-pill badge-success">New</span>
-                                                    </c:if>
+
                                                 </td>
                                                 <td id="content" value="${board.content}">${board.content}</td>
                                                 <td id="views" value="${board.views}">${board.views}</td>
@@ -254,48 +237,15 @@
     </div>
 
 
-
     <script src="/js/choices.js"></script>
     <script>
         const choices = new Choices('[data-trigger]', {
             searchEnabled: false,
             itemSelectText: '',
-</script>
-    <!-- <script src="/js/nboard-category.js"></script> -->
-    <script>
-        $(function () {
-            console.log("content-list script 시작");
-            $('.neighbor').on('click', e => {
-                console.log("neighbor 클릭이벤트!");
-                location.href =
-                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NEIGHBOR')}";
-            })
-            $('.issue').on('click', e => {
-                console.log("issue 클릭이벤트!");
-                console.log(e.target);
-                location.href =
-                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ISSUE')}";
-            });
-            $('.daily').on('click', e => {
-                console.log("daily 클릭이벤트!");
-                console.log(e.target);
-                location.href =
-                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'DAILYLIFE')}";
-            });
-            $('.notice').on('click', e => {
-                console.log("notice 클릭이벤트!");
-                console.log(e.target);
-                location.href =
-                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NOTICE')}";
-            });
-            $('.etc').on('click', e => {
-                console.log("etc 클릭이벤트!");
-                console.log(e.target);
-                location.href =
-                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ETC')}";
-            });
         });
-    
+    </script>
+
+
 </body>
 
 </html>
