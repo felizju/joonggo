@@ -225,7 +225,7 @@
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header" style="background: #343A40; color: white;">
+                <div class="modal-header" style="background: #FD7E14; color: white;">
                     <h4 class="modal-title">댓글 수정하기</h4>
                     <button type="button" class="close text-white" data-dismiss="modal">X</button>
                 </div>
@@ -242,7 +242,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button id="commentModBtn" type="button" class="btn btn-dark">수정</button>
+                    <button id="commentModBtn" type="button" class="btn btn-orange">수정</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
                 </div>
 
