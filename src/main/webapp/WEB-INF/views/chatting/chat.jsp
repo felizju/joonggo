@@ -21,7 +21,6 @@
     <!-- chat css -->
     <link rel="stylesheet" href="/css/chat.css" />
 
-
     <%@ include file="../include/static-head.jsp" %>
 </head>
 
@@ -51,45 +50,41 @@
             <%@ include file="../include/sitename.jsp" %>
             <!-- [ sitename ] end -->
 
-
-            <!-- [ Main Content ] start -->
-            <div class="row">
-                <div id="username-page">
-                    <div class="username-page-container">
-                        <p class="title">username을 입력하세요</p>
-                        <form id="usernameForm" name="usernameForm">
-                            <div class="form-group">
-                                <input type="text" id="name" placeholder="Username" autocomplete="off"
-                                    class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn-primary">채팅 시작하기</button>
-                            </div>
-                        </form>
-                    </div>
+            <div id="username-page">
+                <div class="username-page-container">
+                    <p class="title">채팅방에서 사용할 닉네임을 입력하세요!</p>
+                    <form id="usernameForm" name="usernameForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="${loginUser.userNickname}" autocomplete="off"
+                                class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn-primary">채팅 시작하기</button>
+                        </div>
+                    </form>
                 </div>
+            </div>
 
-                <div id="chat-page" class="hidden">
-                    <div class="chat-container">
-                        <div class="chat-header">
-                            <h2>채팅</h2>
-                        </div>
-                        <div class="connecting">
-                            연결중...
-                        </div>
-                        <ul id="messageArea">
-
-                        </ul>
-                        <form id="messageForm" name="messageForm">
-                            <div class="form-group">
-                                <div class="input-group clearfix">
-                                    <input type="text" id="message" placeholder="메시지를 입력하세요." autocomplete="off"
-                                        class="form-control">
-                                    <button type="submit" class="btn-primary">보내기</button>
-                                </div>
-                            </div>
-                        </form>
+            <div id="chat-page" class="hidden">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>채팅</h2>
                     </div>
+                    <div class="connecting">
+                        연결중...
+                    </div>
+                    <ul id="messageArea">
+
+                    </ul>
+                    <form id="messageForm" name="messageForm">
+                        <div class="form-group">
+                            <div class="input-group clearfix">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요." autocomplete="off"
+                                    class="form-control" />
+                                <button type="submit" class="input-group button">보내기</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
