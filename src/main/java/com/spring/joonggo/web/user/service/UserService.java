@@ -61,9 +61,14 @@ public class UserService {
         userMapper.deleteAccount(userId);
     }
 
+
+
     //회원 정보 수정
     public void modifyUserInfo(String userId, ModifyUser modifyUser) {
+        String userPW = modifyUser.getUserPw();
+        modifyUser.setUserPw(new BCryptPasswordEncoder().encode(userPW));
         modifyUser.setUserId(userId);
+
         userMapper.modifyUserInfo(modifyUser);
     }
 
