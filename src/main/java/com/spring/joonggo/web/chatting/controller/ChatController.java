@@ -10,9 +10,6 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 @Log4j2
