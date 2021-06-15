@@ -124,13 +124,13 @@
                                 
                                 <br><br>
 
-                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
+                                <c:if test="${sellBoard.sellerId == loginUser.userId || loginUser.auth == 'ADMIN'}">
                                     <button type="button"
                                         onclick="location.href='/modify?productNum=${sellBoard.productNum}'"
                                         class="btn  btn-primary">수정하기</button>
                                 </c:if>
 
-                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
+                                <c:if test="${sellBoard.sellerId == loginUser.userId || loginUser.auth == 'ADMIN'}">
                                     <button type="button"
                                         onclick="location.href='/delete?productNum=${sellBoard.productNum}'"
                                         class="btn  btn-success">삭제하기</button>
