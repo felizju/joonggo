@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -124,7 +124,10 @@
                                                 <td id="content" value="${board.content}">${board.content}</td>
                                                 <td id="views" value="${board.views}">${board.views}</td>
                                                 <td id="recommend" value="${board.recommend}">${board.recommend}</td>
-                                                <td id="postDate" value="${board.postDate}">${board.postDate}</td>
+                                                <td id="postDate" value="${board.postDate}">
+                                                    <fmt:formatDate value="${board.postDate}"
+                                                    pattern="yyyy년 MM월 dd일 HH:mm:ss" />
+                                                </td>
 
                                             </tr>
                                         </c:forEach>
@@ -164,11 +167,12 @@
 
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button type="button" onclick="location.href='/nboard/register' "
-                                class="btn  btn-primary">글쓰기</button>
-                            <!-- <button type="button" class="btn  btn-success">Success</button> -->
+                        <!-- 게시글 작성 버튼 -->
+                        <div class="fixed-button active">
+                            <a href="/nboard/register" class="btn btn-md btn-primary">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i> 글 작성</a>
                         </div>
+
                     </div>
                 </div>
                 <!-- [ stiped-table ] end -->
