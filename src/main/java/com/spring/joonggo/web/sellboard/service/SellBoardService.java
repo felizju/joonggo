@@ -13,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +27,17 @@ public class SellBoardService {
 
     // 게시물 검색
     public List<SellBoard> findAll(Criteria criteria) {
-        return sellBoardMapper.findAll(criteria);
+
+        List<SellBoard> sellBoards = sellBoardMapper.findAll(criteria);
+
+        for (SellBoard sellBoard : sellBoards) {
+            List<String> loadImgList = loadImg(sellBoard.getProductNum());
+            if (loadImgList.size() != 0) {
+                sellBoard.setMainImgPath(loadImgList.get(0));
+            }
+        }
+
+        return sellBoards;
     }
 
     // 게시물 추가
@@ -32,6 +45,11 @@ public class SellBoardService {
     public void addProduct(SellBoard sellBoard, FileList fileList) {
         sellBoardMapper.addProduct(sellBoard);
         sellBoardMapper.addFile(fileList);
+    }
+
+    // 이미지 경로 가져오기
+    public List<String> loadImg(int productNum) {
+        return sellBoardMapper.getFilePaths(productNum);
     }
 
     // 게시물 삭제

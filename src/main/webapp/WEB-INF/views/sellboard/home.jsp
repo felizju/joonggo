@@ -139,7 +139,7 @@
                                                 <!-- <script>console.log(sellBoard)</script> -->
                                                 <td>${sellBoard.productNum}</td>
                                                 <td>${sellBoard.sellCategory}</td>
-                                                <td>이미지 경로</td>
+                                                <td>${sellBoard.mainImgPath}</td>
                                                 <td>
                                                     <a href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
                                                         ${sellBoard.productName}</a>
