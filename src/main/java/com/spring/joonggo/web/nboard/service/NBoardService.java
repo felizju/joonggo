@@ -22,7 +22,18 @@ public class NBoardService {
 
     // 게시글 목록을 받아오는 기능 (내림차순)
     public List<NBoard> getBoardList(Criteria criteria) {
-        return nBoardMapper.getSearchBoards(criteria);
+        List<NBoard> boardlist = nBoardMapper.getSearchBoards(criteria);
+        for (NBoard board : boardlist) {
+            //각 게시물들의 등록시간 읽어오기 (밀리초)
+            long regTime = board.getPostDate().getTime();//getTime을 쓰면 시간을 밀리초로 가져옴
+            //현재시간 읽어오기 (밀리초)
+            long now = System.currentTimeMillis();
+            //3분이내(밀리초)면 신규게시글
+            if (now - regTime < 60 * 3 * 1000) {
+                board.setNewBoard(true);
+            }
+        }
+        return boardlist;
     }
 
     // 총 게시물 수 확인

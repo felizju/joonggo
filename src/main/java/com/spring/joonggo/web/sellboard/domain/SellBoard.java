@@ -34,6 +34,8 @@ public class SellBoard {
     //메인이미지경로
     private String mainImgPath;
 
+    private boolean newSellBoard;
+
 //    public SellBoard() {
 //        this.productNum = sequence++;
 //    }
