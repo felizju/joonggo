@@ -103,6 +103,9 @@
             WHERE (goods_title LIKE '%' || #{keyword} || '%'
             OR goods_content LIKE '%' || #{keyword} || '%')
         </if>
+        <if test="sellCategory != null">
+            goods_category = #{sellCategory} AND
+        </if>
     </select>
 
 
