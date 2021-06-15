@@ -19,15 +19,6 @@ public class KakaoController {
 
     private final OAuthService kakaoService;
 
-    //kakao-test페이지 화면 요청
-    @GetMapping("/kakao-test")
-    public String kakaoTest(Model model) {
-
-        model.addAttribute("appKey", OAuthValue.KAKAO_APP_KEY);
-        model.addAttribute("redirectUri", OAuthValue.KAKAO_REDIRECT_URI);
-
-        return "kakao-test";
-    }
 
     //카카오 서버가 보내준 리다이렉션에 대해 처리할 요청 메서드
     //인가 코드를 받아 사용자 정보에 접근할 수 있는 토큰을 발급받는 과정
@@ -56,8 +47,10 @@ public class KakaoController {
             session.setAttribute("accessToken", accessToken);
 
         }
-        return "redirect:/kakao-test";
+        return "redirect:/";
     }
+
+
 
     //카카오 로그아웃 요청처리
     @GetMapping("/kakao/logout")
@@ -72,7 +65,7 @@ public class KakaoController {
         session.removeAttribute("loginUser");
         session.invalidate();
 
-        return "redirect:/kakao-test";
+        return "redirect:/";
     }
 
 }
