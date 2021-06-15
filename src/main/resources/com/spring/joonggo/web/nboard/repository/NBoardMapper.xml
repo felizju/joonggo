@@ -194,19 +194,25 @@
     <select id="getTotalBoardCount" resultType="int">
         SELECT COUNT(*)
         FROM nboard
+        WHERE
         <if test="type == 'title'">
-            WHERE title LIKE '%' || #{keyword} || '%'
+            title LIKE '%' || #{keyword} || '%' AND
         </if>
         <if test="type == 'nickname'">
-            WHERE user_nickname LIKE '%' || #{keyword} || '%'
+            user_nickname LIKE '%' || #{keyword} || '%' AND
         </if>
         <if test="type == 'content'">
-            WHERE content LIKE '%' || #{keyword} || '%'
+            content LIKE '%' || #{keyword} || '%' AND
         </if>
         <if test="type == 'titleContent'">
-            WHERE (title LIKE '%' || #{keyword} || '%'
+            (title LIKE '%' || #{keyword} || '%'
             OR content LIKE '%' || #{keyword} || '%')
+            AND
         </if>
+        <if test="category != null">-->
+            category = #{category} AND
+        </if>
+        board_no is not null
     </select>
 
     <!--    // 게시글 추천 기능-->

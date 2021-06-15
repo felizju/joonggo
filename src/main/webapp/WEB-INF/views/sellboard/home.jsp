@@ -62,28 +62,28 @@
                                 <!-- 동네생활 카테고리 -->
                                 <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'CLOTHING')}"
+                                        <a class="nav-link active text-uppercase clothing" id="home-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="home" aria-selected="true">의류</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ELECTRONIC')}"
+                                        <a class="nav-link text-uppercase electronic" id="profile-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="profile" aria-selected="false">전자기기</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'HOME')}"
+                                        <a class="nav-link text-uppercase home" id="contact-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="contact" aria-selected="false">가전가구</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'LIVING')}"
+                                        <a class="nav-link text-uppercase living" id="contact-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="contact" aria-selected="false">생활용품</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'REMARK')}"
+                                        <a class="nav-link text-uppercase remark" id="contact-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="contact" aria-selected="false">기타</a>
                                     </li>
                                 </ul>
@@ -214,6 +214,40 @@
         </div>
     </div>
 
+    <script>
+        $(function () {
+            console.log("home script 시작");
+            $('.clothing').on('click', e => {
+                console.log("clothing 클릭이벤트!");
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'CLOTHING')}";
+            })
+            $('.electronic').on('click', e => {
+                console.log("electronic 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ELECTRONIC')}";
+            });
+            $('.home').on('click', e => {
+                console.log("home 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'HOME')}";
+            });
+            $('.living').on('click', e => {
+                console.log("living 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'LIVING')}";
+            });
+            $('.remark').on('click', e => {
+                console.log("remark 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'REMARK')}";
+            });
+        });
+    </script>
 </body>
 
 </html>
