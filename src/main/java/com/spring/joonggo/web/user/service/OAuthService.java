@@ -11,5 +11,4 @@ public interface OAuthService {
 
     //로그아웃 메서드
     void logout(String accessToken) throws Exception;
-
 }

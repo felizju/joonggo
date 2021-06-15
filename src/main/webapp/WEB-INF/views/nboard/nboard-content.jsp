@@ -9,6 +9,13 @@
 <head>
     <title>JOONGGO MARKET</title>
 
+    <style>
+        .pagination {
+            justify-content: center;
+            font-size: 15px;
+        }
+    </style>
+
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -202,6 +209,40 @@
         </div>
     </div>
 
+    <!-- 댓글 수정 모달 -->
+    <div class="modal fade bd-example-modal-lg" id="commentModifyModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="background: #343A40; color: white;">
+                    <h4 class="modal-title">댓글 수정하기</h4>
+                    <button type="button" class="close text-white" data-dismiss="modal">X</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input id="modCommentNo" type="hidden">
+                        <label for="modCommentText" hidden>댓글내용</label>
+                        <textarea id="modCommentText" class="form-control" placeholder="수정할 댓글 내용을 입력하세요."
+                            rows="3"></textarea>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="commentModBtn" type="button" class="btn btn-dark">수정</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- end replyModifyModal -->
+
     <!-- 댓글 관련 스크립트 -->
     <script>
         $(function () {
@@ -282,7 +323,7 @@
 
                     // 댓글 내용
             
-                    tag += "<tr id='commentList'>" +
+                    tag += "<tr id='commentList' data-commentNo='" + comment.commentNo + "'>" +
                     "<td id='commentUserNickName' data-commentNick='" + comment.userNickName + "'>" + comment.userNickName + "</td>" +
                         "<td id='commentContent' data-commentContent='" + comment.commentContent + "'>" + comment.commentContent + "</td>" +
                         "<td id='commentDate' data-commentDate='" + comment.commentCreatedDate + "'>" + comment.commentCreatedDate + "</td>" +
@@ -372,7 +413,63 @@
                 })
             });
 
-            //댓글 수정 비동기 요청 이벤트
+            const $modal = $('#commentModifyModal');
+            //댓글 수정 버튼 클릭 이벤트
+            $('#commentData').on('click', '#commentModBtn', e => {
+                // console.log(e.target);
+                e.preventDefault();
+
+                //모달 띄우기
+                $modal.modal('show');
+
+                const originText = e.target.parentNode.parentNode.parentNode.parentNode.children[1].dataset.commentcontent;
+                // console.log(originText);
+                $('#modCommentText').val(originText);
+
+                //모달이 열릴 때 모달안에 댓글번호 넣어놓기
+                const commentNo = e.target.parentNode.parentNode.parentNode.parentNode.dataset.commentno;
+                console.log("댓글번호123" + commentNo);
+
+                $('#modCommentNo').val(commentNo);
+            });
+
+            //모달창 닫기 이벤트
+            $('.modal-header button, .modal-footer button').on('click', e => {
+                $modal.modal('hide');
+
+            });
+
+            //댓글 수정 요청 이벤트
+            $('#commentModBtn').on('click', e => {
+                //댓글 번호
+                const commentNo = $('#modCommentNo').val();
+                // console.log("댓글 번호 : " + commentNo);
+                const commentText = $('#modCommentText').val();
+                
+                const reqInfo = {
+                    method: 'PUT',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        commentNo: commentNo,
+                        commentContent: commentText,
+                        userId: '${loginUser.userId}',
+                        userNickName: '${loginUser.userNickname}'
+                    })
+                }
+                //비동기로 수정 요청
+                fetch('/api/comment/' + commentNo, reqInfo)
+                    .then(res => res.text())
+                    .then(msg => {
+                        if (msg === 'modSuccess') {
+                            $modal.modal('hide');
+                            getCommentList(1);
+                        } else {
+                            alert("댓글 수정에 실패했습니다.");
+                        }
+                    })
+            });
 
             //댓글 삭제 비동기 요청 이벤트
             $('#commentData').on('click', '#commentDelBtn', e => {

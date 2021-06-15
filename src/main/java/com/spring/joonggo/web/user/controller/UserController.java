@@ -2,6 +2,7 @@ package com.spring.joonggo.web.user.controller;
 
 import com.spring.joonggo.web.user.domain.LoginInfo;
 import com.spring.joonggo.web.user.domain.ModifyUser;
+import com.spring.joonggo.web.user.domain.OAuthValue;
 import com.spring.joonggo.web.user.domain.User;
 import com.spring.joonggo.web.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -52,7 +53,10 @@ public class UserController {
 
     //로그인 화면 요청
     @GetMapping("/sign-in")
-    public String signIn() {
+    public String signIn(Model model) {
+        //kakao 로그인 API
+        model.addAttribute("appKey", OAuthValue.KAKAO_APP_KEY);
+        model.addAttribute("redirectUri", OAuthValue.KAKAO_REDIRECT_URI);
         return "user/logIn";
     }
 
