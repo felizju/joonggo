@@ -80,6 +80,9 @@
             OR goods_content LIKE '%' || #{keyword} || '%')
             AND
         </if>
+        <if test="sellCategory != null">
+            goods_category = #{sellCategory} AND
+        </if>
         <![CDATA[
             ROWNUM <= #{page} * #{amount} )
         WHERE rn > (#{page} - 1) * #{amount}
@@ -90,22 +93,25 @@
     <select id="getTotalCounter" resultType="int">
         SELECT COUNT(*)
         FROM goods
+        WHERE
         <if test="type == 'title'">
-            WHERE goods_title LIKE '%' || #{keyword} || '%'
+            goods_title LIKE '%' || #{keyword} || '%' AND
         </if>
         <if test="type == 'writer'">
-            WHERE sell_user_nickname LIKE '%' || #{keyword} || '%'
+            sell_user_nickname LIKE '%' || #{keyword} || '%' AND
         </if>
         <if test="type == 'content'">
-            WHERE goods_content LIKE '%' || #{keyword} || '%'
+            goods_content LIKE '%' || #{keyword} || '%' AND
         </if>
         <if test="type == 'titleContent'">
-            WHERE (goods_title LIKE '%' || #{keyword} || '%'
+            (goods_title LIKE '%' || #{keyword} || '%'
             OR goods_content LIKE '%' || #{keyword} || '%')
+            AND
         </if>
         <if test="sellCategory != null">
             goods_category = #{sellCategory} AND
         </if>
+        goods_no is not null
     </select>
 
 

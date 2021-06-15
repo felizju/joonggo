@@ -68,28 +68,23 @@
                             <!-- 동네생활 카테고리 -->
                             <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NEIGHBOR')}"
-                                        role="tab" aria-controls="home" aria-selected="true">우리동네</a>
+                                    <a class="nav-link active text-uppercase neighbor" id="home-tab" data-toggle="tab"
+                                        href="#" role="tab" aria-controls="home" aria-selected="true">우리동네</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ISSUE')}"
+                                    <a class="nav-link text-uppercase issue" id="profile-tab" data-toggle="tab" href="#"
                                         role="tab" aria-controls="profile" aria-selected="false">사건/사고</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'DAILYLIFE')}"
+                                    <a class="nav-link text-uppercase daily" id="contact-tab" data-toggle="tab" href="#"
                                         role="tab" aria-controls="contact" aria-selected="false">일상&자유</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NOTICE')}"
-                                        role="tab" aria-controls="contact" aria-selected="false">공지사항</a>
+                                    <a class="nav-link text-uppercase notice" id="contact-tab" data-toggle="tab"
+                                        href="#" role="tab" aria-controls="contact" aria-selected="false">공지사항</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                        href="/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ETC')}"
+                                    <a class="nav-link text-uppercase etc" id="contact-tab" data-toggle="tab" href="#"
                                         role="tab" aria-controls="contact" aria-selected="false">기타</a>
                                 </li>
                             </ul>
@@ -189,15 +184,40 @@
         </div>
     </div>
 
+    <!-- <script src="/js/nboard-category.js"></script> -->
     <script>
-        // 카테고리 변경 함수
-        function changeCategory() {
-
-        }
-
-        (function () {
-
-        }());
+        $(function () {
+            console.log("content-list script 시작");
+            $('.neighbor').on('click', e => {
+                console.log("neighbor 클릭이벤트!");
+                location.href =
+                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NEIGHBOR')}";
+            })
+            $('.issue').on('click', e => {
+                console.log("issue 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ISSUE')}";
+            });
+            $('.daily').on('click', e => {
+                console.log("daily 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'DAILYLIFE')}";
+            });
+            $('.notice').on('click', e => {
+                console.log("notice 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'NOTICE')}";
+            });
+            $('.etc').on('click', e => {
+                console.log("etc 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/nboard/list${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ETC')}";
+            });
+        });
     </script>
 
 </body>
