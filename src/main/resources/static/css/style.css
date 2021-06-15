@@ -8810,6 +8810,14 @@ button.bg-dark:focus {
     margin-right: 1.5rem !important;
 }
 
+.floating-address {
+    display: block;
+    top: 10px;
+    font-size: 0.75rem;
+    color: #fd7e14;
+    text-align: left;
+}
+
 .mb-4,
 .my-4 {
     margin-bottom: 1.5rem !important;
@@ -22900,6 +22908,7 @@ pre[class*=language-]:before {
     top: -10px;
     font-size: 0.75rem;
     color: #fd7e14;
+
 }
 
 .spinner-border {

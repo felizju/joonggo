@@ -19,33 +19,34 @@ public class KakaoController {
 
     private final OAuthService kakaoService;
 
-
     //카카오 서버가 보내준 리다이렉션에 대해 처리할 요청 메서드
     //인가 코드를 받아 사용자 정보에 접근할 수 있는 토큰을 발급받는 과정
     @GetMapping(OAuthValue.KAKAO_REDIRECT_URI)
     public String kakaoLogin(String code, HttpSession session) throws Exception {
 
         log.info("/auth/kakao 요청 : 인가코드 - " + code);
-        //인가 코드로 토큰을 발급 받아야 함.
-        //우리 서버에서 카카오 서버로 요청을 보내야 함.
+        //인가 코드로 토큰을 발급 받아야 함
+        //우리 서버에서 카카오 서버로 요청을 보내야 함
         String accessToken = kakaoService.getAccessToken(code);
 
         //액세스토큰을 통해 사용자 정보 요청(프로필, 닉네임, 이메일 등)
         Map<String, Object> userInfo = kakaoService.getKakaoUserInfo(accessToken);
 
-        if (userInfo != null) { //로그인 제대로 이루어짐
-
+        //로그인
+        if (userInfo != null) {
+            log.info("카카오 유저 이메일 : " + (String)userInfo.get("email") );
             User user = new User();
             user.setUserId((String) userInfo.get("email"));
             user.setUserEmail((String)userInfo.get("email"));
             user.setUserNickname((String)userInfo.get("nickname"));
+
+            log.info("카카오 유저 정보 : " + user);
 
             //세션에 저장
             session.setAttribute("loginUser", user);
             session.setAttribute("profile_path", userInfo.get("profileImg"));
             session.setAttribute("loginMethod", "kakao"); //로그인 방법
             session.setAttribute("accessToken", accessToken);
-
         }
         return "redirect:/";
     }
