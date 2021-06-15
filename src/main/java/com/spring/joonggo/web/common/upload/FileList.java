@@ -18,5 +18,6 @@ public class FileList {
     private String originName;
     private String encryptName;
     private String ext;
+    private String filePath;
 
 }

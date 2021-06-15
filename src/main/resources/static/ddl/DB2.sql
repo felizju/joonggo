@@ -62,13 +62,14 @@ CREATE TABLE wishlist (
 CREATE SEQUENCE files_seq; -- 첨부파일 seq
 
 CREATE TABLE files (
-    file_no NUMBER(5) PRIMARY KEY, -- 파일 번호
+    goods_no NUMBER(5) PRIMARY KEY, -- 상품 번호
     file_type VARCHAR2(100) NOT NULL,-- 파일 타입
+    file_origin_name VARCHAR2(1000) NOT NULL, -- 파일 이름
     file_name VARCHAR2(1000) NOT NULL, -- 파일 이름
     file_created_date DATE DEFAULT SYSDATE,-- 생성일자
-    goods_no NUMBER(5) NOT NULL, -- 상품 번호
     user_id VARCHAR2(20) NOT NULL, -- 아이디
-    user_nickname VARCHAR2(20) NOT NULL -- 닉네임
+    user_nickname VARCHAR2(20) NOT NULL, -- 닉네임
+    file_path VARCHAR2(1000) NOT NULL
 );
 
 -- 채팅방 chat_room

@@ -147,16 +147,16 @@
     <insert id="addFile">
         INSERT INTO files
         (goods_no, file_origin_name,
-        file_name, user_id, user_nickname, file_type)
+        file_name, user_id, user_nickname, file_type, file_path)
         VALUES
         (goods_seq.currval, #{originName}, #{encryptName},
-        #{userId}, #{userNick}, #{ext})
+        #{userId}, #{userNick}, #{ext}, #{filePath})
     </insert>
 
 
     <!-- 첨부파일 경로 불러오기 -->
     <select id="getFilePaths" resultType="String">
-        SELECT file_name FROM files
+        SELECT file_path FROM files
         WHERE goods_no = #{productNum}
     </select>
 

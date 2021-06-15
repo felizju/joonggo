@@ -30,7 +30,8 @@ public class SellController {
     private final SellBoardService sellBoardService;
 
     // 업로드파일 저장 경로
-    private static final String UPLOAD_PATH = "D:\\joonggo\\upload";
+    private static final String UPLOAD_PATH =
+            "D:\\tw\\study\\Gruop Study\\github\\joongo\\src\\main\\resources\\static\\images\\upload";
 
    /* @Autowired
     public SellController(SellBoardService sellBoardService) {
