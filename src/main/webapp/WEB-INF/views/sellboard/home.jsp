@@ -7,10 +7,7 @@
 <head>
     <title>JOONGGO MARKET</title>
     <style>
-        .pagination {
-            justify-content: center;
-            font-size: 15px;
-        }
+
     </style>
 
     <!-- Meta -->
