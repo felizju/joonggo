@@ -2,53 +2,99 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Spring Boot WebSocket Chat Application</title>
+    <title>JOONGGO MARKET</title>
+    <style>
+
+    </style>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+
+    <!-- chat css -->
     <link rel="stylesheet" href="/css/chat.css" />
+
+
     <%@ include file="../include/static-head.jsp" %>
 </head>
-<body>
 
-<div id="username-page">
-    <div class="username-page-container">
-        <h1 class="title">username을 입력하세요</h1>
-        <form id="usernameForm" name="usernameForm">
-            <div class="form-group">
-                <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
-            </div>
-            <div class="form-group">
-                <button type="submit" class="accent username-submit">채팅 시작하기</button>
-            </div>
-        </form>
+<body class="loader-fill">
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class=""></div>
+        </div>
     </div>
-</div>
+    <!-- [ Pre-loader ] End -->
 
-<div id="chat-page" class="hidden">
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>Spring WebSocket Chat Demo</h2>
-        </div>
-        <div class="connecting">
-            연결중...
-        </div>
-        <ul id="messageArea">
 
-        </ul>
-        <form id="messageForm" name="messageForm">
-            <div class="form-group">
-                <div class="input-group clearfix">
-                    <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
-                    <button type="submit" class="primary">보내기</button>
+    <!-- [ navigation menu ] start -->
+    <%@ include file="../include/navigation.jsp" %>
+    <!-- [ navigation menu ] end -->
+
+
+    <!-- [ Header ] start -->
+    <%@ include file="../include/header.jsp" %>
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ sitename ] start -->
+            <%@ include file="../include/sitename.jsp" %>
+            <!-- [ sitename ] end -->
+
+
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <div id="username-page">
+                    <div class="username-page-container">
+                        <p class="title">username을 입력하세요</p>
+                        <form id="usernameForm" name="usernameForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Username" autocomplete="off"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn-primary">채팅 시작하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="chat-page" class="hidden">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h2>채팅</h2>
+                        </div>
+                        <div class="connecting">
+                            연결중...
+                        </div>
+                        <ul id="messageArea">
+
+                        </ul>
+                        <form id="messageForm" name="messageForm">
+                            <div class="form-group">
+                                <div class="input-group clearfix">
+                                    <input type="text" id="message" placeholder="메시지를 입력하세요." autocomplete="off"
+                                        class="form-control">
+                                    <button type="submit" class="btn-primary">보내기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script src="/js/chat.js"></script>
+
 </body>
+
 </html>

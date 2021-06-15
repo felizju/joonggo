@@ -55,6 +55,8 @@
                         <div class="card-header">
                             <h5>나의 당근</h5>
                         </div>
+
+                        
                         <div class="navbar-content scroll-div">
                             <div class="">
                                 <div class="main-menu-header profile-name"><br>
