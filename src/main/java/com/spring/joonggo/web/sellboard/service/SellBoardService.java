@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.sellboard.service;
 
 import com.spring.joonggo.web.common.paging.Criteria;
+import com.spring.joonggo.web.common.upload.FileList;
 import com.spring.joonggo.web.sellboard.domain.DummyBoard;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
 
@@ -12,7 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -23,12 +27,29 @@ public class SellBoardService {
 
     // 게시물 검색
     public List<SellBoard> findAll(Criteria criteria) {
-        return sellBoardMapper.findAll(criteria);
+
+        List<SellBoard> sellBoards = sellBoardMapper.findAll(criteria);
+
+        for (SellBoard sellBoard : sellBoards) {
+            List<String> loadImgList = loadImg(sellBoard.getProductNum());
+            if (loadImgList.size() != 0) {
+                sellBoard.setMainImgPath(loadImgList.get(0));
+            }
+        }
+
+        return sellBoards;
     }
 
     // 게시물 추가
-    public void addProduct(SellBoard sellBoard) {
+    @Transactional
+    public void addProduct(SellBoard sellBoard, FileList fileList) {
         sellBoardMapper.addProduct(sellBoard);
+        sellBoardMapper.addFile(fileList);
+    }
+
+    // 이미지 경로 가져오기
+    public List<String> loadImg(int productNum) {
+        return sellBoardMapper.getFilePaths(productNum);
     }
 
     // 게시물 삭제
@@ -61,17 +82,18 @@ public class SellBoardService {
         sellBoardMapper.modifyState(productNum, stateFlag);
     }
 
-    @Transactional // 트랜잭션 처리 자동화
-    public void addList(SellBoard sellBoard) {
-        sellBoardMapper.addProduct(sellBoard);
-        // 첨부파일이 존재한다면 추가 쿼리 동작
-        List<String> filePathList = sellBoard.getFilePathList();
-        if (filePathList != null){
-            for (String path : filePathList) {
-                sellBoardMapper.addFile(path);
-            }
-        }
-    }
+//    @Transactional // 트랜잭션 처리 자동화
+//    public void addList(SellBoard sellBoard, FileList fileList) {
+//        sellBoardMapper.addFile(sellBoard, fileList);
+//
+//        /*// 첨부파일이 존재한다면 추가 쿼리 동작
+//        List<String> filePathList = sellBoard.getFilePathList();
+//        if (filePathList != null){
+//            for (String path : filePathList) {
+////                sellBoardMapper.addFile(path);
+//            }
+//        }*/
+//    }
 
     // 파일 로드 기능
 

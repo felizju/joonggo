@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -71,7 +72,10 @@
                                         </div>
                                         <div class="form-group" id="createDate" value="${sellBoard.createDate}">
                                             <label>작성시간</label>
-                                            <p class="form-control">${sellBoard.createDate}</p>
+                                            <p class="form-control">
+                                                <fmt:formatDate value="${sellBoard.createDate}"
+                                                pattern="yyyy년 MM월 dd일 HH:mm:ss" />
+                                            </p>
                                         </div>
                                         <div class="form-group" id="sellCategory" value="${sellBoard.sellCategory}">
                                             <label for="exampleFormControlSelect1">카테고리</label>
@@ -113,20 +117,24 @@
                                     <label for="inputContent">내용</label>
                                     <p class="form-control">${sellBoard.productContent}</p>
                                 </div>
-                                <!-- 첨부파일 영역 -->
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                    <label class="custom-file-label" for="validatedCustomFile">파일 업로드
-                                        비활성화하기!!!!!!</label>
-                                </div><br><br>
+                                <!-- 첨부파일 보여주는 영역 -->
+                                <div class="show-file">
+                                    <p>파일 영역</p>
+                                </div>
+                                
+                                <br><br>
 
-                                <button type="button"
-                                    onclick="location.href='/modify?productNum=${sellBoard.productNum}'"
-                                    class="btn  btn-primary">수정하기</button>
+                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
+                                    <button type="button"
+                                        onclick="location.href='/modify?productNum=${sellBoard.productNum}'"
+                                        class="btn  btn-primary">수정하기</button>
+                                </c:if>
 
-                                <button type="button"
-                                    onclick="location.href='/delete?productNum=${sellBoard.productNum}'"
-                                    class="btn  btn-success">삭제하기</button>
+                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
+                                    <button type="button"
+                                        onclick="location.href='/delete?productNum=${sellBoard.productNum}'"
+                                        class="btn  btn-success">삭제하기</button>
+                                </c:if>
 
                                 <button type="button"
                                     onclick="location.href='/?page=${cri.page}&type=${cri.type}&keyword=${cri.keyword}&amount=${cri.amount}&category=${cri.category}' "

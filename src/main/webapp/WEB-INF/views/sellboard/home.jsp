@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -136,14 +136,15 @@
                                                 <!-- <script>console.log(sellBoard)</script> -->
                                                 <td>${sellBoard.productNum}</td>
                                                 <td>${sellBoard.sellCategory}</td>
-                                                <td>이미지 경로</td>
+                                                <td>${sellBoard.mainImgPath}</td>
                                                 <td>
                                                     <a href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
                                                         ${sellBoard.productName}</a>
                                                 </td>
                                                 <td>${sellBoard.sellPrice}</td>
                                                 <td>${sellBoard.sellerNick}</td>
-                                                <td>${sellBoard.createDate}</td>
+                                                <td><fmt:formatDate value="${sellBoard.createDate}"
+                                                    pattern="yyyy년 MM월 dd일 HH:mm:ss" /></td>
                                                 <td>${sellBoard.sellArea}</td>
                                                 <td>
                                                     <a href="#"><span class="lnr lnr-heart"> 1</span></a>

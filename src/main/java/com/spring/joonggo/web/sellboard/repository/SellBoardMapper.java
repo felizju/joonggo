@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.sellboard.repository;
 
 import com.spring.joonggo.web.common.paging.Criteria;
+import com.spring.joonggo.web.common.upload.FileList;
 import com.spring.joonggo.web.sellboard.domain.DummyBoard;
 import com.spring.joonggo.web.sellboard.domain.SellBoard;
 
@@ -24,6 +25,8 @@ public interface SellBoardMapper {
     int getTotalCounter(Criteria criteria);
 
     // 판매 게시물 추가 기능
+    void addProduct(SellBoard sellBoard, FileList fileList);
+
     void addProduct(SellBoard sellBoard);
 
     // 판매 게시물 삭제 기능
@@ -42,9 +45,9 @@ public interface SellBoardMapper {
     void addViews(int productNum);
 
     // 파일첨부 기능
-    void addFile(String filePath);
+    void addFile(FileList fileList);
 
     // 게시글 첨부파일 경로 얻기
-    List<String> getFilePaths(int boardNum);
+    List<String> getFilePaths(int productNum);
 
 }
