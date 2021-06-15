@@ -34,6 +34,7 @@ public class FileUploadController {
 //            File uploadFile = new File(UPLOAD_PATH, file.getOriginalFilename());
             try {
                 String uploadFile = FileUtils.uploadFile(file, UPLOAD_PATH);
+                System.out.println(uploadFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -31,6 +31,10 @@ public class FileUtils {
         // ex) D:/develping/upload/2021/06/07
         String newUploadPath = getNewUploadPath(uploadPath);
 
+        System.out.println("--------------------------------------------");
+        System.out.println(newUploadPath);
+        System.out.println("--------------------------------------------");
+
         // 업로드 수행
         File uploadFile = new File(newUploadPath, newFileName);
         try {

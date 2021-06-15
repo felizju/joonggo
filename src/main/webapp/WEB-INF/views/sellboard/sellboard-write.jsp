@@ -58,7 +58,7 @@
                         <div class="card-body">
                             <h5>글 작성</h5>
                             <hr>
-                            <form method="POST">
+                            <form method="POST" action="/sellboard-write" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-6">
 
@@ -110,12 +110,13 @@
                                         placeholder="게시글 내용을 작성해주세요. (가품 및 판매금지품목은 게시가 제한될 수 있습니다.)"></textarea>
                                 </div>
 
-                                <form action="/upload" method="POST" enctype="multipart/form-data">
-                                    <div class="custom-file">
-                                        <input type="file" name="file" class="custom-file-input" id="validatedCustomFile" multiple>
-                                        <label class="custom-file-label" for="validatedCustomFile">파일 불러오기</label>
-                                    </div><br><br>
-                                </form>
+
+                                <div class="custom-file">
+                                    <input type="file" name="file" class="custom-file-input" id="validatedCustomFile"
+                                        multiple>
+                                    <label class="custom-file-label" for="validatedCustomFile">파일 불러오기</label>
+                                </div><br><br>
+
                                 <button type="submit" class="btn  btn-primary">등록하기</button>
                             </form>
 
