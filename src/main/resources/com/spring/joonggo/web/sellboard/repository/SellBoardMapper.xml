@@ -94,13 +94,13 @@
             WHERE goods_title LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'writer'">
-            WHERE  sell_user_nickname LIKE '%' || #{keyword} || '%'
+            WHERE sell_user_nickname LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'content'">
-            WHERE  goods_content LIKE '%' || #{keyword} || '%'
+            WHERE goods_content LIKE '%' || #{keyword} || '%'
         </if>
         <if test="type == 'titleContent'">
-            WHERE  (goods_title LIKE '%' || #{keyword} || '%'
+            WHERE (goods_title LIKE '%' || #{keyword} || '%'
             OR goods_content LIKE '%' || #{keyword} || '%')
         </if>
     </select>
@@ -115,11 +115,11 @@
     <!-- 정보 변경 기능 -->
     <update id="modifyProduct">
         UPDATE goods SET
-        goods_content = #{productContent}
-        , goods_title = #{productName}
-        , goods_price = #{sellPrice}
-        , sales_area = #{sellArea}
-        WHERE goods_no = #{productNum}
+        goods_title = #{dummyBoard.productName},
+        goods_price = #{dummyBoard.sellPrice},
+        sales_area = #{dummyBoard.sellArea},
+        goods_content = #{dummyBoard.productContent}
+        WHERE goods_no = #{dummyBoard.productNum}
     </update>
 
     <!-- 판매 상태 정보 변경 -->
