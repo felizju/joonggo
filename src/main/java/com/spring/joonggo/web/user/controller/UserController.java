@@ -129,6 +129,7 @@ public class UserController {
     public String profile(HttpSession session, Model model) {
         log.info("/user/profile GET 요청! - " );
 //        User user = userService.getUser(userId);
+//        System.out.println(session);
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 //        model.addAttribute("user", user);

@@ -17,10 +17,11 @@ public class FileUtils {
 
 
     // 사용자가 파일을 업로드했을 때 저장 처리 및 파일명을 리턴하는 메서드
-    public static String uploadFile(MultipartFile file, String uploadPath) throws IOException {
+    public static FileList uploadFile(MultipartFile file, String uploadPath) throws IOException {
 
         // 파일 확장자와 이름을 추출
-        String originName = file.getName();
+        FileList fileList = new FileList();
+        String originName = file.getOriginalFilename();
         String ext = originName.substring(originName.lastIndexOf(".") + 1);
 
         // 중복없는 파일명으로 변환
@@ -33,17 +34,21 @@ public class FileUtils {
 
         System.out.println("--------------------------------------------");
         System.out.println(newUploadPath);
+        System.out.println(originName);
         System.out.println("--------------------------------------------");
 
         // 업로드 수행
         File uploadFile = new File(newUploadPath, newFileName);
         try {
             file.transferTo(uploadFile);
+            fileList.setExt(ext);
+            fileList.setEncryptName(newFileName);
+            fileList.setOriginName(originName);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return originName;
+        return fileList;
     }
 
     // 파일 확장자 제한
