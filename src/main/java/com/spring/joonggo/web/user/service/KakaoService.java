@@ -18,23 +18,43 @@ import java.util.Map;
 
 @Service
 @Log4j2
-public class KakaoService implements OAuthService, OAuthValue {
+public class KakaoService implements OAuthValue, OAuthService {
 
     //토큰발급 메서드
     @Override
     public String getAccessToken(String authCode) throws Exception {
         String reqURI = "https://kauth.kakao.com/oauth/token"; //요청URI
-
-        URL url = new URL(reqURI); //서버 투 서버 요청 발송(객체생성)
+        URL url = new URL(reqURI); //서버 투 서버 요청 발송 (객체생성)
         HttpURLConnection conn = (HttpURLConnection) url.openConnection(); //url연결, 연결 정보 커넥션 객체에 담기
-
         conn.setRequestMethod("POST"); //요청정보 설정
         conn.setDoOutput(true); //응답 결과
         sendRequestData(authCode, conn); //파라미터 정보 스트림 통해 전송
 
-        return takeResponseData(conn); //응답 데이터 읽음
+        return takeResponseData(conn); //응답 데이터 스트림 통해 읽음
     }
 
+    //데이터 전송
+    private void sendRequestData(String authCode, HttpURLConnection conn) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()))) {
+
+            String queryParam = "grant_type=authorization_code"
+                    + "&client_id=" + KAKAO_APP_KEY
+                    + "&redirect_uri=http://localhost:8181" + KAKAO_REDIRECT_URI
+                    + "&code=" + authCode;
+
+            bw.write(queryParam); //스트림을 통해 파라미터 전송
+            bw.flush(); //출력버퍼 비우기
+
+            int responseCode = conn.getResponseCode();
+            log.info("응답 코드: " + responseCode); //응답 상태코드 200이면 성공
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //응답 데이터 읽음
     private String takeResponseData(HttpURLConnection conn) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
 
@@ -47,12 +67,11 @@ public class KakaoService implements OAuthService, OAuthValue {
 
             //JsonElement는 자바로 변환된 JSON 객체
             JsonElement element = parser.parse(responseData);
-            log.info("element : " + element);
+            log.info("element: " + element);
 
             //필요한 데이터를 json프로퍼티 키를 사용해서 추출
             String accessToken = element.getAsJsonObject().get("access_token").getAsString();
             String refreshToken = element.getAsJsonObject().get("refresh_token").getAsString();
-
             log.info("accessToken : " + accessToken);
             log.info("refreshToken : " + refreshToken);
 
@@ -63,30 +82,6 @@ public class KakaoService implements OAuthService, OAuthValue {
             return null;
         }
     }
-
-    private void sendRequestData(String authCode, HttpURLConnection conn) {
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()))) {
-
-            String queryParam = "grant_type=authorization_code"
-                    + "&client_id=" + KAKAO_APP_KEY
-                    + "&redirect_uri=http://localhost:8181" + KAKAO_REDIRECT_URI
-                    + "&code=" + authCode;
-
-            //스트림을 통해 파라미터 전송
-            bw.write(queryParam);
-            //출력버퍼 비우기
-            bw.flush();
-
-            //응답 상태코드 200이면 성공
-            int responseCode = conn.getResponseCode();
-            log.info("응답 코드: " + responseCode);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     //유저정보 가져오는 메서드
     @Override
@@ -102,21 +97,20 @@ public class KakaoService implements OAuthService, OAuthValue {
         conn.setDoOutput(true);
 
         //요청 헤더정보 설정
-        conn.setRequestProperty("Authorization", "Bearer " + accessToken);//Bearer다음 한 칸 띄고, accessToken
+        conn.setRequestProperty("Authorization", "Bearer " + accessToken);//Bearer 다음 한 칸 띄고, accessToken
 
-        //요청 보내기기
+        //요청 보내기
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()))) {
 
             //응답 상태코드 200이면 성공
             int responseCode = conn.getResponseCode();
             log.info("보내기 응답 코드: " + responseCode);
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
+        //데이터 읽기
         try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
 
             //응답데이터를 입력스트림으로부터 읽어내기
@@ -137,16 +131,9 @@ public class KakaoService implements OAuthService, OAuthValue {
 
             log.info("카카오계정 정보: " + kakaoAccount);
 
-            String nickname
-                    = kakaoAccount.get("profile").getAsJsonObject()
-                    .get("nickname").getAsString();
-
-            String profileImgPath
-                    = kakaoAccount.get("profile").getAsJsonObject()
-                    .get("profile_image_url").getAsString();
-
-            String email
-                    = kakaoAccount.get("email").getAsString();
+            String nickname = kakaoAccount.get("profile").getAsJsonObject().get("nickname").getAsString();
+            String profileImgPath = kakaoAccount.get("profile").getAsJsonObject().get("profile_image_url").getAsString();
+            String email = kakaoAccount.get("email").getAsString();
 
             log.info("카카오 닉네임 " + nickname);
             log.info("카카오 프로필 이미지 경로 " + profileImgPath);

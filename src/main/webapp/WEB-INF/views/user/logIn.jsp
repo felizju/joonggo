@@ -46,6 +46,7 @@
 								<label class="custom-control-label" for="customCheck1">자동 로그인</label>
 							</div>
 							<input type="submit" id="signIn-btn" class="btn btn-block btn-primary mb-4" value="로그인">
+							
 							<a href="https://kauth.kakao.com/oauth/authorize?client_id=${appKey}&redirect_uri=http://localhost:8181${redirectUri}&response_type=code">
 								<img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg"
 									alt="카카오 로그인" class="mb-4 kakao">
