@@ -4,6 +4,7 @@ import com.spring.joonggo.web.user.domain.LoginInfo;
 import com.spring.joonggo.web.user.domain.ModifyUser;
 import com.spring.joonggo.web.user.domain.OAuthValue;
 import com.spring.joonggo.web.user.domain.User;
+import com.spring.joonggo.web.user.service.KakaoService;
 import com.spring.joonggo.web.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -18,6 +19,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @Log4j2
@@ -26,6 +28,7 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     private final UserService userService;
+    private final KakaoService kakaoService;
 
     //회원가입 화면요청
     @GetMapping("/sign-up")
@@ -55,6 +58,7 @@ public class UserController {
     //로그인 화면 요청
     @GetMapping("/sign-in")
     public String signIn(Model model) {
+
         //kakao 로그인 API
         model.addAttribute("appKey", OAuthValue.KAKAO_APP_KEY);
         model.addAttribute("redirectUri", OAuthValue.KAKAO_REDIRECT_URI);

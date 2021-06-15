@@ -141,7 +141,7 @@ public class KakaoService implements OAuthValue, OAuthService {
 
             //추출한 정보를 맵 또는 카카오 전용 도메인 객체를 만들어서 담아, 리턴
             Map<String, Object> kakakoInfoMap = new HashMap<>();
-            kakakoInfoMap.put("nickName", nickname);
+            kakakoInfoMap.put("nickname", nickname);
             kakakoInfoMap.put("profileImg", profileImgPath);
             kakakoInfoMap.put("email", email);
 
