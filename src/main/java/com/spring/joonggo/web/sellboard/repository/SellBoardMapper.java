@@ -41,8 +41,10 @@ public interface SellBoardMapper {
     // 조회수 상승
     void addViews(int productNum);
 
-    // 파일 업로드 기능
+    // 파일첨부 기능
+    void addFile(String filePath);
 
-    // 파일 로드 기능
+    // 게시글 첨부파일 경로 얻기
+    List<String> getFilePaths(int boardNum);
 
 }

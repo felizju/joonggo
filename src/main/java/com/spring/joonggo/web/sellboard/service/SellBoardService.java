@@ -10,6 +10,7 @@ import com.spring.joonggo.web.sellboard.repository.SellBoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -60,7 +61,17 @@ public class SellBoardService {
         sellBoardMapper.modifyState(productNum, stateFlag);
     }
 
-    // 파일 업로드 기능
+    @Transactional // 트랜잭션 처리 자동화
+    public void addList(SellBoard sellBoard) {
+        sellBoardMapper.addProduct(sellBoard);
+        // 첨부파일이 존재한다면 추가 쿼리 동작
+        List<String> filePathList = sellBoard.getFilePathList();
+        if (filePathList != null){
+            for (String path : filePathList) {
+                sellBoardMapper.addFile(path);
+            }
+        }
+    }
 
     // 파일 로드 기능
 
