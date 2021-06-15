@@ -26,7 +26,7 @@ public interface UserMapper {
     void deleteAccount(String userId);
 
     //회원 정보 수정
-    void modifyUserInfo(ModifyUser modifyUser);
+    void modifyUserInfo(User user);
 
     //자동로그인 관련 기능
     void saveKeepLogin(Map<String, Object> datas);

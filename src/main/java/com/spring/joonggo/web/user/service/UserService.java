@@ -64,12 +64,16 @@ public class UserService {
 
 
     //회원 정보 수정
-    public void modifyUserInfo(String userId, ModifyUser modifyUser) {
-        String userPW = modifyUser.getUserPw();
-        modifyUser.setUserPw(new BCryptPasswordEncoder().encode(userPW));
-        modifyUser.setUserId(userId);
+    public User modifyUserInfo(String userId, User user) {
+        String userPW = user.getUserPw();
+        User originUser = userMapper.getUser(userId);
+        user.setUserPw(new BCryptPasswordEncoder().encode(userPW));
+        user.setUserId(userId);
 
-        userMapper.modifyUserInfo(modifyUser);
+
+        userMapper.modifyUserInfo(user);
+
+        return user;
     }
 
 

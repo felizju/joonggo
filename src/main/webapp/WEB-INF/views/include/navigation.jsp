@@ -42,7 +42,7 @@
                     <label>나의 당근</label>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
-                    <a href="/user/profile" class="nav-link has-ripple"><span class="pcoded-micon">
+                    <a href="#!" class="nav-link has-ripple"><span class="pcoded-micon">
                             <i class="feather icon-lock"></i></span>
                         <span class="pcoded-mtext">프로필</span></a>
                     <ul class="pcoded-submenu">
