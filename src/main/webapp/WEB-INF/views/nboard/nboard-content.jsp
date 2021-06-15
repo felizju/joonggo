@@ -120,16 +120,17 @@
                                     <p class="form-control">${board.content}</p>
                                 </div>
                                 <!-- 첨부파일 영역 -->
-                                <div class="custom-file">
+                                <!-- <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                                     <label class="custom-file-label" for="validatedCustomFile">파일 업로드
                                         비활성화하기!!!!!!</label>
-                                </div><br><br>
+                                </div> -->
+                                <br><br>
                                 <%--
                                 <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}"></c:if>
                                 --%>
                                 <button type="button"
-                                    onclick="location.href='/nboard/modify?boardNo=?{board.boardNo}&vf=false'"
+                                    onclick="location.href='/nboard/modify?boardNo=${board.boardNo}&vf=false'"
                                     class="btn  btn-primary">수정하기</button>
                                 <%--
                                 </c:if>
