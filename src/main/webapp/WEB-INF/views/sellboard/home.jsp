@@ -60,6 +60,38 @@
                     <div class="card table-card">
                         <div class="card-header">
                             <h5>최신글</h5>
+
+                            <div class="card-body">
+                                <!-- 동네생활 카테고리 -->
+                                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab"
+                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'CLOTHING')}"
+                                            role="tab" aria-controls="home" aria-selected="true">의류</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab"
+                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ELECTRONIC')}"
+                                            role="tab" aria-controls="profile" aria-selected="false">전자기기</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
+                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'HOME')}"
+                                            role="tab" aria-controls="contact" aria-selected="false">가전가구</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
+                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'LIVING')}"
+                                            role="tab" aria-controls="contact" aria-selected="false">생활용품</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
+                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'REMARK')}"
+                                            role="tab" aria-controls="contact" aria-selected="false">기타</a>
+                                    </li>
+                                </ul>
+                            </div>
+
                             <div class="card-header-right">
                                 <div class="btn-group card-option">
                                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"

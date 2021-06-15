@@ -121,7 +121,7 @@
                                 </div><br><br>
 
                                 <button type="button"
-                                    onclick="location.href='/modify?productNum=?{sellBoard.productNum}&vf=false'"
+                                    onclick="location.href='/modify?productNum=${sellBoard.productNum}'"
                                     class="btn  btn-primary">수정하기</button>
 
                                 <button type="button"

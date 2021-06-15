@@ -58,27 +58,23 @@
                         <div class="card-body">
                             <h5>글 작성</h5>
                             <hr>
-                            <form method="POST">
+                            <form action="/modify" method="POST">
                                 <div class="row">
                                     <div class="col-md-6">
-
+                                        <input type="hidden" name="productNum" value="${sellBoard.productNum}">
                                         <input type="hidden" name="sellerId" value="${loginUser.userId}">
                                         <input type="hidden" name="sellerNick" value="${loginUser.userNickname}">
                                         <div class="form-group">
                                             <label>닉네임</label>
                                             <p class="form-control">${loginUser.userNickname}</p>
                                         </div>
-
-
                                     </div>
                                     <div class="col-md-6">
-
-
                                         <div class="form-group">
                                             <label>지역</label>
-                                            <input class="form-control" name="sellArea"></input>
+                                            <textarea class="form-control" name="sellArea" id="inputTitle"
+                                                placeholder="판매 지역을 작성해주세요.">${sellBoard.sellArea}</textarea>
                                         </div>
-
                                     </div>
                                 </div>
 
@@ -88,7 +84,7 @@
                                 <div class="form-group">
                                     <label for="inputTitle">제목</label>
                                     <textarea class="form-control" name="productName" id="inputTitle"
-                                        placeholder="게시글 제목을 작성해주세요."></textarea>
+                                        placeholder="게시글 제목을 작성해주세요.">${sellBoard.productName}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">카테고리</label>
@@ -102,21 +98,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputTitle">가격</label>
-                                    <input class="form-control" name="sellPrice" placeholder="₩"></input>
+                                    <textarea class="form-control" name="sellPrice" id="inputTitle" placeholder="₩">${sellBoard.sellPrice}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputContent">내용</label>
                                     <textarea class="form-control" name="productContent" id="inputContent"
-                                        placeholder="게시글 내용을 작성해주세요. (가품 및 판매금지품목은 게시가 제한될 수 있습니다.)"></textarea>
+                                        placeholder="게시글 내용을 작성해주세요. (가품 및 판매금지품목은 게시가 제한될 수 있습니다.)">${sellBoard.productContent}</textarea>
                                 </div>
-
-                                <form action="/upload" method="POST" enctype="multipart/form-data">
-                                    <div class="custom-file">
-                                        <input type="file" name="file" class="custom-file-input" id="validatedCustomFile" multiple>
-                                        <label class="custom-file-label" for="validatedCustomFile">파일 불러오기</label>
-                                    </div><br><br>
-                                </form>
-                                <button type="submit" class="btn  btn-primary">등록하기</button>
+                                <!-- <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                    <label class="custom-file-label" for="validatedCustomFile">파일 찾아보기</label>
+                                </div><br><br> -->
+                                <button type="submit" class="btn  btn-primary">수정하기</button>
                             </form>
 
                         </div>
@@ -128,12 +121,6 @@
 
         </div>
     </div>
-
-    <script>
-        $(function () {
-
-        })
-    </script>
 
 </body>
 

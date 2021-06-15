@@ -1,6 +1,5 @@
 package com.spring.joonggo.web.common.upload;
 
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -18,7 +17,7 @@ public class FileUtils {
 
 
     // 사용자가 파일을 업로드했을 때 저장 처리 및 파일명을 리턴하는 메서드
-    public static void uploadFile(MultipartFile file, String uploadPath) throws IOException {
+    public static String uploadFile(MultipartFile file, String uploadPath) throws IOException {
 
         // 파일 확장자와 이름을 추출
         String originName = file.getName();
@@ -40,6 +39,7 @@ public class FileUtils {
             e.printStackTrace();
         }
 
+        return originName;
     }
 
     // 파일 확장자 제한

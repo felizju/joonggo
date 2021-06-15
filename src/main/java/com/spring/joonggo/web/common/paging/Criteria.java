@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.common.paging;
 
 import com.spring.joonggo.web.nboard.domain.Category;
+import com.spring.joonggo.web.sellboard.domain.SellCategory;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,6 +18,8 @@ public class Criteria {
     private String keyword; //검색어
 
     private Category category; //일반 게시판 카테고리
+
+    private SellCategory sellCategory; // 판매 게시판 카테고리
 
 
     public Criteria() {

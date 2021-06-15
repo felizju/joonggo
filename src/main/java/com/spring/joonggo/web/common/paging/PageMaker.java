@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.common.paging;
 
 import com.spring.joonggo.web.nboard.domain.Category;
+import com.spring.joonggo.web.sellboard.domain.SellCategory;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.web.util.UriComponents;
@@ -90,6 +91,19 @@ public class PageMaker {
                 .queryParam("keyword", criteria.getKeyword())
                 .queryParam("amount", amount)
                 .queryParam("category", category)
+                .build();
+
+        return build.toString();
+    }
+
+    // 판매 게시판 카테고리
+    public String makeParam(int page, int amount, SellCategory sellCategory) {
+        UriComponents build = UriComponentsBuilder.newInstance()
+                .queryParam("page", page)
+                .queryParam("type", criteria.getType())
+                .queryParam("keyword", criteria.getKeyword())
+                .queryParam("amount", amount)
+                .queryParam("sellCategory", sellCategory)
                 .build();
 
         return build.toString();
