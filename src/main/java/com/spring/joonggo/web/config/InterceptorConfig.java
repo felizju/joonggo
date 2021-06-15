@@ -21,8 +21,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 
         registry.addInterceptor(authInterceptor)
-                .addPathPatterns("/uuuuuu") //인터셉터 적용 구간
-                .excludePathPatterns(""); //인터셉터 적용하지 않을 구간
+                .addPathPatterns("/**") //인터셉터 적용 구간
+                .excludePathPatterns("/css/**", "/fonts/**", "/images/**", "/js/**") //리소스 구간 제외
+                .excludePathPatterns("/", "/nboard/list", "/user/sign-in", "/user/sign-up"); //인터셉터 적용하지 않을 구간
 
         registry.addInterceptor(autoLoginInterceptor).addPathPatterns("/**"); //자동로그인 회원 모든 페이지 허용
 
