@@ -6,6 +6,7 @@ import com.spring.joonggo.web.nboard.domain.DummyNBoard;
 import com.spring.joonggo.web.nboard.domain.NBoard;
 import com.spring.joonggo.web.nboard.service.NBoardService;
 import com.spring.joonggo.web.user.domain.User;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,18 +19,19 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/nboard")
 @Log4j2
 @CrossOrigin
+@RequiredArgsConstructor
 public class NBoardController {
 
     private final NBoardService nBoardService;
 
-    @Autowired
-    public NBoardController(NBoardService nBoardService) {
-        this.nBoardService = nBoardService;
-    }
+//    @Autowired
+//    public NBoardController(NBoardService nBoardService) {
+//        this.nBoardService = nBoardService;
+//    }
 
     //게시글 목록화면 요청
     @GetMapping("/list")
-    public String list(@ModelAttribute("cri") Criteria criteria, Model model, HttpSession session) {
+    public String list(Criteria criteria, Model model, HttpSession session) {
 
         log.info(criteria);
         model.addAttribute("nBoardList", nBoardService.getBoardList(criteria));
@@ -40,7 +42,7 @@ public class NBoardController {
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
 
-        return "nboard/nboard-list";
+        return "/nboard/nboard-list";
     }
 
     //게시글 작성화면 요청
@@ -49,7 +51,7 @@ public class NBoardController {
         log.info("nBoard register GET 요청!");
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
-        return "nboard/nboard-write";
+        return "/nboard/nboard-write";
     }
 
     //게시글 정보 저장 요청
@@ -85,7 +87,7 @@ public class NBoardController {
         model.addAttribute("loginUser", loginUser);
         log.info("현재 사용중인 user : " + loginUser);
 
-        return "nboard/nboard-content";
+        return "/nboard/nboard-content";
     }
 
     //게시글 수정 화면 요청
@@ -99,7 +101,7 @@ public class NBoardController {
         model.addAttribute("nBoard", nBoard);
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
-        return "nBoard/modify";
+        return "/nboard/modify";
     }
 
     //게시글 수정 저장 요청

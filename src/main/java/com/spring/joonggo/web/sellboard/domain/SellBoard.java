@@ -3,6 +3,7 @@ package com.spring.joonggo.web.sellboard.domain;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter @Setter
 @ToString
@@ -26,6 +27,9 @@ public class SellBoard {
     private String buyerNick; // 구매자 닉네임
     private SellCategory sellCategory; // 카테고리
     private SellStateFlag stateFlag; // 판매 상태
+
+    // 첨부파일 경로 리스트
+    private List<String> filePathList;
 
 //    public SellBoard() {
 //        this.productNum = sequence++;

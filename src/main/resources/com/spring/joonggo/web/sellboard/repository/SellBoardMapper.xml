@@ -140,4 +140,18 @@
         WHERE goods_no = #{productNum}
     </update>
 
+    <!-- 첨부파일 추가 쿼리 -->
+    <insert id="addFile">
+        INSERT INTO file_upload
+        (file_path, board_no)
+        VALUES
+        (#{filePath}, seq_board.currval)
+    </insert>
+
+    <!-- 첨부파일 경로 불러오기 -->
+    <select id="getFilePaths" resultType="String">
+        SELECT file_path FROM file_upload
+        WHERE board_no = #{boardNum}
+    </select>
+
 </mapper>

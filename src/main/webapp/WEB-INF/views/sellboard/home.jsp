@@ -121,6 +121,7 @@
                                     <thead>
                                         <tr>
                                             <th>NO</th>
+                                            <th>CATEGORY</th>
                                             <th>IMAGE</th>
                                             <th>TITLE</th>
                                             <th>PRICE</th>
@@ -128,7 +129,7 @@
                                             <th>DATE</th>
                                             <th>REGION</th>
                                             <th>LIKES</th>
-                                            <th>CHAT</th>
+                                            <!-- <th>CHAT</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -137,6 +138,7 @@
                                             <tr>
                                                 <!-- <script>console.log(sellBoard)</script> -->
                                                 <td>${sellBoard.productNum}</td>
+                                                <td>${sellBoard.sellCategory}</td>
                                                 <td>이미지 경로</td>
                                                 <td>
                                                     <a href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
@@ -147,11 +149,11 @@
                                                 <td>${sellBoard.createDate}</td>
                                                 <td>${sellBoard.sellArea}</td>
                                                 <td>
-                                                    <span class="lnr lnr-heart"> 1</span>
+                                                    <a href="#"><span class="lnr lnr-heart"> 1</span></a>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <span class="lnr lnr-bubble"> 2</span>
-                                                </td>
+                                                </td> -->
                                             </tr>
                                         </c:forEach>
 
