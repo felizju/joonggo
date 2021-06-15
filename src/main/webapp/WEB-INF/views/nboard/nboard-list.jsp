@@ -119,14 +119,16 @@
                                                 <td id="title" value="${board.title}">
                                                     <a
                                                         href="/nboard/detail${pageMaker.makeParam(pageMaker.criteria.page)}&boardNo=${board.boardNo}&vf=true">${board.title}</a>
-
+                                                    <c:if test="${board.newBoard}">
+                                                        <span class="badge badge-pill badge-success">New</span>
+                                                    </c:if>
                                                 </td>
                                                 <td id="content" value="${board.content}">${board.content}</td>
                                                 <td id="views" value="${board.views}">${board.views}</td>
                                                 <td id="recommend" value="${board.recommend}">${board.recommend}</td>
                                                 <td id="postDate" value="${board.postDate}">
                                                     <fmt:formatDate value="${board.postDate}"
-                                                    pattern="yyyy년 MM월 dd일 HH:mm:ss" />
+                                                        pattern="yyyy년 MM월 dd일 HH:mm:ss" />
                                                 </td>
 
                                             </tr>
@@ -138,9 +140,11 @@
                                 <ul class="pagination">
 
                                     <c:if test="${pageMaker.prev}">
-                                        
+
                                         <li class="page-item">
-                                            <a class="page-link" href="/nboard/list${pageMaker.makeParam(pageMaker.beginPage-1)}" aria-label="Previous">
+                                            <a class="page-link"
+                                                href="/nboard/list${pageMaker.makeParam(pageMaker.beginPage-1)}"
+                                                aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
@@ -150,14 +154,17 @@
                                     <!-- li*5>a{[$]} -->
                                     <c:forEach var="i" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}"
                                         step="1">
-                                
-                                        <li class="page-item"><a class="page-link" href="/nboard/list${pageMaker.makeParam(i)}">${i}</a></li>
+
+                                        <li class="page-item"><a class="page-link"
+                                                href="/nboard/list${pageMaker.makeParam(i)}">${i}</a></li>
                                         <!-- makeParam은 메서드이기 때문에 ()를 붙여서 call 해줌 -->
                                     </c:forEach>
 
                                     <c:if test="${pageMaker.next}">
                                         <li class="page-item">
-                                            <a class="page-link" href="/nboard/list${pageMaker.makeParam(pageMaker.endPage+1)}" aria-label="Next">
+                                            <a class="page-link"
+                                                href="/nboard/list${pageMaker.makeParam(pageMaker.endPage+1)}"
+                                                aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span class="sr-only">Next</span>
                                             </a>
