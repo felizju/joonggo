@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.UUID;
 
 public class FileUtils {
@@ -14,13 +15,10 @@ public class FileUtils {
         String fileName = file.getName();
         String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
     }*/
-
-
     // 사용자가 파일을 업로드했을 때 저장 처리 및 파일명을 리턴하는 메서드
     public static FileList uploadFile(MultipartFile file, String uploadPath) throws IOException {
 
         // 파일 확장자와 이름을 추출
-        FileList fileList = new FileList();
         String originName = file.getOriginalFilename();
         String ext = originName.substring(originName.lastIndexOf(".") + 1);
 
@@ -37,13 +35,21 @@ public class FileUtils {
         System.out.println(originName);
         System.out.println("--------------------------------------------");
 
+        FileList fileList = new FileList();
+
         // 업로드 수행
         File uploadFile = new File(newUploadPath, newFileName);
+
+        String[] dummy = newUploadPath.split("upload");
+        System.out.println("==============================");
+        System.out.println(Arrays.toString(dummy));
+
         try {
             file.transferTo(uploadFile);
             fileList.setExt(ext);
             fileList.setEncryptName(newFileName);
             fileList.setOriginName(originName);
+            fileList.setFilePath(dummy[1] + File.separator + newFileName);
 
         } catch (IOException e) {
             e.printStackTrace();

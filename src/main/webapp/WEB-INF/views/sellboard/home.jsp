@@ -62,28 +62,28 @@
                                 <!-- 동네생활 카테고리 -->
                                 <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active text-uppercase" id="home-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'CLOTHING')}"
+                                        <a class="nav-link active text-uppercase clothing" id="home-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="home" aria-selected="true">의류</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ELECTRONIC')}"
+                                        <a class="nav-link text-uppercase electronic" id="profile-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="profile" aria-selected="false">전자기기</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'HOME')}"
+                                        <a class="nav-link text-uppercase home" id="contact-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="contact" aria-selected="false">가전가구</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'LIVING')}"
+                                        <a class="nav-link text-uppercase living" id="contact-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="contact" aria-selected="false">생활용품</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab"
-                                            href="/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'REMARK')}"
+                                        <a class="nav-link text-uppercase remark" id="contact-tab" data-toggle="tab"
+                                            href="#"
                                             role="tab" aria-controls="contact" aria-selected="false">기타</a>
                                     </li>
                                 </ul>
@@ -136,15 +136,22 @@
                                                 <!-- <script>console.log(sellBoard)</script> -->
                                                 <td>${sellBoard.productNum}</td>
                                                 <td>${sellBoard.sellCategory}</td>
-                                                <td>${sellBoard.mainImgPath}</td>
+                                                <td><img src="/images/upload${sellBoard.mainImgPath}" width="100"
+                                                        height="100" alt="썸네일 이미지"></td>
                                                 <td>
-                                                    <a href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
+                                                    <a
+                                                        href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
                                                         ${sellBoard.productName}</a>
+                                                    <c:if test="${sellBoard.newSellBoard}">
+                                                        <span class="badge badge-pill badge-success">New</span>
+                                                    </c:if>
                                                 </td>
                                                 <td>${sellBoard.sellPrice}</td>
                                                 <td>${sellBoard.sellerNick}</td>
-                                                <td><fmt:formatDate value="${sellBoard.createDate}"
-                                                    pattern="yyyy년 MM월 dd일 HH:mm:ss" /></td>
+                                                <td>
+                                                    <fmt:formatDate value="${sellBoard.createDate}"
+                                                        pattern="yyyy년 MM월 dd일 HH:mm:ss" />
+                                                </td>
                                                 <td>${sellBoard.sellArea}</td>
                                                 <td>
                                                     <a href="#"><span class="lnr lnr-heart"> 1</span></a>
@@ -157,14 +164,15 @@
 
                                     </tbody>
                                 </table>
-                                
+
                                 <!-- 페이지 영역 -->
                                 <ul class="pagination">
 
                                     <c:if test="${pageMaker.prev}">
-                                        
+
                                         <li class="page-item">
-                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.beginPage-1)}" aria-label="Previous">
+                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.beginPage-1)}"
+                                                aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
@@ -174,14 +182,16 @@
                                     <!-- li*5>a{[$]} -->
                                     <c:forEach var="i" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}"
                                         step="1">
-                                
-                                        <li class="page-item"><a class="page-link" href="/${pageMaker.makeParam(i)}">${i}</a></li>
+
+                                        <li class="page-item"><a class="page-link"
+                                                href="/${pageMaker.makeParam(i)}">${i}</a></li>
                                         <!-- makeParam은 메서드이기 때문에 ()를 붙여서 call 해줌 -->
                                     </c:forEach>
 
                                     <c:if test="${pageMaker.next}">
                                         <li class="page-item">
-                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.endPage+1)}" aria-label="Next">
+                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.endPage+1)}"
+                                                aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span class="sr-only">Next</span>
                                             </a>
@@ -204,6 +214,40 @@
         </div>
     </div>
 
+    <script>
+        $(function () {
+            console.log("home script 시작");
+            $('.clothing').on('click', e => {
+                console.log("clothing 클릭이벤트!");
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'CLOTHING')}";
+            })
+            $('.electronic').on('click', e => {
+                console.log("electronic 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'ELECTRONIC')}";
+            });
+            $('.home').on('click', e => {
+                console.log("home 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'HOME')}";
+            });
+            $('.living').on('click', e => {
+                console.log("living 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'LIVING')}";
+            });
+            $('.remark').on('click', e => {
+                console.log("remark 클릭이벤트!");
+                console.log(e.target);
+                location.href =
+                    "/${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount, 'REMARK')}";
+            });
+        });
+    </script>
 </body>
 
 </html>

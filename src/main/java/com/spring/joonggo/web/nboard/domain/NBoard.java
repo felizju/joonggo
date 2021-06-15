@@ -21,4 +21,6 @@ public class NBoard {
     private Date postDate; //작성일자
     private Category category;  //게시글 카테고리
 
+    private boolean newBoard;
+
 }

@@ -139,13 +139,13 @@
                                 </div> -->
                                 <br><br>
                                 
-                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
+                                <c:if test="${board.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
                                 <button type="button"
                                     onclick="location.href='/nboard/modify?boardNo=${board.boardNo}&vf=false'"
                                     class="btn  btn-primary">수정하기</button>
                                 </c:if>
 
-                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
+                                <c:if test="${board.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
                                 <button type="button" onclick="location.href='/nboard/delete?boardNo=${board.boardNo}'"
                                     class="btn  btn-success">삭제하기</button>
                                     </c:if>
