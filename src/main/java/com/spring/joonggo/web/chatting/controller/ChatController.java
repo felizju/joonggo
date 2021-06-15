@@ -1,6 +1,7 @@
 package com.spring.joonggo.web.chatting.controller;
 
 import com.spring.joonggo.web.chatting.domain.ChatMessage;
+import com.spring.joonggo.web.user.domain.User;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @Log4j2

@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" defer></script>
 
 <!-- JQUERY -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- main.css -->
 <link href="/css/main.css" rel="stylesheet">
@@ -41,3 +41,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" defer></script>
 <script src="/js/chat.js" defer></script>
+
+<script src="/js/kakao.js" defer></script>
