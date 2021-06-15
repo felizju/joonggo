@@ -103,6 +103,9 @@
             WHERE (goods_title LIKE '%' || #{keyword} || '%'
             OR goods_content LIKE '%' || #{keyword} || '%')
         </if>
+        <if test="sellCategory != null">
+            goods_category = #{sellCategory} AND
+        </if>
     </select>
 
 
@@ -142,16 +145,19 @@
 
     <!-- 첨부파일 추가 쿼리 -->
     <insert id="addFile">
-        INSERT INTO file_upload
-        (file_path, board_no)
+        INSERT INTO files
+        (goods_no, file_origin_name,
+        file_name, user_id, user_nickname, file_type)
         VALUES
-        (#{filePath}, seq_board.currval)
+        (goods_seq.currval, #{originName}, #{encryptName},
+        #{userId}, #{userNick}, #{ext})
     </insert>
+
 
     <!-- 첨부파일 경로 불러오기 -->
     <select id="getFilePaths" resultType="String">
-        SELECT file_path FROM file_upload
-        WHERE board_no = #{boardNum}
+        SELECT file_name FROM files
+        WHERE goods_no = #{productNum}
     </select>
 
 </mapper>

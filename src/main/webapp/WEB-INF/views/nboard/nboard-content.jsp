@@ -14,6 +14,18 @@
             justify-content: center;
             font-size: 15px;
         }
+
+        #commentModButton {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #commentDelButton {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 
     <!-- Meta -->
@@ -120,26 +132,24 @@
                                     <p class="form-control">${board.content}</p>
                                 </div>
                                 <!-- 첨부파일 영역 -->
-                                <div class="custom-file">
+                                <!-- <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                                     <label class="custom-file-label" for="validatedCustomFile">파일 업로드
                                         비활성화하기!!!!!!</label>
-                                </div><br><br>
-                                <%--
-                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}"></c:if>
-                                --%>
-                                <button type="button"
-                                    onclick="location.href='/nboard/modify?boardNo=?{board.boardNo}&vf=false'"
-                                    class="btn  btn-primary">수정하기</button>
-                                <%--
-                                </c:if>
+                                </div> -->
+                                <br><br>
+                                
                                 <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
-                                    --%>
+                                <button type="button"
+                                    onclick="location.href='/nboard/modify?boardNo=${board.boardNo}&vf=false'"
+                                    class="btn  btn-primary">수정하기</button>
+                                </c:if>
+
+                                <c:if test="${nBoard.userId == loginUser.userId || loginUser.auth == 'ADMIN'}">
                                 <button type="button" onclick="location.href='/nboard/delete?boardNo=${board.boardNo}'"
                                     class="btn  btn-success">삭제하기</button>
-                                <%--
                                     </c:if>
-                                    --%>
+                                
                                 <!-- <button type="button" class="btn disabled btn-secondary">목록으로 돌아가기</button> -->
                                 <!-- <button type="button" onclick="location.href='nboard-list.html' " class="btn disabled btn-secondary">목록으로 돌아가기</button> -->
                                 <button type="button"
@@ -215,7 +225,7 @@
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header" style="background: #343A40; color: white;">
+                <div class="modal-header" style="background: #FD7E14; color: white;">
                     <h4 class="modal-title">댓글 수정하기</h4>
                     <button type="button" class="close text-white" data-dismiss="modal">X</button>
                 </div>
@@ -232,7 +242,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button id="commentModBtn" type="button" class="btn btn-dark">수정</button>
+                    <button id="commentModBtn" type="button" class="btn btn-orange">수정</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
                 </div>
 
@@ -323,21 +333,21 @@
 
                     // 댓글 내용
             
-                    tag += "<tr id='commentList' data-commentNo='" + comment.commentNo + "'>" +
+                    tag += "<tr id='commentList' data-commentNo='" + comment.commentNo + "' data-userId='" + comment.userId + "'>" +
                     "<td id='commentUserNickName' data-commentNick='" + comment.userNickName + "'>" + comment.userNickName + "</td>" +
                         "<td id='commentContent' data-commentContent='" + comment.commentContent + "'>" + comment.commentContent + "</td>" +
                         "<td id='commentDate' data-commentDate='" + comment.commentCreatedDate + "'>" + comment.commentCreatedDate + "</td>" +
                         "<td>" +
                         "   <a class='modi' href='#' value='" + comment.commentNo + "'>" +
                         "       <div class='modify' id='commentModBtn'>" +
-                        "           <span class='lnr lnr-undo'></span>" +
+                        "           <span class='lnr lnr-undo' id='commentModButton'></span>" +
                         "       </div>" +
                         "   </a>" +
                         "</td>" +
                         "<td>" +
                         "   <a href='#'>" +
                         "       <div class='remove' id='commentDelBtn'>" +
-                        "           <span class='lnr lnr-cross-circle'></span>" +
+                        "           <span class='lnr lnr-cross-circle' id='commentDelButton'></span>" +
                         "       </div>" +
                         "   </a>" +
                         "</td>" +
@@ -415,9 +425,19 @@
 
             const $modal = $('#commentModifyModal');
             //댓글 수정 버튼 클릭 이벤트
-            $('#commentData').on('click', '#commentModBtn', e => {
+            $('#commentData').on('click', '#commentModButton', e => {
                 // console.log(e.target);
                 e.preventDefault();
+                const loginUser = '${loginUser.userId}';
+                const writeUser = e.target.parentNode.parentNode.parentNode.parentNode.dataset.userid;
+                
+                console.log("로그인 중인 유저ID" + loginUser);
+                console.log("클릭 타겟" + e.target);
+                console.log("댓글 작성 유저ID" + writeUser);
+                if (loginUser != writeUser) {
+                    alert('작성자 본인만 댓글을 수정/삭제할 수 있습니다.');
+                    return;
+                }
 
                 //모달 띄우기
                 $modal.modal('show');
@@ -472,9 +492,15 @@
             });
 
             //댓글 삭제 비동기 요청 이벤트
-            $('#commentData').on('click', '#commentDelBtn', e => {
+            $('#commentData').on('click', '#commentDelButton', e => {
 
                 e.preventDefault();
+                const loginUser = '${loginUser.userId}';
+                const writeUser = e.target.parentNode.parentNode.parentNode.parentNode.dataset.userid;
+                if (loginUser != writeUser) {
+                    alert('작성자 본인만 댓글을 수정/삭제할 수 있습니다.');
+                    return;
+                }
 
                 console.log(e.target);
                 const commentNo = e.target.parentNode.parentNode.parentNode.previousSibling.children[0].getAttribute('value');

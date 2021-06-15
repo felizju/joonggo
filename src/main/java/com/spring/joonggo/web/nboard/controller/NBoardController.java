@@ -97,11 +97,12 @@ public class NBoardController {
             , Model model
             , HttpSession session
     ) {
+        log.info("nboard modify GET!!");
         NBoard nBoard = nBoardService.viewDetail(boardNo, viewCntFlag);
         model.addAttribute("nBoard", nBoard);
         User loginUser = (User) session.getAttribute("loginUser");
         model.addAttribute("loginUser", loginUser);
-        return "/nboard/modify";
+        return "/nboard/nboard-modify";
     }
 
     //게시글 수정 저장 요청
@@ -109,6 +110,7 @@ public class NBoardController {
     public String modify(int boardNo
             , DummyNBoard dummyNBoard
     ) {
+        log.info("nboard modify POST!!");
         nBoardService.modify(boardNo, dummyNBoard);
         return "redirect:/nboard/detail?boardNo=" + boardNo + "&vf=false";
     }

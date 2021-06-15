@@ -31,6 +31,9 @@ public class SellBoard {
     // 첨부파일 경로 리스트
     private List<String> filePathList;
 
+    //메인이미지경로
+    private String mainImgPath;
+
 //    public SellBoard() {
 //        this.productNum = sequence++;
 //    }
