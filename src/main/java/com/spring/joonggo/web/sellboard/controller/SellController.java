@@ -42,7 +42,8 @@ public class SellController {
             , Model model
             , HttpSession session) {
 //        List<SellBoard> sellList = sellBoardService.findAll();
-        model.addAttribute("sellList", sellBoardService.findAll(criteria));
+        List<SellBoard> list = sellBoardService.findAll(criteria);
+        model.addAttribute("sellList", list);
 
         // 페이지 정보 만들어서 jsp에게 전달
         model.addAttribute("pageMaker", new PageMaker(criteria, sellBoardService.getTotal(criteria)));
