@@ -31,7 +31,7 @@ public class SellController {
 
     // 업로드파일 저장 경로
     private static final String UPLOAD_PATH =
-            "D:\\tw\\study\\Gruop Study\\github\\joongo\\src\\main\\resources\\static\\images\\upload";
+            "D:\\developing_ktw\\joongo\\src\\main\\resources\\static\\images\\upload";
 
    /* @Autowired
     public SellController(SellBoardService sellBoardService) {
@@ -101,9 +101,15 @@ public class SellController {
             , Model model
             , HttpSession session) {
         SellBoard sellBoard = sellBoardService.intoContent(productNum);
+        List<String> imgPath = sellBoardService.loadImg(productNum);
 //        board =  boardService.viewCount(board);
 //        model.addAttribute("cri", criteria);
         model.addAttribute("sellBoard", sellBoard);
+        model.addAttribute("mainImgPath", imgPath.get(0));
+
+        System.out.println("*************************************");
+        System.out.println(imgPath);
+        System.out.println("*************************************");
         return "/sellboard/sellboard-content";
     }
 

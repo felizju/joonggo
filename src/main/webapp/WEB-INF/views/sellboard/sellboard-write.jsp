@@ -75,8 +75,8 @@
 
 
                                         <div class="form-group">
-                                            <label>지역</label>
-                                            <input class="form-control" name="sellArea"></input>
+                                            <label>판매 지역</label>
+                                            <input class="form-control" name="sellArea" placeholder="${loginUser.userAddress}"></input>
                                         </div>
 
                                     </div>

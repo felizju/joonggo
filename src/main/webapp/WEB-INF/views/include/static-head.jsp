@@ -1,11 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- main.css -->
-<link href="/css/main.css" rel="stylesheet">
-
-<!-- vendor css -->
-<link rel="stylesheet" href="/css/style.css">
 
 <!-- linear icon css -->
 <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
@@ -38,4 +33,10 @@
 
 <!-- kakao local JS -->
 <script src="/js/kakao.js" defer></script>
+
+<!-- main.css -->
+<link  rel="stylesheet" href="/css/main.css">
+
+<!-- vendor css -->
+<link rel="stylesheet" href="/css/style.css">
 
