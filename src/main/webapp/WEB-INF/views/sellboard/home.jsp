@@ -7,7 +7,10 @@
 <head>
     <title>JOONGGO MARKET</title>
     <style>
-
+        .pagination {
+            justify-content: center;
+            font-size: 15px;
+        }
     </style>
 
     <!-- Meta -->
@@ -19,6 +22,10 @@
     <meta name="author" content="Phoenixcoded" />
 
     <%@ include file="../include/static-head.jsp" %>
+
+    <link rel="stylesheet" href="/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+
 </head>
 
 <body class="loader-fill">
@@ -38,7 +45,6 @@
 
     <!-- [ Header ] start -->
     <%@ include file="../include/header.jsp" %>
-    <!-- [ Header ] end -->
 
 
 
@@ -50,8 +56,8 @@
             <!-- [ sitename ] end -->
 
 
-            <!-- [ Main Content ] start -->
-            <div class="row">
+             <!-- [ Main Content ] start -->
+             <div class="row">
                 <!-- project ,team member start -->
                 <div class="col-xl-6 col-md-12">
                     <div class="card table-card">
