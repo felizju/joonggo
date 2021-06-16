@@ -119,7 +119,8 @@
                                 </div>
                                 <!-- 첨부파일 보여주는 영역 -->
                                 <div class="show-file">
-                                    <p>파일 영역</p>
+                                    <p><img src="/images/upload${mainImgPath}" width="30%"
+                                        height="300" alt="썸네일 이미지"></p>
                                 </div>
                                 
                                 <br><br>

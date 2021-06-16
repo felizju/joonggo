@@ -23,9 +23,6 @@
 
     <%@ include file="../include/static-head.jsp" %>
 
-    <link rel="stylesheet" href="/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-
 </head>
 
 <body class="loader-fill">
@@ -56,8 +53,8 @@
             <!-- [ sitename ] end -->
 
 
-             <!-- [ Main Content ] start -->
-             <div class="row">
+            <!-- [ Main Content ] start -->
+            <div class="row">
                 <!-- project ,team member start -->
                 <div class="col-xl-6 col-md-12">
                     <div class="card table-card">
@@ -68,29 +65,25 @@
                                 <!-- 동네생활 카테고리 -->
                                 <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active text-uppercase clothing" id="home-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="home" aria-selected="true">의류</a>
+                                        <a class="nav-link active text-uppercase clothing" id="home-tab"
+                                            data-toggle="tab" href="#" role="tab" aria-controls="home"
+                                            aria-selected="true">의류</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-uppercase electronic" id="profile-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="profile" aria-selected="false">전자기기</a>
+                                            href="#" role="tab" aria-controls="profile" aria-selected="false">전자기기</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-uppercase home" id="contact-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="contact" aria-selected="false">가전가구</a>
+                                            href="#" role="tab" aria-controls="contact" aria-selected="false">가전가구</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-uppercase living" id="contact-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="contact" aria-selected="false">생활용품</a>
+                                            href="#" role="tab" aria-controls="contact" aria-selected="false">생활용품</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-uppercase remark" id="contact-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="contact" aria-selected="false">기타</a>
+                                            href="#" role="tab" aria-controls="contact" aria-selected="false">기타</a>
                                     </li>
                                 </ul>
                             </div>
