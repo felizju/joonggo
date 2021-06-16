@@ -6,12 +6,6 @@
 
 <head>
     <title>JOONGGO MARKET</title>
-    <style>
-        .pagination {
-            justify-content: center;
-            font-size: 15px;
-        }
-    </style>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -22,9 +16,6 @@
     <meta name="author" content="Phoenixcoded" />
 
     <%@ include file="../include/static-head.jsp" %>
-
-    <link rel="stylesheet" href="/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
 
 </head>
 
@@ -56,159 +47,203 @@
             <!-- [ sitename ] end -->
 
 
-             <!-- [ Main Content ] start -->
-             <div class="row">
-                <!-- project ,team member start -->
-                <div class="col-xl-6 col-md-12">
-                    <div class="card table-card">
-                        <div class="card-header">
-                            <h5>최신글</h5>
 
-                            <div class="card-body">
-                                <!-- 동네생활 카테고리 -->
-                                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active text-uppercase clothing" id="home-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="home" aria-selected="true">의류</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-uppercase electronic" id="profile-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="profile" aria-selected="false">전자기기</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-uppercase home" id="contact-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="contact" aria-selected="false">가전가구</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-uppercase living" id="contact-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="contact" aria-selected="false">생활용품</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-uppercase remark" id="contact-tab" data-toggle="tab"
-                                            href="#"
-                                            role="tab" aria-controls="contact" aria-selected="false">기타</a>
-                                    </li>
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- [ stiped-table ] start -->
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header float-effect">
+                            <h5>중고거래 게시판</h5>
+                            <div class="btn-group card-option ">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="feather icon-more-horizontal"></i>
+                                </button>
+                                <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                                    <li class="dropdown-item full-card"><a href="#!">
+                                            <span><i class="feather icon-maximize"></i> maximize</span>
+                                            <span style="display:none"><i class="feather icon-minimize"></i>
+                                                Restore</span></a></li>
+                                    <li class="dropdown-item minimize-card"><a href="#!">
+                                            <span><i class="feather icon-minus"></i> collapse</span>
+                                            <span style="display:none"><i class="feather icon-plus"></i>
+                                                expand</span></a></li>
+                                    <li class="dropdown-item reload-card"><a href="#!"><i
+                                                class="feather icon-refresh-cw"></i> reload</a></li>
+                                    <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i>
+                                            remove</a></li>
                                 </ul>
-                            </div>
-
-                            <div class="card-header-right">
-                                <div class="btn-group card-option">
-                                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        <i class="feather icon-more-horizontal"></i>
-                                    </button>
-                                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
-                                        <li class="dropdown-item full-card"><a href="#!">
-                                                <span><i class="feather icon-maximize"></i> maximize</span>
-                                                <span style="display:none"><i class="feather icon-minimize"></i>
-                                                    Restore</span></a></li>
-                                        <li class="dropdown-item minimize-card"><a href="#!">
-                                                <span><i class="feather icon-minus"></i> collapse</span>
-                                                <span style="display:none"><i class="feather icon-plus"></i>
-                                                    expand</span></a></li>
-                                        <li class="dropdown-item reload-card"><a href="#!"><i
-                                                    class="feather icon-refresh-cw"></i> reload</a></li>
-                                        <li class="dropdown-item close-card"><a href="#!"><i
-                                                    class="feather icon-trash"></i> remove</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table table-hover mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>NO</th>
-                                            <th>CATEGORY</th>
-                                            <th>IMAGE</th>
-                                            <th>TITLE</th>
-                                            <th>PRICE</th>
-                                            <th>USER NAME</th>
-                                            <th>DATE</th>
-                                            <th>REGION</th>
-                                            <th>LIKES</th>
-                                            <!-- <th>CHAT</th> -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                        <c:forEach var="sellBoard" items="${sellList}">
+                        <!-- [dropdown-toggle] start -->
+                        <!-- <div class="card-header-right float-effect"> -->
+
+                            <!-- [dropdown-toggle] end-->
+
+                        <div class="card-body">
+                            <!-- 중고거래 카테고리 -->
+                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active text-uppercase clothing" id="home-tab" data-toggle="tab"
+                                        href="#" role="tab" aria-controls="home" aria-selected="true">의류</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase electronic" id="profile-tab" data-toggle="tab"
+                                        href="#" role="tab" aria-controls="profile" aria-selected="false">전자기기</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase home" id="contact-tab" data-toggle="tab" href="#"
+                                        role="tab" aria-controls="contact" aria-selected="false">가전가구</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase living" id="contact-tab" data-toggle="tab"
+                                        href="#" role="tab" aria-controls="contact" aria-selected="false">생활용품</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-uppercase remark" id="contact-tab" data-toggle="tab"
+                                        href="#" role="tab" aria-controls="contact" aria-selected="false">기타</a>
+                                </li>
+                                <div class="search-icon">
+                                    <li class="nav-item">
+                                        <a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
+                                    </li>
+                                </div>
+
+                            </ul>
+
+
+                            <!-- 검색창 -->
+                            <ul class="navbar-nav mr-auto">
+                                <form class="search-bar" action="/">
+                                    <div class="input-select float-effect">
+                                        <input type="hidden" name="amount" value="${pageMaker.criteria.amount}">
+                                        <input type="hidden" name="category" value="${pageMaker.criteria.category}">
+                                        <select class="select-inner" name="type">
+                                            <option value="title" ${pageMaker.criteria.type=='title' ? 'selected' : ''
+                                                }>제목
+                                            </option>
+                                            <option value="nickname" ${pageMaker.criteria.type=='nickname' ? 'selected'
+                                                : '' }>작성자</option>
+                                            <option value="content" ${pageMaker.criteria.type=='content' ? 'selected'
+                                                : '' }>내용</option>
+                                            <option value="titleContent" ${pageMaker.criteria.type=='titleContent'
+                                                ? 'selected' : '' }>제목
+                                                + 내용</option>
+                                        </select>
+                                    </div>
+                                    <div class="float-effect">
+                                        <input id="search" type="text" name="keyword" class="form-control"
+                                            placeholder="검색어를 입력하세요" value="${pageMaker.criteria.keyword}" />
+                                    </div>
+                                    <div class="float-effect">
+                                        <button class="btn  btn-primary btn-search" type="submit"><i
+                                                class="feather icon-corner-down-right"></i></button>
+                                    </div>
+                                    <button type="button" class="close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </form>
+                            </ul>
+                            <!-- 검색창 종료 -->
+
+
+
+
+                            <!-- <div class="card-body p-0"> -->
+                            <div class="card-body table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
                                             <tr>
-                                                <!-- <script>console.log(sellBoard)</script> -->
-                                                <td>${sellBoard.productNum}</td>
-                                                <td>${sellBoard.sellCategory}</td>
-                                                <td><img src="/images/upload${sellBoard.mainImgPath}" width="100"
-                                                        height="100" alt="썸네일 이미지"></td>
-                                                <td>
-                                                    <a
-                                                        href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
-                                                        ${sellBoard.productName}</a>
-                                                    <c:if test="${sellBoard.newSellBoard}">
-                                                        <span class="badge badge-pill badge-success">New</span>
-                                                    </c:if>
-                                                </td>
-                                                <td>${sellBoard.sellPrice}</td>
-                                                <td>${sellBoard.sellerNick}</td>
-                                                <td>
-                                                    <fmt:formatDate value="${sellBoard.createDate}"
-                                                        pattern="yyyy년 MM월 dd일 HH:mm:ss" />
-                                                </td>
-                                                <td>${sellBoard.sellArea}</td>
-                                                <td>
-                                                    <a href="#"><span class="lnr lnr-heart"> 1</span></a>
-                                                </td>
-                                                <!-- <td>
+                                                <th>번호</th>
+                                                <th>카테고리</th>
+                                                <th>이미지</th>
+                                                <th>제목</th>
+                                                <th>가격</th>
+                                                <th>닉네임</th>
+                                                <th>작성일자</th>
+                                                <th>지역</th>
+                                                <th>좋아요</th>
+                                                <!-- <th>채팅</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <c:forEach var="sellBoard" items="${sellList}">
+                                                <tr>
+                                                    <!-- <script>console.log(sellBoard)</script> -->
+                                                    <td>${sellBoard.productNum}</td>
+                                                    <td>${sellBoard.sellCategory}</td>
+                                                    <td><img src="/images/upload${sellBoard.mainImgPath}" width="100"
+                                                            height="100" alt="썸네일 이미지"></td>
+                                                    <td>
+                                                        <a
+                                                            href="/content${pageMaker.makeParam(pageMaker.criteria.page, pageMaker.criteria.amount)}&productNum=${sellBoard.productNum}">
+                                                            ${sellBoard.productName}</a>
+                                                        <c:if test="${sellBoard.newSellBoard}">
+                                                            <span class="badge badge-pill badge-success">New</span>
+                                                        </c:if>
+                                                    </td>
+                                                    <td>${sellBoard.sellPrice}</td>
+                                                    <td>${sellBoard.sellerNick}</td>
+                                                    <td>
+                                                        <fmt:formatDate value="${sellBoard.createDate}"
+                                                            pattern="yyyy년 MM월 dd일 HH:mm:ss" />
+                                                    </td>
+                                                    <td>${sellBoard.sellArea}</td>
+                                                    <td>
+                                                        <a href="#"><span class="lnr lnr-heart"> 1</span></a>
+                                                    </td>
+                                                    <!-- <td>
                                                     <span class="lnr lnr-bubble"> 2</span>
                                                 </td> -->
-                                            </tr>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
+
+                                    <!-- 페이지 영역 -->
+                                    <ul class="pagination">
+
+                                        <c:if test="${pageMaker.prev}">
+
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                    href="/${pageMaker.makeParam(pageMaker.beginPage-1)}"
+                                                    aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
+
+                                        <!-- li*5>a{[$]} -->
+                                        <c:forEach var="i" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}"
+                                            step="1">
+
+                                            <li class="page-item"><a class="page-link"
+                                                    href="/${pageMaker.makeParam(i)}">${i}</a></li>
+                                            <!-- makeParam은 메서드이기 때문에 ()를 붙여서 call 해줌 -->
                                         </c:forEach>
 
-                                    </tbody>
-                                </table>
+                                        <c:if test="${pageMaker.next}">
+                                            <li class="page-item">
+                                                <a class="page-link" href="/${pageMaker.makeParam(pageMaker.endPage+1)}"
+                                                    aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
+                                    </ul>
+                                    <!-- 페이지 영역 종료 -->
+                                    <div class="fixed-button active">
+                                        <a href="/sellboard-write" class="btn btn-md btn-primary">
+                                            <i class="fa fa-plus-circle" aria-hidden="true"></i> 글 작성</a>
+                                    </div>
 
-                                <!-- 페이지 영역 -->
-                                <ul class="pagination">
-
-                                    <c:if test="${pageMaker.prev}">
-
-                                        <li class="page-item">
-                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.beginPage-1)}"
-                                                aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
-
-                                    <!-- li*5>a{[$]} -->
-                                    <c:forEach var="i" begin="${pageMaker.beginPage}" end="${pageMaker.endPage}"
-                                        step="1">
-
-                                        <li class="page-item"><a class="page-link"
-                                                href="/${pageMaker.makeParam(i)}">${i}</a></li>
-                                        <!-- makeParam은 메서드이기 때문에 ()를 붙여서 call 해줌 -->
-                                    </c:forEach>
-
-                                    <c:if test="${pageMaker.next}">
-                                        <li class="page-item">
-                                            <a class="page-link" href="/${pageMaker.makeParam(pageMaker.endPage+1)}"
-                                                aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </c:if>
-                                </ul>
-                                <!-- 페이지 영역 종료 -->
-
-                                <div class="fixed-button active">
-                                    <a href="/sellboard-write" class="btn btn-md btn-primary">
-                                        <i class="fa fa-plus-circle" aria-hidden="true"></i> 글 작성</a>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +251,6 @@
                 </div>
             </div>
             <!-- [ Main Content ] end -->
-
         </div>
     </div>
 

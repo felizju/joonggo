@@ -6807,6 +6807,19 @@ a.close.disabled {
     border-radius: 0.25rem;
 }
 
+.select-inner {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 7.5px 7.5px 3.75px;
+    border: 1px solid #DDDDDD;
+    border-radius: 2.5px;
+    font-size: 14px;
+    min-height: 44px;
+    overflow: hidden;
+}
+
 .popover {
     position: absolute;
     top: 0;
@@ -14445,6 +14458,13 @@ a.text-dark:focus {
     content: "\f4e6";
 }
 
+.logo-h2 p {
+    color: #fff;
+    font-weight: 900;
+    font-size: 27px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 .fa-fonticons:before {
     content: "\f280";
 }
@@ -20746,6 +20766,8 @@ pre[class*=language-]:before {
     align-items: center;
     justify-content: center;
     padding: 0 25px;
+    margin: 15px;
+    left: -20px;
 }
 
 .pcoded-header .m-header .logo-dark,
@@ -22541,6 +22563,7 @@ pre[class*=language-]:before {
 .pcoded-navbar.menu-light {
     background-color: #fff;
     color: #535763;
+    top: 30px;
 }
 
 .pcoded-navbar.menu-light .header-logo {

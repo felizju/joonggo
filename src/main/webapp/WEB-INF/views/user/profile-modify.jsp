@@ -16,7 +16,8 @@
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
 
-    <%@ include file="../include/static-head.jsp" %>
+	<%@ include file="../include/static-head.jsp" %>
+
 </head>
 
 <body class="loader-fill">

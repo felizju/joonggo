@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+
 <!DOCTYPE html>
 <html lang="ko">
-
 
 <head>
     <title>JOONGGO MARKET</title>
@@ -17,6 +18,7 @@
     <meta name="author" content="Phoenixcoded" />
 
     <%@ include file="../include/static-head.jsp" %>
+
 </head>
 
 <body class="loader-fill">
@@ -29,14 +31,14 @@
     <!-- [ Pre-loader ] End -->
 
 
-      <!-- [ navigation menu ] start -->
-      <%@ include file="../include/navigation.jsp" %>
-      <!-- [ navigation menu ] end -->
-  
-  
-      <!-- [ Header ] start -->
-      <%@ include file="../include/header.jsp" %>
-      <!-- [ Header ] end -->
+    <!-- [ navigation menu ] start -->
+    <%@ include file="../include/navigation.jsp" %>
+    <!-- [ navigation menu ] end -->
+
+
+    <!-- [ Header ] start -->
+    <%@ include file="../include/header.jsp" %>
+    <!-- [ Header ] end -->
 
 
     <!-- [ Main Content ] start -->
@@ -56,12 +58,11 @@
                             <h5>나의 당근</h5>
                         </div>
 
-                        
+
                         <div class="navbar-content scroll-div">
                             <div class="">
                                 <div class="main-menu-header profile-name"><br>
-                                    <img class="img-radius profile-img"
-                                        src="/images/user/user_basic.png"
+                                    <img class="img-radius profile-img" src="/images/user/user_basic.png"
                                         alt="User-Profile-Image">
                                     <div class="user-details">
                                         <div id="more-details">${loginUser.userNickname}</div>
@@ -69,7 +70,8 @@
                                             <p id="region">봉명동</p><!-- 지역 확인 -->
                                             <p id="userId"> #${loginUser.userId}</p>
                                         </div>
-                                        <a href="/user/profile-modify" type="button" class="btn  btn-primary">프로필 수정하기</a>
+                                        <a href="/user/profile-modify" type="button" class="btn  btn-primary">프로필
+                                            수정하기</a>
                                         <hr>
                                         <a href="#" class="profile-list">
                                             <div>
@@ -84,7 +86,7 @@
                                                 <p>구매내역</p>
                                             </div>
                                         </a>
-                                        
+
                                         <a href="#" class="profile-list">
                                             <div>
                                                 <span class="lnr lnr-heart lnra"></span>

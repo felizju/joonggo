@@ -8,7 +8,10 @@
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
         <a href="/" class="b-brand">
-            <img src="/images/logo.png" alt="로고이미지" class="logo">
+            <!-- <img src="/images/logo.png" alt="로고이미지" class="logo"> -->
+            <!-- <img src="/images/Orange.M-logo.png" alt="로고이미지" class="logo"> -->
+            <div class="logo-h2"><p >Orange.M</p></div>
+
             <img src="/images/logo-icon.png" alt="로고이미지" class="logo-thumb">
         </a>
         <a href="#!" class="mob-toggler">

@@ -9,25 +9,6 @@
 <head>
     <title>JOONGGO MARKET</title>
 
-    <style>
-        .pagination {
-            justify-content: center;
-            font-size: 15px;
-        }
-
-        #commentModButton {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        #commentDelButton {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
